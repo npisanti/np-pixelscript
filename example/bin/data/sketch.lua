@@ -11,7 +11,8 @@ end
 ----------------------------------------------------
 function draw()
     
-    local animate = lfo.noise( 0.3 )
+    lfo.speed( 0.03 )
+    local animate = lfo.sine()
     
     px.clear()
     px.fill( false )

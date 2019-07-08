@@ -2,7 +2,6 @@
 #include "PixelScript.h"
 
 #include "bindings/px.h"
-#include "bindings/lfo.h"
 #include "bindings/font.h"
 
 extern "C" {
@@ -15,12 +14,11 @@ np::PixelScript::PixelScript(){
     loaded = false;
 
 	script.addListener(this);
-    before = 0.0f;
-    speed = 1.0f;
     
-    parameters.add( speed.set("speed", 1.0f, 0.0f, 2.0f) );
-    
-    clock = 0.0f;
+    phasors.resize( 32 );
+    for( auto & phasor : phasors ){
+        phasor.init();
+    }
 }
 
 np::PixelScript::~PixelScript(){
@@ -39,23 +37,24 @@ void np::PixelScript::reload(){
     luaopen_px(script); 
     luaopen_lfo(script); 
     luaopen_font(script); 
+    lfo::resources( phasors );
     font::resources( font );
-    script.doScript( filepath, true);
+    script.doScript( filepath );
     script.scriptSetup();
     loaded = true;
-    before = ofGetElapsedTimef();
 }
     
 void np::PixelScript::render( ofFbo & fbo ){
     
-    float now = ofGetElapsedTimef();
-    clock += (now-before) * (speed*speed*speed);
-    before = now;
-    lfo::setPlayHead( clock );
-
+    for( auto & phasor : phasors ){
+        phasor.update();
+    }
+    
+    lfo::resources( phasors );
+    font::resources( font );
+    
     fbo.begin();
         ofSetColor(255);
-        font::resources( font );
         px::beginFrame( fbo.getWidth(), fbo.getHeight() );
         script.scriptUpdate();
         script.scriptDraw();
@@ -65,13 +64,15 @@ void np::PixelScript::render( ofFbo & fbo ){
 }
 
 void np::PixelScript::draw( int x, int y, int w, int h ){
+    for( auto & phasor : phasors ){
+        phasor.update();
+    }
+    lfo::resources( phasors );
+    font::resources( font );
+    
+    
     ofPushMatrix();
     ofTranslate( x, y );
-        float now = ofGetElapsedTimef();
-        clock += (now-before) * (speed*speed*speed);
-        before = now;
-        lfo::setPlayHead( clock );
-
         ofSetColor(255);
         font::resources( font );
         px::beginFrame( w, h );

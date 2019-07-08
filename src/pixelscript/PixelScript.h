@@ -4,8 +4,8 @@
 #include "ofMain.h"
 
 #include "ofxLua/src/ofxLua.h"
-
 #include "FileWatcher.h"
+#include "bindings/lfo.h"
 
 namespace np{ 
     
@@ -17,28 +17,23 @@ public:
     
     void render( ofFbo & fbo );
     void draw( int x, int y, int w, int h );
-
-    void playhead( float clock ){ this->clock = clock; }
-
+    
     void variable( std::string name, double value ){ script.setNumber( name, (lua_Number) value ); }
    
     void variable( std::string name, bool value ){ script.setBool( name, value ); }
 
-    ofParameter<float> speed;
-    
     ofxLua script;    
         
 private:
     
     ofTrueTypeFont font;
+    std::vector<lfo::Phasor> phasors;
 
     bool loaded;
 
     void errorReceived(std::string& msg);
     
     void reload() override;
-    float clock;
-    float before;
     
 };
     

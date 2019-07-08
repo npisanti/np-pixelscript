@@ -14,7 +14,7 @@ void np::FileWatcher::load( std::string path, bool watch ) {
     filename = ofFilePath::getFileName( filepath ); 
 
     if( ! ofFilePath::isAbsolute( filepath )){
-        filepath = ofToDataPath( filepath );
+        filepath = ofFilePath::getCurrentWorkingDirectory() + "/" + filepath;
     }
 
     ofFile file( filepath );
@@ -24,8 +24,9 @@ void np::FileWatcher::load( std::string path, bool watch ) {
             writeTimestamp = boost::filesystem::last_write_time( filepath );
         }
         reload();
+        ofLogNotice() << "["<<filename<<"] file loaded";
     }else{
-        ofLogError() << "[np::FileWatcher] file to load does not exists\n";
+        ofLogError() << "[np::FileWatcher] file to load at "<<filepath <<" does not exists\n";
     }
     
     parameters.setName( filename );

@@ -150,42 +150,23 @@ bool ofxLua::doString(const std::string& text) {
 }
 
 //------------------------------------------------------------------------------
-bool ofxLua::doScript(const std::string& script, bool changeDir) {
+bool ofxLua::doScript( const std::string& script ) {
 
 	if(!isValid()) {
 		ofLogError("ofxLua") << "Cannot do script, lua state not inited!";
 		return false;
 	}
 	
-	std::string fullpath = ofFilePath::getAbsolutePath(ofToDataPath(script));
-	std::string file = ofFilePath::getFileName(fullpath);
-	std::string folder = ofFilePath::getEnclosingDirectory(fullpath);
+	std::string fullpath = ofFilePath::getAbsolutePath(script);
+	std::string file = ofFilePath::getFileName(script);
+
+
 	
-	// trim trailing slash
-	if(folder.size() > 0 && folder.at(folder.size()-1) == '/') {
-		folder.erase(folder.end()-1);
-	}
-	
-	ofLogVerbose("ofxLua") << "Doing script: \"" << file << "\" path: \"" << folder << "\"";
-	if(changeDir) {
-		ofLogVerbose("ofxLua") << "Changing to script dir \"" << folder << "\"";
-		if(CHDIR(folder.c_str()) < 0) {
-			switch(errno) {
-				case ENOENT:
-					ofLogError("ofxLua") << "Script dir \"" << folder << "\" does not exist";
-					break;
-				case EACCES:
-					ofLogError("ofxLua") << "Could not access script dir \"" << folder << "\"";
-					break;
-				default:
-					ofLogError("ofxLua") << "Could not change to script dir \"" << folder << "\", error " << errno;
-					break;
-			}
-		}
-	}
+	ofLogVerbose("ofxLua") << "Doing script: \"" << file << "\" path: \"" << fullpath << "\"";
+
 
 	// load the script
-	int ret = luaL_loadfile(L, fullpath.c_str());
+	int ret = luaL_loadfile(L, script.c_str());
 	if(ret != 0) {
 		switch(ret) {
 			case LUA_ERRFILE: {

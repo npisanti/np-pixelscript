@@ -13,8 +13,10 @@ int downsample;
 //--------------------------------------------------------------
 void setup(){
     ofBackground( 0 );
-
-    script.load( "/home/nicola/oF/addons/np-pixelscript/example/bin/data/sketch.lua" );
+    
+    ;
+    
+    script.load( "data/sketch.lua" );
 
     downsample = 2;
     ofFboSettings settings;
