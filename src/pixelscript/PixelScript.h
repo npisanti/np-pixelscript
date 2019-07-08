@@ -6,6 +6,7 @@
 #include "ofxLua/src/ofxLua.h"
 #include "FileWatcher.h"
 #include "bindings/lfo.h"
+#include "bindings/sprite.h"
 
 namespace np{ 
     
@@ -28,6 +29,8 @@ private:
     
     ofTrueTypeFont font;
     std::vector<lfo::Phasor> phasors;
+    
+    std::vector<sprite::SpriteSheet> sprites;
 
     bool loaded;
 

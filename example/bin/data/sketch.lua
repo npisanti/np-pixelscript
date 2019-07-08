@@ -6,6 +6,8 @@ function setup()
     
     font.load( "/usr/share/fonts/truetype/TerminusTTF-4.46.0.ttf", 9)
     
+    sprite.load( "data/test.png", 8, 8 )
+    
 end
 
 ----------------------------------------------------
@@ -37,6 +39,10 @@ function draw()
         px.poly( 200, 50, 10, 4, - math.pi*0.5 )
     px.finish( true )
     
+    sprite.bind( "test" )
+        sprite.pct( lfo.triangle() )
+        sprite.draw( 5, 5 )
+    sprite.unbind()
 end
 
 ----------------------------------------------------

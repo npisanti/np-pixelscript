@@ -31,9 +31,9 @@ ifeq ($(ATTRIBUTES), true)
 	CFLAGS += -DATTRIBUTES
 endif
 
-.PHONY: all bindings symbols clean px-prepare px lfo font
+.PHONY: all bindings symbols clean px-prepare px lfo font sprite
 
-all: px lfo font
+all: px lfo font sprite
 
 # generates bindings
 bindings:
@@ -71,3 +71,10 @@ font-prepare:
 	$(eval NAME := fontBindings)
 
 font: font-prepare bindings
+
+# sprite bindings
+sprite-prepare:
+	$(eval TARGET := sprite)
+	$(eval NAME := spriteBindings)
+
+sprite: sprite-prepare bindings
