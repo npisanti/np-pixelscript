@@ -17,17 +17,17 @@ namespace sprite{
         current = pback;
     }
  
-    void load( const char * path, int w, int h ){
+    void load( const char * path, int w, int h, int mode ){
         std::string name = ofFilePath::removeExt( ofFilePath::getFileName( std::string( path ) ) );
         
         for(size_t i=0; i<sprites->size(); ++i ){
             if( sprites->at(i).name == name ){
-                sprites->at(i).load( std::string( path ), w, h );
+                sprites->at(i).load( std::string( path ), w, h, mode );
                 return;
             }
         }
 
-        bool loaded = sprites->back().load( std::string( path ), w, h );
+        bool loaded = sprites->back().load( std::string( path ), w, h, mode );
         if( loaded ){
             sprites->emplace_back();
         }
@@ -93,9 +93,10 @@ sprite::SpriteSheet::SpriteSheet()
 {
 	bInitialized = false;
     spriteSize = glm::vec2( 0, 0 );
+    offset = glm::vec2( 0, 0 );
 }
 
-bool sprite::SpriteSheet::load( std::string path, int spriteWidth, int spriteHeight )
+bool sprite::SpriteSheet::load( std::string path, int spriteWidth, int spriteHeight, int mode )
 {
     bool loaded = png.load( path );
 
@@ -103,7 +104,24 @@ bool sprite::SpriteSheet::load( std::string path, int spriteWidth, int spriteHei
         spriteSize = glm::vec2( spriteWidth, spriteHeight );
 
         nFrames = png.getWidth() / spriteWidth;
-
+        
+        switch( mode ){
+            case 0:
+                offset.x = 0;
+                offset.y = -spriteHeight;
+            break;
+            
+            case 1:
+                offset.x = -spriteWidth/2;
+                offset.y = -spriteHeight/2;
+            break;
+            
+            default: 
+                offset.x = 0;
+                offset.y = 0;
+            break;
+        }
+        
         cursor = 0;
 
         setupSpriteVbo();
@@ -146,7 +164,7 @@ void sprite::SpriteSheet::draw(float x, float y)
 	}
     
 	ofPushMatrix();
-	ofTranslate(x, y);
+	ofTranslate( x + offset.x, y + offset.y );
 
 #ifdef USE_TRIANGLE_STRIP
 	vbo.draw(GL_TRIANGLE_STRIP, cursor*4, 4);

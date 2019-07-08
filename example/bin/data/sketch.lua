@@ -45,7 +45,7 @@ function draw()
     
     sprite.bind( "test" )
         sprite.pct( lfo.triangle() )
-        sprite.draw( 5, 5 )
+        sprite.draw( 5, 15 )
     sprite.unbind()
 end
 

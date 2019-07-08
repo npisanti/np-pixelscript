@@ -2718,11 +2718,21 @@ static int _wrap_resources(lua_State* L) { int SWIG_arg = 0; std::vector< sprite
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_std__vectorT_sprite__SpriteSheet_t,0))){
     SWIG_fail_ptr("resources",1,SWIGTYPE_p_std__vectorT_sprite__SpriteSheet_t); }  sprite::resources(*arg1); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_load(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; int arg2 ; int arg3 ;
+static int _wrap_load__SWIG_0(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; int arg2 ; int arg3 ; int arg4 ;
+  SWIG_check_num_args("sprite::load",4,4) if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("sprite::load",1,"char const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("sprite::load",2,"int"); if(!lua_isnumber(L,3)) SWIG_fail_arg("sprite::load",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("sprite::load",4,"int"); arg1 = (char *)lua_tostring(L, 1);
+  arg2 = (int)lua_tonumber(L, 2); arg3 = (int)lua_tonumber(L, 3); arg4 = (int)lua_tonumber(L, 4);
+  sprite::load((char const *)arg1,arg2,arg3,arg4); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_load__SWIG_1(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; int arg2 ; int arg3 ;
   SWIG_check_num_args("sprite::load",3,3) if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("sprite::load",1,"char const *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("sprite::load",2,"int"); if(!lua_isnumber(L,3)) SWIG_fail_arg("sprite::load",3,"int");
   arg1 = (char *)lua_tostring(L, 1); arg2 = (int)lua_tonumber(L, 2); arg3 = (int)lua_tonumber(L, 3);
   sprite::load((char const *)arg1,arg2,arg3); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_load(lua_State* L) { int argc; int argv[5]={ 1,2,3,4,5} ; argc = lua_gettop(L); if (argc == 3) {
+    return _wrap_load__SWIG_1(L);}  if (argc == 4) { return _wrap_load__SWIG_0(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'load'\n" "  Possible C/C++ prototypes are:\n"
+  "    sprite::load(char const *,int,int,int)\n" "    sprite::load(char const *,int,int)\n"); lua_error(L);return 0; }
 static int _wrap_bind(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; SWIG_check_num_args("sprite::bind",1,1)
   if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("sprite::bind",1,"char const *"); arg1 = (char *)lua_tostring(L, 1);
   sprite::bind((char const *)arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
@@ -2751,18 +2761,19 @@ static int _wrap_new_SpriteSheet(lua_State* L) { int SWIG_arg = 0; sprite::Sprit
   SWIG_NewPointerObj(L,result,SWIGTYPE_p_sprite__SpriteSheet,1); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
 static int _wrap_SpriteSheet_load(lua_State* L) { int SWIG_arg = 0; sprite::SpriteSheet *arg1 = (sprite::SpriteSheet *) 0 ;
-  std::string arg2 ; int arg3 ; int arg4 ; std::string *argp2 ; bool result;
-  SWIG_check_num_args("sprite::SpriteSheet::load",4,4)
+  std::string arg2 ; int arg3 ; int arg4 ; int arg5 ; std::string *argp2 ; bool result;
+  SWIG_check_num_args("sprite::SpriteSheet::load",5,5)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("sprite::SpriteSheet::load",1,"sprite::SpriteSheet *");
   if(!lua_isuserdata(L,2)) SWIG_fail_arg("sprite::SpriteSheet::load",2,"std::string");
   if(!lua_isnumber(L,3)) SWIG_fail_arg("sprite::SpriteSheet::load",3,"int");
   if(!lua_isnumber(L,4)) SWIG_fail_arg("sprite::SpriteSheet::load",4,"int");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("sprite::SpriteSheet::load",5,"int");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_sprite__SpriteSheet,0))){
     SWIG_fail_ptr("SpriteSheet_load",1,SWIGTYPE_p_sprite__SpriteSheet); } 
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_std__string,0))){
     SWIG_fail_ptr("SpriteSheet_load",2,SWIGTYPE_p_std__string); }  arg2 = *argp2; arg3 = (int)lua_tonumber(L, 3);
-  arg4 = (int)lua_tonumber(L, 4); result = (bool)(arg1)->load(arg2,arg3,arg4); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+  arg4 = (int)lua_tonumber(L, 4); arg5 = (int)lua_tonumber(L, 5); result = (bool)(arg1)->load(arg2,arg3,arg4,arg5);
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_SpriteSheet_draw__SWIG_0(lua_State* L) { int SWIG_arg = 0;
   sprite::SpriteSheet *arg1 = (sprite::SpriteSheet *) 0 ; float arg2 ; float arg3 ;
   SWIG_check_num_args("sprite::SpriteSheet::draw",3,3)
@@ -2855,6 +2866,25 @@ static int _wrap_SpriteSheet_spriteSize_get(lua_State* L) { int SWIG_arg = 0;
     glm::vec2 * resultptr = new glm::vec2((const glm::vec2 &) result);
     SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_glm__vec2,1); SWIG_arg++; }  return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
+static int _wrap_SpriteSheet_offset_set(lua_State* L) { int SWIG_arg = 0;
+  sprite::SpriteSheet *arg1 = (sprite::SpriteSheet *) 0 ; glm::vec2 arg2 ; glm::vec2 *argp2 ;
+  SWIG_check_num_args("sprite::SpriteSheet::offset",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("sprite::SpriteSheet::offset",1,"sprite::SpriteSheet *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("sprite::SpriteSheet::offset",2,"glm::vec2");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_sprite__SpriteSheet,0))){
+    SWIG_fail_ptr("SpriteSheet_offset_set",1,SWIGTYPE_p_sprite__SpriteSheet); } 
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_glm__vec2,0))){
+    SWIG_fail_ptr("SpriteSheet_offset_set",2,SWIGTYPE_p_glm__vec2); }  arg2 = *argp2; if (arg1) (arg1)->offset = arg2;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_SpriteSheet_offset_get(lua_State* L) { int SWIG_arg = 0;
+  sprite::SpriteSheet *arg1 = (sprite::SpriteSheet *) 0 ; glm::vec2 result;
+  SWIG_check_num_args("sprite::SpriteSheet::offset",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("sprite::SpriteSheet::offset",1,"sprite::SpriteSheet *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_sprite__SpriteSheet,0))){
+    SWIG_fail_ptr("SpriteSheet_offset_get",1,SWIGTYPE_p_sprite__SpriteSheet); }  result =  ((arg1)->offset); {
+    glm::vec2 * resultptr = new glm::vec2((const glm::vec2 &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_glm__vec2,1); SWIG_arg++; }  return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
 static void swig_delete_SpriteSheet(void *obj) {
 sprite::SpriteSheet *arg1 = (sprite::SpriteSheet *) obj;
 delete arg1;
@@ -2870,6 +2900,7 @@ static int _proxy__wrap_new_SpriteSheet(lua_State *L) {
 static swig_lua_attribute swig_SpriteSheet_attributes[] = {
     { "name", _wrap_SpriteSheet_name_get, _wrap_SpriteSheet_name_set },
     { "spriteSize", _wrap_SpriteSheet_spriteSize_get, _wrap_SpriteSheet_spriteSize_set },
+    { "offset", _wrap_SpriteSheet_offset_get, _wrap_SpriteSheet_offset_set },
     {0,0,0}
 };
 static swig_lua_method swig_SpriteSheet_methods[]= {

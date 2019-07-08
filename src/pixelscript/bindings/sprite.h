@@ -10,7 +10,8 @@ namespace sprite{
     void init();
     void resources( std::vector<SpriteSheet> & reso );
     
-    void load( const char * path, int w, int h );
+    // modes: 0 = bottom left corner, 1 = center, 2 = top left corner
+    void load( const char * path, int w, int h, int mode=0 );
     
     void bind( const char * name );
     void unbind();
@@ -30,7 +31,7 @@ namespace sprite{
 
         SpriteSheet();
 
-        bool load( std::string path, int spriteWidth, int spriteHeight );
+        bool load( std::string path, int spriteWidth, int spriteHeight, int mode );
         
         void draw(float x=0, float y=0);
 
@@ -42,6 +43,8 @@ namespace sprite{
         
         std::string name;
         glm::vec2 spriteSize;
+        
+        glm::vec2 offset;
         
     private:
         bool bInitialized;

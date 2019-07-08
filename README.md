@@ -2,7 +2,7 @@ np-pixelscript
 =====================================
 cute graphics scripting with oF and lua
 
-sandbox for scripting vector graphics using lua binded to some oF function, very opinionated workflow.
+sandbox for scripting low res graphics using lua binded to some oF function, very opinionated workflow.
 
 For Lua scripting i'm using [ofxLua](https://github.com/danomatika/ofxLua), that i just tweaked a bit.
 
