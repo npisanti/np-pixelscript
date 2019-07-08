@@ -11,6 +11,7 @@ namespace px {
     
     void size( int w, int h );
     void framerate( int value );
+    void blendmode( int value );
     
     void clear();
     void background( int r, int g, int b, int a );

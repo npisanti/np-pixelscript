@@ -30,6 +30,16 @@ namespace px {
         ofSetFrameRate( value );
     }
     
+    void blendmode( int value ){
+        switch( value ){
+            case 1: ofEnableBlendMode( OF_BLENDMODE_ADD ); break;
+            case 2: ofEnableBlendMode( OF_BLENDMODE_MULTIPLY ); break;
+            case 3: ofEnableBlendMode( OF_BLENDMODE_SUBTRACT ); break;
+            case 4: ofEnableBlendMode( OF_BLENDMODE_SCREEN ); break;
+            default: ofEnableBlendMode( OF_BLENDMODE_ALPHA ); break;
+        }
+    }
+    
     void background( int r, int g, int b, int a ){
         ofClear( r, g, b, a );
     }

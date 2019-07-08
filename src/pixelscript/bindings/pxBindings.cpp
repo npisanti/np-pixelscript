@@ -2712,6 +2712,9 @@ static int _wrap_size(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; SW
 static int _wrap_framerate(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("px::framerate",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("px::framerate",1,"int"); arg1 = (int)lua_tonumber(L, 1); px::framerate(arg1);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_blendmode(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("px::blendmode",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("px::blendmode",1,"int"); arg1 = (int)lua_tonumber(L, 1); px::blendmode(arg1);
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_clear(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("px::clear",0,0) px::clear(); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_background(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int arg3 ; int arg4 ;
@@ -2929,6 +2932,7 @@ static swig_lua_method swig_SwigModule_methods[]= {
     { "endFrame", _wrap_endFrame},
     { "size", _wrap_size},
     { "framerate", _wrap_framerate},
+    { "blendmode", _wrap_blendmode},
     { "clear", _wrap_clear},
     { "background", _wrap_background},
     { "fade", _wrap_fade},

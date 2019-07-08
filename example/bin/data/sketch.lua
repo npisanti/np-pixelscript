@@ -13,13 +13,13 @@ end
 ----------------------------------------------------
 function draw()
     
-    lfo.speed( 0.03 )
+    lfo.speed( 0.01 )
     local animate = lfo.sine()
     
     px.clear()
     px.fill( false )
 
-    px.color( 255, 60, 0 )
+    px.color( 255, 0, 0 )
 
     px.line( animate * 20, 20, 70, 50 )
     
@@ -33,10 +33,14 @@ function draw()
     
     px.fill()
     
+    px.blendmode(1)
+    
+    px.color( 0, 255, 0 )
+    
     px.begin()
-        px.poly( 200, 50, 20, 4, - math.pi*0.5 )
+        px.poly( 180, 100, 20, 4, - math.pi*0.5 )
         px.next()
-        px.poly( 200, 50, 10, 4, - math.pi*0.5 )
+        px.poly( 180, 100, 10, 4, - math.pi*0.5 )
     px.finish( true )
     
     sprite.bind( "test" )
