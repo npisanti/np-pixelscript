@@ -1,10 +1,10 @@
 
 meta:
-	ADDON_NAME = np-luavg
-	ADDON_DESCRIPTION = lua nanovg very opinionated sandbox
+	ADDON_NAME = np-pixelscript
+	ADDON_DESCRIPTION = cute lua scripting sandbox
 	ADDON_AUTHOR = Nicola Pisanti
 	ADDON_TAGS = 
-	ADDON_URL = http://github.com/npisanti/np-luavg
+	ADDON_URL = http://github.com/npisanti/np-pixelscript
 
 common:
 	#ADDON_SOURCES_EXCLUDE += libs/ofxLua
@@ -13,9 +13,13 @@ common:
 	
 linux64:
 	ADDON_PKG_CONFIG_LIBRARIES += luajit
+	ADDON_SOURCES_EXCLUDE += libs/ofxLua
+	ADDON_INCLUDES_EXCLUDE += libs/ofxLua
 	
 linux:
 	ADDON_PKG_CONFIG_LIBRARIES += luajit
+	ADDON_SOURCES_EXCLUDE += libs/ofxLua
+	ADDON_INCLUDES_EXCLUDE += libs/ofxLua
 	
 msys2:
 	ADDON_CFLAGS += -DLUA_USE_WINDOWS

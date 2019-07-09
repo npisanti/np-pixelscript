@@ -1,11 +1,13 @@
 np-pixelscript
 =====================================
-cute graphics scripting with oF and lua
+cute graphics scripting with oF and luaJIT
 
-[![Build status](https://travis-ci.org/npisanti/np-pixelscript.svg?branch=master)](https://travis-ci.org/npisanti/np-pixelscript) [![Build status](https://ci.appveyor.com/api/projects/status/vgoqoqkmw4ta6et5?svg=true)](https://ci.appveyor.com/project/npisanti/np-pixelscript)
+sandbox for scripting low res graphics using lua binded to some oF function, very opinionated workflow. Will work only if you install luajit, for example on debian:
+```
+sudo apt-get install lua5.1 luajit liblua5.1-0-dev libluajit-5.1-dev 
+```
 
-
-sandbox for scripting low res graphics using lua binded to some oF function, very opinionated workflow. Include different lua namespaces:
+Includes different lua namespaces:
 
 - `px` for drawing shapes and lines and general control 
 - `lfo` for cyclic animations 
@@ -14,5 +16,12 @@ sandbox for scripting low res graphics using lua binded to some oF function, ver
 
 For Lua scripting i'm using [ofxLua](https://github.com/danomatika/ofxLua), that i just tweaked a bit.
 
+Donate
+------------ 
+I support you, you support me!    
+If you find this code useful, consider [fueling me with coffee](https://ko-fi.com/npisanti)!
+
+License
+------------
 np-pixelscript Nicola Pisanti MIT License 2019   
 ofxLua Copyright (c) Dan Wilcox 2011-2017   
