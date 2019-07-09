@@ -84,6 +84,10 @@ namespace px {
         ofSetLineWidth( width );
     }
     
+    void point( int x, int y ){
+        ofDrawLine( x, y, x+1, y+1 );
+    }
+    
     void line( int x0, int y0, int x1, int y1 ){
         ofDrawLine( x0, y0, x1, y1 );
     }

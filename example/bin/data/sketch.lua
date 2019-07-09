@@ -4,7 +4,7 @@ function setup()
     
     px.size( 480, 280 )
     
-    font.load( "/usr/share/fonts/truetype/TerminusTTF-4.46.0.ttf", 9)
+    font.load( "/usr/share/fonts/truetype/TerminusTTF-4.46.0.ttf", 7)
     
     sprite.load( "data/test.png", 8, 8 )
     
@@ -18,6 +18,10 @@ function draw()
     
     px.clear()
     px.fill( false )
+    
+    px.color(255)
+    
+    px.point( 200, 10 )
 
     px.color( 255, 0, 0 )
 
@@ -25,7 +29,7 @@ function draw()
     
     px.rect( 80, 80, 100, 20 )
     
-    font.draw( "test test", 80 + animate * 10 , 50 )
+    font.draw( "this is a test", 80 + animate * 10 , 50 )
     
     px.circle( 25, 80, 15 )
 
@@ -43,7 +47,7 @@ function draw()
         px.poly( 180, 100, 10, 4, - math.pi*0.5 )
     px.finish( true )
     
-    sprite.bind( "test" )
+    sprite.bind( "test" ) -- name of the file without .png
         sprite.pct( lfo.triangle() )
         sprite.draw( 5, 15 )
     sprite.unbind()

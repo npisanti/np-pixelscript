@@ -2763,6 +2763,10 @@ static int _wrap_fill(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua_
 static int _wrap_stroke(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("px::stroke",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("px::stroke",1,"double"); arg1 = (double)lua_tonumber(L, 1); px::stroke(arg1);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_point(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; SWIG_check_num_args("px::point",2,2)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("px::point",1,"int"); if(!lua_isnumber(L,2)) SWIG_fail_arg("px::point",2,"int");
+  arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); px::point(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
 static int _wrap_line(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int arg3 ; int arg4 ;
   SWIG_check_num_args("px::line",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("px::line",1,"int");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("px::line",2,"int"); if(!lua_isnumber(L,3)) SWIG_fail_arg("px::line",3,"int");
@@ -2939,6 +2943,7 @@ static swig_lua_method swig_SwigModule_methods[]= {
     { "color", _wrap_color},
     { "fill", _wrap_fill},
     { "stroke", _wrap_stroke},
+    { "point", _wrap_point},
     { "line", _wrap_line},
     { "arcl", _wrap_arcl},
     { "rect", _wrap_rect},

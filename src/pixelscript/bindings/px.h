@@ -26,6 +26,7 @@ namespace px {
 
     void stroke( double width );
     
+    void point( int x, int y );
     void line( int x0, int y0, int x1, int y1 );
     void arcl( int cx, int cy, int radius, double angle_begin, double angle_end );
 
