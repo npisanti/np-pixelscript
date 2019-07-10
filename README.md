@@ -2,10 +2,7 @@ np-pixelscript
 =====================================
 cute graphics scripting with oF and luaJIT
 
-sandbox for scripting low res graphics using lua binded to some oF function, very opinionated workflow. Will work only if you install luajit, for example on debian:
-```
-sudo apt-get install lua5.1 luajit liblua5.1-0-dev libluajit-5.1-dev 
-```
+sandbox for scripting low res graphics using lua binded to some oF function, very opinionated workflow. 
 
 Includes different lua namespaces:
 
@@ -14,7 +11,8 @@ Includes different lua namespaces:
 - `sprite` for loading and displaying .png spritesheets
 - `font` for drawing text
 
-For Lua scripting i'm using [ofxLua](https://github.com/danomatika/ofxLua), that i just tweaked a bit.
+For Lua scripting i'm using [ofxLua](https://github.com/danomatika/ofxLua), that i just tweaked a bit.    
+A build of [luaJIT](http://luajit.org/) 2.0.5 for linux64 is included, for other systems you have to build it yourself and put the compiled library into `libs/luaJIT/lib/yourplatform`.
 
 Donate
 ------------ 
@@ -24,4 +22,5 @@ If you find this code useful, consider [fueling me with coffee](https://ko-fi.co
 License
 ------------
 np-pixelscript Nicola Pisanti MIT License 2019   
-ofxLua Copyright (c) Dan Wilcox 2011-2017   
+[ofxLua](https://github.com/danomatika/ofxLua) Copyright (c) Dan Wilcox 2011-2017, MIT License   
+[luaJIT](http://luajit.org/) Copyright (c) 2005-2017 Mike Pall, MIT License

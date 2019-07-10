@@ -4,7 +4,7 @@ function setup()
     
     px.size( 480, 280 )
     
-    font.load( "/usr/share/fonts/truetype/TerminusTTF-4.46.0.ttf", 7)
+    font.load( "/usr/share/fonts/truetype/TerminusTTF-4.46.0.ttf", 9)
     
     sprite.load( "data/test.png", 8, 8 )
     
