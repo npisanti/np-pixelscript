@@ -85,7 +85,13 @@ class ofxLua {
 		bool doString(const std::string& text);
 		
 		/// run a Lua script, returns false on script error
-		bool doScript(const std::string& script );
+		///
+		/// set changeDir = true to change the current working dir
+		/// to the script's parent dir, use this if Lua's require command
+		/// cannot find local scripts
+		///
+		/// note: changeDir does not affect the current OF data path
+		bool doScript(const std::string& script, bool changeDir=false);
 		
 	/// \section Listeners
 		

@@ -6,13 +6,13 @@ function setup()
     
     font.load( "/usr/share/fonts/truetype/TerminusTTF-4.46.0.ttf", 9)
     
-    sprite.load( "data/test.png", 8, 8 )
+    sprite.load( "test.png", 8, 8 )
     
 end
 
 ----------------------------------------------------
 function draw()
-    
+
     lfo.speed( 0.01 )
     local animate = lfo.sine()
     

@@ -46,7 +46,7 @@ void np::PixelScript::reload(){
     lfo::resources( phasors );
     font::resources( font );
     sprite::resources( sprites );
-    script.doScript( filepath );
+    script.doScript( filepath, true );
     script.scriptSetup();
     loaded = true;
 }

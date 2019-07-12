@@ -150,7 +150,7 @@ bool ofxLua::doString(const std::string& text) {
 }
 
 //------------------------------------------------------------------------------
-bool ofxLua::doScript( const std::string& script ) {
+bool ofxLua::doScript(const std::string& script, bool changeDir) {
 
 	if(!isValid()) {
 		ofLogError("ofxLua") << "Cannot do script, lua state not inited!";
@@ -159,11 +159,34 @@ bool ofxLua::doScript( const std::string& script ) {
 	
 	std::string fullpath = ofFilePath::getAbsolutePath(script);
 	std::string file = ofFilePath::getFileName(script);
+	std::string folder = ofFilePath::getEnclosingDirectory(fullpath);
+    
+    // trim trailing slash
+	if(folder.size() > 0 && folder.at(folder.size()-1) == '/') {
+		folder.erase(folder.end()-1);
+	}
+    
+    std::string working = ofFilePath::getCurrentWorkingDirectory();
 
-
-	
-	ofLogVerbose("ofxLua") << "Doing script: \"" << file << "\" path: \"" << fullpath << "\"";
-
+	ofLogVerbose("ofxLua") << "Doing script: \"" << file << "\" path: \"" << folder << "\"";
+	if(changeDir) {
+		ofLogVerbose("ofxLua") << "Changing to script dir \"" << folder << "\"";
+		if(CHDIR(folder.c_str()) < 0) {
+			switch(errno) {
+				case ENOENT:
+					ofLogError("ofxLua") << "Script dir \"" << folder << "\" does not exist";
+					break;
+				case EACCES:
+					ofLogError("ofxLua") << "Could not access script dir \"" << folder << "\"";
+					break;
+				default:
+					ofLogError("ofxLua") << "Could not change to script dir \"" << folder << "\", error " << errno;
+					break;
+			}
+		}
+	}
+    
+    bool success = true;
 
 	// load the script
 	int ret = luaL_loadfile(L, script.c_str());
@@ -185,17 +208,19 @@ bool ofxLua::doScript( const std::string& script ) {
 				break;
 			}
 		}
-		return false;
+		success = false;
 	}
 	
 	// run the script
 	if(lua_pcall(L, 0, LUA_MULTRET, 0) != 0) {
 		std::string msg = (std::string) lua_tostring(L, LUA_STACK_TOP);
 		errorOccurred(msg);
-		return false;
+		success = false;
 	}
 	
-	return true;
+    CHDIR(working.c_str()); // restore working dir!
+    
+	return success;
 }
 
 //------------------------------------------------------------------------------		
