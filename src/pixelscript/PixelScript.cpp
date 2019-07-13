@@ -3,7 +3,7 @@
 
 #include "bindings/px.h"
 #include "bindings/font.h"
-
+#include "bindings/lfo.h"
 
 extern "C" {
 	int luaopen_px(lua_State* L);
@@ -17,10 +17,9 @@ np::PixelScript::PixelScript(){
 
 	script.addListener(this);
     
-    phasors.resize( 32 );
-    for( auto & phasor : phasors ){
-        phasor.init();
-    }
+    before = 0.0f;
+    clock = 0.0f;
+    parameters.add( speed.set("speed", 1.0f, 0.0f, 2.0f) );
     
     sprites.reserve( 16 );
     sprites.emplace_back();
@@ -43,7 +42,6 @@ void np::PixelScript::reload(){
     luaopen_lfo(script); 
     luaopen_font(script); 
     luaopen_sprite(script); 
-    lfo::resources( phasors );
     font::resources( font );
     sprite::resources( sprites );
     script.doScript( filepath, true );
@@ -52,12 +50,12 @@ void np::PixelScript::reload(){
 }
     
 void np::PixelScript::render( ofFbo & fbo ){
-    
-    for( auto & phasor : phasors ){
-        phasor.update();
-    }
-    
-    lfo::resources( phasors );
+
+    float now = ofGetElapsedTimef();
+    clock += (now-before) * (speed*speed*speed);
+    before = now;
+    lfo::setPlayHead( clock );
+
     font::resources( font );
     sprite::resources( sprites );
     
@@ -67,21 +65,18 @@ void np::PixelScript::render( ofFbo & fbo ){
         script.scriptUpdate();
         script.scriptDraw();
         px::endFrame();
-        
-        //sprites.bind();
-        //sprites.setFrame( int(ofGetElapsedTimef())%4 );
-        //sprites.draw( 5, 5 );
-        //sprites.unbind();
         sprite::clean();
     fbo.end();
     
 }
 
 void np::PixelScript::draw( int x, int y, int w, int h ){
-    for( auto & phasor : phasors ){
-        phasor.update();
-    }
-    lfo::resources( phasors );
+
+    float now = ofGetElapsedTimef();
+    clock += (now-before) * (speed*speed*speed);
+    before = now;
+    lfo::setPlayHead( clock );
+
     font::resources( font );
     sprite::resources( sprites );
     

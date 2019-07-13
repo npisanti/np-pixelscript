@@ -2,108 +2,109 @@
 #include "lfo.h"
 
 namespace lfo{
+    double playhead;
     
-    std::vector<Phasor> * phasors;
-    
-    void lfo::Phasor::init(){
-        phase = 0.0;
-        playhead = ofRandom( 420.0f );
-        speed = 1.0 / 128.0;
-        freerun = true;
-    }
-    
-    void lfo::Phasor::update(){
-        phase += speed;
-        playhead += speed;
-        if( freerun ){
-            if( phase >= 1.0 ){
-                phase = phase - floor( phase );
-            }
-        }else{
-            if( phase >= 1.0 ){
-                phase = 1.0;
-            }
-        }
-    }
-    
-    void lfo::Phasor::shift( double value ){
-        phase += value;
-        playhead += value;
-        if( phase >= 1.0 || phase < 0.0 ){
-            phase = phase - floor( phase );
-        }
-    }
-    
-    void speed( double value, size_t lfoIndex ){
-        if( lfoIndex < phasors->size() ){
-            phasors->at(lfoIndex).speed = value;
-        }
-    }
-    
-    void retrigger( size_t lfoIndex ){
-        if( lfoIndex < phasors->size() ){
-            phasors->at(lfoIndex).phase = 0.0;
-        }
-    }
-    
-    void oneshot(  bool value, size_t lfoIndex ){
-        if( lfoIndex < phasors->size() ){
-            phasors->at(lfoIndex).freerun = !value;
-        }
-    }
-    void shift( double value, size_t lfoIndex ){
-        if( lfoIndex < phasors->size() ){
-            phasors->at(lfoIndex).shift( value );
-        }
+    void setPlayHead( double value ){
+        playhead = value;
     }
 
-    void init(){
-        phasors = nullptr;
+    double phasor( double speed ){
+        double phase = playhead*speed;
+        phase = phase - (long) phase;
+        return phase;
+    }
+     
+    double triangle( double speed ){
+        double phase = playhead*speed;
+        phase = phase - (long) phase;
+        return abs( phase * 2.0) - 1.0;
     }
     
-    void resources( std::vector<Phasor> & phas ){
-        phasors = &phas;
+    double ramp( double speed ){
+        double phase = playhead*speed;
+        phase = phase - (long) phase;
+        return phase;
     }
     
-    void resize( size_t size ){
-        phasors->resize( size );
-        for( auto & phasor : *phasors ){
-            phasor.init();
-        }
+    double saw( double speed ){
+        double phase = playhead*speed;
+        phase = phase - (long) phase;
+        return 1.0f - phase;
     }
     
-    double triangle( size_t lfoIndex ){
-        return abs( (phasors->at(lfoIndex).phase * 2.0) - 1.0 );
+    double sine( double speed ){
+        return (sin(playhead*speed*TWO_PI)*0.5 + 0.5);
     }
     
-    double ramp( size_t lfoIndex ){
-        return phasors->at(lfoIndex).phase;
-    }
-    
-    double saw( size_t lfoIndex ){
-        return 1.0f - phasors->at(lfoIndex).phase;
-    }
-    
-    double sine( size_t lfoIndex ){
-        return (sin(phasors->at(lfoIndex).phase*TWO_PI)*0.5 + 0.5);
-    }
-    
-    double pulse( double width, size_t lfoIndex ){
-        double value = ( phasors->at(lfoIndex).phase < width ) ? 1.0 : 0.0;
+    double pulse( double speed, double width ){
+        double phase = playhead*speed;
+        phase = phase - (long) phase;
+        double value = ( phase<width ) ? 1.0 : 0.0;
         return value;
     }
     
-    double square( size_t lfoIndex ){
-        double value = ( phasors->at(lfoIndex).phase < 0.5 ) ? 1.0 : 0.0;
+    double square( double speed ){
+        double phase = playhead*speed;
+        phase = phase - (long) phase;
+        double value = ( phase<0.5 ) ? 1.0 : 0.0;
         return value;
     }
     
-    double noise( size_t lfoIndex ){ return ofNoise( phasors->at(lfoIndex).playhead, 0.0f ); }   
+
+    double triangle( double speed, double phase ){
+        double value = triangle( speed );
+        value += phase;
+        double rebound = value - 1.0;
+        if( value >= 1.0 ){ value = rebound; }
+        return value;
+    }
     
-    double noise( double x, size_t lfoIndex ){ return ofNoise( phasors->at(lfoIndex).playhead, x ); }
+    double ramp( double speed, double phase ){
+        double value = triangle( speed );
+        value += phase;
+        double rebound = value - 1.0;
+        if( value >= 1.0 ){ value = rebound; }
+        return value;
+    }
     
-    double noise( double x, double y, size_t lfoIndex ){ return ofNoise( phasors->at(lfoIndex).playhead, x, y ); }
+    double saw( double speed, double phase ){
+        double value = saw( speed );
+        value += phase;
+        double rebound = value - 1.0;
+        if( value >= 1.0 ){ value = rebound; }
+        return value;
+    }
     
-    double noise( double x, double y, double z, size_t lfoIndex ){ return ofNoise( phasors->at(lfoIndex).playhead, x, y, z ); }    
+    double sine( double speed, double phase ){
+        double value = sine( speed );
+        value += phase;
+        double rebound = value - 1.0;
+        if( value >= 1.0 ){ value = rebound; }
+        return value;
+    }
+    
+    double pulse( double speed, double width, double phase ){
+        double value = pulse( speed, width );
+        value += phase;
+        double rebound = value - 1.0;
+        if( value >= 1.0 ){ value = rebound; }
+        return value;
+    }
+    
+    double square( double speed, double phase ){
+        double value = square( speed );
+        value += phase;
+        double rebound = value - 1.0;
+        if( value >= 1.0 ){ value = rebound; }
+        return value;
+    }
+    
+    double noise( double speed ){ return ofNoise( playhead*speed, 0.0f ); }   
+    
+    double noise( double speed, double x ){ return ofNoise( playhead*speed, x ); }
+    
+    double noise( double speed, double x, double y ){ return ofNoise( playhead*speed, x, y ); }
+    
+    double noise( double speed, double x, double y, double z ){ return ofNoise( playhead*speed, x, y, z ); }    
     
 }

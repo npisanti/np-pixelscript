@@ -5,7 +5,7 @@
 
 #include "ofxLua/src/ofxLua.h"
 #include "FileWatcher.h"
-#include "bindings/lfo.h"
+
 #include "bindings/sprite.h"
 
 namespace np{ 
@@ -24,17 +24,21 @@ public:
     void variable( std::string name, bool value ){ script.setBool( name, value ); }
 
     ofxLua script;    
-        
+
+    ofParameter<float> speed;
+    
 private:
     
     ofTrueTypeFont font;
-    std::vector<lfo::Phasor> phasors;
-    
+
     std::vector<sprite::SpriteSheet> sprites;
 
     bool loaded;
 
     void errorReceived(std::string& msg);
+    
+    float clock;
+    float before; 
     
     void reload() override;
     

@@ -2675,10 +2675,8 @@ SWIG_Lua_dostring(lua_State *L, const char *str) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_lfo__Phasor swig_types[0]
-#define SWIGTYPE_p_std__vectorT_lfo__Phasor_t swig_types[1]
-static swig_type_info *swig_types[3];
-static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
+static swig_type_info *swig_types[1];
+static swig_module_info swig_module = {swig_types, 0, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2700,290 +2698,121 @@ typedef struct{} LANGUAGE_OBJ;
 #ifdef __cplusplus
 extern "C" {
 #endif
-static int _wrap_Phasor_phase_set(lua_State* L) { int SWIG_arg = 0; lfo::Phasor *arg1 = (lfo::Phasor *) 0 ; double arg2 ;
-  SWIG_check_num_args("lfo::Phasor::phase",2,2) if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("lfo::Phasor::phase",1,"lfo::Phasor *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::Phasor::phase",2,"double");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lfo__Phasor,0))){
-    SWIG_fail_ptr("Phasor_phase_set",1,SWIGTYPE_p_lfo__Phasor); }  arg2 = (double)lua_tonumber(L, 2);
-  if (arg1) (arg1)->phase = arg2; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Phasor_phase_get(lua_State* L) { int SWIG_arg = 0; lfo::Phasor *arg1 = (lfo::Phasor *) 0 ; double result;
-  SWIG_check_num_args("lfo::Phasor::phase",1,1) if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("lfo::Phasor::phase",1,"lfo::Phasor *");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lfo__Phasor,0))){
-    SWIG_fail_ptr("Phasor_phase_get",1,SWIGTYPE_p_lfo__Phasor); }  result = (double) ((arg1)->phase);
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Phasor_playhead_set(lua_State* L) { int SWIG_arg = 0; lfo::Phasor *arg1 = (lfo::Phasor *) 0 ; double arg2 ;
-  SWIG_check_num_args("lfo::Phasor::playhead",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("lfo::Phasor::playhead",1,"lfo::Phasor *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::Phasor::playhead",2,"double");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lfo__Phasor,0))){
-    SWIG_fail_ptr("Phasor_playhead_set",1,SWIGTYPE_p_lfo__Phasor); }  arg2 = (double)lua_tonumber(L, 2);
-  if (arg1) (arg1)->playhead = arg2; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Phasor_playhead_get(lua_State* L) { int SWIG_arg = 0; lfo::Phasor *arg1 = (lfo::Phasor *) 0 ; double result;
-  SWIG_check_num_args("lfo::Phasor::playhead",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("lfo::Phasor::playhead",1,"lfo::Phasor *");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lfo__Phasor,0))){
-    SWIG_fail_ptr("Phasor_playhead_get",1,SWIGTYPE_p_lfo__Phasor); }  result = (double) ((arg1)->playhead);
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Phasor_speed_set(lua_State* L) { int SWIG_arg = 0; lfo::Phasor *arg1 = (lfo::Phasor *) 0 ; double arg2 ;
-  SWIG_check_num_args("lfo::Phasor::speed",2,2) if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("lfo::Phasor::speed",1,"lfo::Phasor *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::Phasor::speed",2,"double");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lfo__Phasor,0))){
-    SWIG_fail_ptr("Phasor_speed_set",1,SWIGTYPE_p_lfo__Phasor); }  arg2 = (double)lua_tonumber(L, 2);
-  if (arg1) (arg1)->speed = arg2; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Phasor_speed_get(lua_State* L) { int SWIG_arg = 0; lfo::Phasor *arg1 = (lfo::Phasor *) 0 ; double result;
-  SWIG_check_num_args("lfo::Phasor::speed",1,1) if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("lfo::Phasor::speed",1,"lfo::Phasor *");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lfo__Phasor,0))){
-    SWIG_fail_ptr("Phasor_speed_get",1,SWIGTYPE_p_lfo__Phasor); }  result = (double) ((arg1)->speed);
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Phasor_freerun_set(lua_State* L) { int SWIG_arg = 0; lfo::Phasor *arg1 = (lfo::Phasor *) 0 ; bool arg2 ;
-  SWIG_check_num_args("lfo::Phasor::freerun",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("lfo::Phasor::freerun",1,"lfo::Phasor *");
-  if(!lua_isboolean(L,2)) SWIG_fail_arg("lfo::Phasor::freerun",2,"bool");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lfo__Phasor,0))){
-    SWIG_fail_ptr("Phasor_freerun_set",1,SWIGTYPE_p_lfo__Phasor); }  arg2 = (lua_toboolean(L, 2)!=0);
-  if (arg1) (arg1)->freerun = arg2; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Phasor_freerun_get(lua_State* L) { int SWIG_arg = 0; lfo::Phasor *arg1 = (lfo::Phasor *) 0 ; bool result;
-  SWIG_check_num_args("lfo::Phasor::freerun",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("lfo::Phasor::freerun",1,"lfo::Phasor *");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lfo__Phasor,0))){
-    SWIG_fail_ptr("Phasor_freerun_get",1,SWIGTYPE_p_lfo__Phasor); }  result = (bool) ((arg1)->freerun);
-  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Phasor_init(lua_State* L) { int SWIG_arg = 0; lfo::Phasor *arg1 = (lfo::Phasor *) 0 ;
-  SWIG_check_num_args("lfo::Phasor::init",1,1) if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("lfo::Phasor::init",1,"lfo::Phasor *");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lfo__Phasor,0))){
-    SWIG_fail_ptr("Phasor_init",1,SWIGTYPE_p_lfo__Phasor); }  (arg1)->init(); return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_Phasor_update(lua_State* L) { int SWIG_arg = 0; lfo::Phasor *arg1 = (lfo::Phasor *) 0 ;
-  SWIG_check_num_args("lfo::Phasor::update",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("lfo::Phasor::update",1,"lfo::Phasor *");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lfo__Phasor,0))){
-    SWIG_fail_ptr("Phasor_update",1,SWIGTYPE_p_lfo__Phasor); }  (arg1)->update(); return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_Phasor_shift(lua_State* L) { int SWIG_arg = 0; lfo::Phasor *arg1 = (lfo::Phasor *) 0 ; double arg2 ;
-  SWIG_check_num_args("lfo::Phasor::shift",2,2) if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("lfo::Phasor::shift",1,"lfo::Phasor *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::Phasor::shift",2,"double");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lfo__Phasor,0))){
-    SWIG_fail_ptr("Phasor_shift",1,SWIGTYPE_p_lfo__Phasor); }  arg2 = (double)lua_tonumber(L, 2); (arg1)->shift(arg2);
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_new_Phasor(lua_State* L) { int SWIG_arg = 0; lfo::Phasor *result = 0 ;
-  SWIG_check_num_args("lfo::Phasor::Phasor",0,0) result = (lfo::Phasor *)new lfo::Phasor();
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_lfo__Phasor,1); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
-  return SWIG_arg; }
-static void swig_delete_Phasor(void *obj) {
-lfo::Phasor *arg1 = (lfo::Phasor *) obj;
-delete arg1;
-}
-static int _proxy__wrap_new_Phasor(lua_State *L) {
-    assert(lua_istable(L,1));
-    lua_pushcfunction(L,_wrap_new_Phasor);
-    assert(!lua_isnil(L,-1));
-    lua_replace(L,1); /* replace our table with real constructor */
-    lua_call(L,lua_gettop(L)-1,1);
-    return 1;
-}
-static swig_lua_attribute swig_Phasor_attributes[] = {
-    { "phase", _wrap_Phasor_phase_get, _wrap_Phasor_phase_set },
-    { "playhead", _wrap_Phasor_playhead_get, _wrap_Phasor_playhead_set },
-    { "speed", _wrap_Phasor_speed_get, _wrap_Phasor_speed_set },
-    { "freerun", _wrap_Phasor_freerun_get, _wrap_Phasor_freerun_set },
-    {0,0,0}
-};
-static swig_lua_method swig_Phasor_methods[]= {
-    { "init", _wrap_Phasor_init},
-    { "update", _wrap_Phasor_update},
-    { "shift", _wrap_Phasor_shift},
-    {0,0}
-};
-static swig_lua_method swig_Phasor_meta[] = {
-    {0,0}
-};
-
-static swig_lua_attribute swig_Phasor_Sf_SwigStatic_attributes[] = {
-    {0,0,0}
-};
-static swig_lua_const_info swig_Phasor_Sf_SwigStatic_constants[]= {
-    {0,0,0,0,0,0}
-};
-static swig_lua_method swig_Phasor_Sf_SwigStatic_methods[]= {
-    {0,0}
-};
-static swig_lua_class* swig_Phasor_Sf_SwigStatic_classes[]= {
-    0
-};
-
-static swig_lua_namespace swig_Phasor_Sf_SwigStatic = {
-    "Phasor",
-    swig_Phasor_Sf_SwigStatic_methods,
-    swig_Phasor_Sf_SwigStatic_attributes,
-    swig_Phasor_Sf_SwigStatic_constants,
-    swig_Phasor_Sf_SwigStatic_classes,
-    0
-};
-static swig_lua_class *swig_Phasor_bases[] = {0};
-static const char *swig_Phasor_base_names[] = {0};
-static swig_lua_class _wrap_class_Phasor = { "Phasor", "Phasor", &SWIGTYPE_p_lfo__Phasor,_proxy__wrap_new_Phasor, swig_delete_Phasor, swig_Phasor_methods, swig_Phasor_attributes, &swig_Phasor_Sf_SwigStatic, swig_Phasor_meta, swig_Phasor_bases, swig_Phasor_base_names };
-
-static int _wrap_init(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("lfo::init",0,0) lfo::init(); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_resources(lua_State* L) { int SWIG_arg = 0; std::vector< lfo::Phasor > *arg1 = 0 ;
-  SWIG_check_num_args("lfo::resources",1,1)
-  if(!lua_isuserdata(L,1)) SWIG_fail_arg("lfo::resources",1,"std::vector< lfo::Phasor > &");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_std__vectorT_lfo__Phasor_t,0))){
-    SWIG_fail_ptr("resources",1,SWIGTYPE_p_std__vectorT_lfo__Phasor_t); }  lfo::resources(*arg1); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_resize(lua_State* L) { int SWIG_arg = 0; size_t arg1 ; SWIG_check_num_args("lfo::resize",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::resize",1,"size_t");
-  SWIG_contract_assert((lua_tonumber(L,1)>=0),"number must not be negative") arg1 = (size_t)lua_tonumber(L, 1);
-  lfo::resize(arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_speed__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; size_t arg2 ;
-  SWIG_check_num_args("lfo::speed",2,2) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::speed",1,"double");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::speed",2,"size_t"); arg1 = (double)lua_tonumber(L, 1);
-  SWIG_contract_assert((lua_tonumber(L,2)>=0),"number must not be negative") arg2 = (size_t)lua_tonumber(L, 2);
-  lfo::speed(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_speed__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("lfo::speed",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::speed",1,"double"); arg1 = (double)lua_tonumber(L, 1); lfo::speed(arg1);
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_speed(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = lua_gettop(L); if (argc == 1) {
-    return _wrap_speed__SWIG_1(L);}  if (argc == 2) { return _wrap_speed__SWIG_0(L);} 
-  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'speed'\n" "  Possible C/C++ prototypes are:\n"
-  "    lfo::speed(double,size_t)\n" "    lfo::speed(double)\n"); lua_error(L);return 0; }
-static int _wrap_retrigger(lua_State* L) { int SWIG_arg = 0; size_t arg1 ; SWIG_check_num_args("lfo::retrigger",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::retrigger",1,"size_t");
-  SWIG_contract_assert((lua_tonumber(L,1)>=0),"number must not be negative") arg1 = (size_t)lua_tonumber(L, 1);
-  lfo::retrigger(arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_oneshot__SWIG_0(lua_State* L) { int SWIG_arg = 0; bool arg1 ; size_t arg2 ;
-  SWIG_check_num_args("lfo::oneshot",2,2) if(!lua_isboolean(L,1)) SWIG_fail_arg("lfo::oneshot",1,"bool");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::oneshot",2,"size_t"); arg1 = (lua_toboolean(L, 1)!=0);
-  SWIG_contract_assert((lua_tonumber(L,2)>=0),"number must not be negative") arg2 = (size_t)lua_tonumber(L, 2);
-  lfo::oneshot(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_oneshot__SWIG_1(lua_State* L) { int SWIG_arg = 0; bool arg1 ; SWIG_check_num_args("lfo::oneshot",1,1)
-  if(!lua_isboolean(L,1)) SWIG_fail_arg("lfo::oneshot",1,"bool"); arg1 = (lua_toboolean(L, 1)!=0); lfo::oneshot(arg1);
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_oneshot__SWIG_2(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("lfo::oneshot",0,0) lfo::oneshot();
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_oneshot(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = lua_gettop(L); if (argc == 0) {
-    return _wrap_oneshot__SWIG_2(L);}  if (argc == 1) { return _wrap_oneshot__SWIG_1(L);}  if (argc == 2) {
-    return _wrap_oneshot__SWIG_0(L);}  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'oneshot'\n"
-  "  Possible C/C++ prototypes are:\n" "    lfo::oneshot(bool,size_t)\n" "    lfo::oneshot(bool)\n" "    lfo::oneshot()\n");
-  lua_error(L);return 0; }
-static int _wrap_shift__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; size_t arg2 ;
-  SWIG_check_num_args("lfo::shift",2,2) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::shift",1,"double");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::shift",2,"size_t"); arg1 = (double)lua_tonumber(L, 1);
-  SWIG_contract_assert((lua_tonumber(L,2)>=0),"number must not be negative") arg2 = (size_t)lua_tonumber(L, 2);
-  lfo::shift(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_shift__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("lfo::shift",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::shift",1,"double"); arg1 = (double)lua_tonumber(L, 1); lfo::shift(arg1);
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_shift(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = lua_gettop(L); if (argc == 1) {
-    return _wrap_shift__SWIG_1(L);}  if (argc == 2) { return _wrap_shift__SWIG_0(L);} 
-  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'shift'\n" "  Possible C/C++ prototypes are:\n"
-  "    lfo::shift(double,size_t)\n" "    lfo::shift(double)\n"); lua_error(L);return 0; }
-static int _wrap_triangle__SWIG_0(lua_State* L) { int SWIG_arg = 0; size_t arg1 ; double result;
-  SWIG_check_num_args("lfo::triangle",1,1) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::triangle",1,"size_t");
-  SWIG_contract_assert((lua_tonumber(L,1)>=0),"number must not be negative") arg1 = (size_t)lua_tonumber(L, 1);
-  result = (double)lfo::triangle(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail;
+static int _wrap_setPlayHead(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("lfo::setPlayHead",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::setPlayHead",1,"double"); arg1 = (double)lua_tonumber(L, 1);
+  lfo::setPlayHead(arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_phasor(lua_State* L) { int SWIG_arg = 0; double arg1 ; double result; SWIG_check_num_args("lfo::phasor",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::phasor",1,"double"); arg1 = (double)lua_tonumber(L, 1);
+  result = (double)lfo::phasor(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail;
   fail: lua_error(L); return SWIG_arg; }
-static int _wrap_triangle__SWIG_1(lua_State* L) { int SWIG_arg = 0; double result; SWIG_check_num_args("lfo::triangle",0,0)
-  result = (double)lfo::triangle(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_triangle(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua_gettop(L); if (argc == 0) {
-    return _wrap_triangle__SWIG_1(L);}  if (argc == 1) { return _wrap_triangle__SWIG_0(L);} 
-  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'triangle'\n" "  Possible C/C++ prototypes are:\n"
-  "    lfo::triangle(size_t)\n" "    lfo::triangle()\n"); lua_error(L);return 0; }
-static int _wrap_ramp__SWIG_0(lua_State* L) { int SWIG_arg = 0; size_t arg1 ; double result;
-  SWIG_check_num_args("lfo::ramp",1,1) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::ramp",1,"size_t");
-  SWIG_contract_assert((lua_tonumber(L,1)>=0),"number must not be negative") arg1 = (size_t)lua_tonumber(L, 1);
-  result = (double)lfo::ramp(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_ramp__SWIG_1(lua_State* L) { int SWIG_arg = 0; double result; SWIG_check_num_args("lfo::ramp",0,0)
-  result = (double)lfo::ramp(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_ramp(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua_gettop(L); if (argc == 0) {
-    return _wrap_ramp__SWIG_1(L);}  if (argc == 1) { return _wrap_ramp__SWIG_0(L);} 
-  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'ramp'\n" "  Possible C/C++ prototypes are:\n"
-  "    lfo::ramp(size_t)\n" "    lfo::ramp()\n"); lua_error(L);return 0; }
-static int _wrap_saw__SWIG_0(lua_State* L) { int SWIG_arg = 0; size_t arg1 ; double result; SWIG_check_num_args("lfo::saw",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::saw",1,"size_t");
-  SWIG_contract_assert((lua_tonumber(L,1)>=0),"number must not be negative") arg1 = (size_t)lua_tonumber(L, 1);
+static int _wrap_triangle__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double result;
+  SWIG_check_num_args("lfo::triangle",1,1) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::triangle",1,"double");
+  arg1 = (double)lua_tonumber(L, 1); result = (double)lfo::triangle(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ramp__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double result;
+  SWIG_check_num_args("lfo::ramp",1,1) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::ramp",1,"double");
+  arg1 = (double)lua_tonumber(L, 1); result = (double)lfo::ramp(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_saw__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double result; SWIG_check_num_args("lfo::saw",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::saw",1,"double"); arg1 = (double)lua_tonumber(L, 1);
   result = (double)lfo::saw(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
-static int _wrap_saw__SWIG_1(lua_State* L) { int SWIG_arg = 0; double result; SWIG_check_num_args("lfo::saw",0,0)
-  result = (double)lfo::saw(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_saw(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua_gettop(L); if (argc == 0) {
-    return _wrap_saw__SWIG_1(L);}  if (argc == 1) { return _wrap_saw__SWIG_0(L);} 
-  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'saw'\n" "  Possible C/C++ prototypes are:\n"
-  "    lfo::saw(size_t)\n" "    lfo::saw()\n"); lua_error(L);return 0; }
-static int _wrap_sine__SWIG_0(lua_State* L) { int SWIG_arg = 0; size_t arg1 ; double result;
-  SWIG_check_num_args("lfo::sine",1,1) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::sine",1,"size_t");
-  SWIG_contract_assert((lua_tonumber(L,1)>=0),"number must not be negative") arg1 = (size_t)lua_tonumber(L, 1);
-  result = (double)lfo::sine(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_sine__SWIG_1(lua_State* L) { int SWIG_arg = 0; double result; SWIG_check_num_args("lfo::sine",0,0)
-  result = (double)lfo::sine(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_sine(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua_gettop(L); if (argc == 0) {
-    return _wrap_sine__SWIG_1(L);}  if (argc == 1) { return _wrap_sine__SWIG_0(L);} 
-  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'sine'\n" "  Possible C/C++ prototypes are:\n"
-  "    lfo::sine(size_t)\n" "    lfo::sine()\n"); lua_error(L);return 0; }
-static int _wrap_pulse__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; size_t arg2 ; double result;
-  SWIG_check_num_args("lfo::pulse",2,2) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::pulse",1,"double");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::pulse",2,"size_t"); arg1 = (double)lua_tonumber(L, 1);
-  SWIG_contract_assert((lua_tonumber(L,2)>=0),"number must not be negative") arg2 = (size_t)lua_tonumber(L, 2);
-  result = (double)lfo::pulse(arg1,arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail;
-  fail: lua_error(L); return SWIG_arg; }
-static int _wrap_pulse__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; double result;
-  SWIG_check_num_args("lfo::pulse",1,1) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::pulse",1,"double");
-  arg1 = (double)lua_tonumber(L, 1); result = (double)lfo::pulse(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+static int _wrap_sine__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double result;
+  SWIG_check_num_args("lfo::sine",1,1) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::sine",1,"double");
+  arg1 = (double)lua_tonumber(L, 1); result = (double)lfo::sine(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_pulse(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = lua_gettop(L); if (argc == 1) {
-    return _wrap_pulse__SWIG_1(L);}  if (argc == 2) { return _wrap_pulse__SWIG_0(L);} 
+static int _wrap_pulse__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double result;
+  SWIG_check_num_args("lfo::pulse",2,2) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::pulse",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::pulse",2,"double"); arg1 = (double)lua_tonumber(L, 1);
+  arg2 = (double)lua_tonumber(L, 2); result = (double)lfo::pulse(arg1,arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_square__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double result;
+  SWIG_check_num_args("lfo::square",1,1) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::square",1,"double");
+  arg1 = (double)lua_tonumber(L, 1); result = (double)lfo::square(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_triangle__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double result;
+  SWIG_check_num_args("lfo::triangle",2,2) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::triangle",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::triangle",2,"double"); arg1 = (double)lua_tonumber(L, 1);
+  arg2 = (double)lua_tonumber(L, 2); result = (double)lfo::triangle(arg1,arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_triangle(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = lua_gettop(L); if (argc == 1) {
+    return _wrap_triangle__SWIG_0(L);}  if (argc == 2) { return _wrap_triangle__SWIG_1(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'triangle'\n" "  Possible C/C++ prototypes are:\n"
+  "    lfo::triangle(double)\n" "    lfo::triangle(double,double)\n"); lua_error(L);return 0; }
+static int _wrap_ramp__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double result;
+  SWIG_check_num_args("lfo::ramp",2,2) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::ramp",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::ramp",2,"double"); arg1 = (double)lua_tonumber(L, 1);
+  arg2 = (double)lua_tonumber(L, 2); result = (double)lfo::ramp(arg1,arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ramp(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = lua_gettop(L); if (argc == 1) {
+    return _wrap_ramp__SWIG_0(L);}  if (argc == 2) { return _wrap_ramp__SWIG_1(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'ramp'\n" "  Possible C/C++ prototypes are:\n"
+  "    lfo::ramp(double)\n" "    lfo::ramp(double,double)\n"); lua_error(L);return 0; }
+static int _wrap_saw__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double result;
+  SWIG_check_num_args("lfo::saw",2,2) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::saw",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::saw",2,"double"); arg1 = (double)lua_tonumber(L, 1);
+  arg2 = (double)lua_tonumber(L, 2); result = (double)lfo::saw(arg1,arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_saw(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = lua_gettop(L); if (argc == 1) {
+    return _wrap_saw__SWIG_0(L);}  if (argc == 2) { return _wrap_saw__SWIG_1(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'saw'\n" "  Possible C/C++ prototypes are:\n"
+  "    lfo::saw(double)\n" "    lfo::saw(double,double)\n"); lua_error(L);return 0; }
+static int _wrap_sine__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double result;
+  SWIG_check_num_args("lfo::sine",2,2) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::sine",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::sine",2,"double"); arg1 = (double)lua_tonumber(L, 1);
+  arg2 = (double)lua_tonumber(L, 2); result = (double)lfo::sine(arg1,arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_sine(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = lua_gettop(L); if (argc == 1) {
+    return _wrap_sine__SWIG_0(L);}  if (argc == 2) { return _wrap_sine__SWIG_1(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'sine'\n" "  Possible C/C++ prototypes are:\n"
+  "    lfo::sine(double)\n" "    lfo::sine(double,double)\n"); lua_error(L);return 0; }
+static int _wrap_pulse__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double result;
+  SWIG_check_num_args("lfo::pulse",3,3) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::pulse",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::pulse",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("lfo::pulse",3,"double");
+  arg1 = (double)lua_tonumber(L, 1); arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3);
+  result = (double)lfo::pulse(arg1,arg2,arg3); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_pulse(lua_State* L) { int argc; int argv[4]={ 1,2,3,4} ; argc = lua_gettop(L); if (argc == 2) {
+    return _wrap_pulse__SWIG_0(L);}  if (argc == 3) { return _wrap_pulse__SWIG_1(L);} 
   SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'pulse'\n" "  Possible C/C++ prototypes are:\n"
-  "    lfo::pulse(double,size_t)\n" "    lfo::pulse(double)\n"); lua_error(L);return 0; }
-static int _wrap_square__SWIG_0(lua_State* L) { int SWIG_arg = 0; size_t arg1 ; double result;
-  SWIG_check_num_args("lfo::square",1,1) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::square",1,"size_t");
-  SWIG_contract_assert((lua_tonumber(L,1)>=0),"number must not be negative") arg1 = (size_t)lua_tonumber(L, 1);
-  result = (double)lfo::square(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail;
-  fail: lua_error(L); return SWIG_arg; }
-static int _wrap_square__SWIG_1(lua_State* L) { int SWIG_arg = 0; double result; SWIG_check_num_args("lfo::square",0,0)
-  result = (double)lfo::square(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_square(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua_gettop(L); if (argc == 0) {
-    return _wrap_square__SWIG_1(L);}  if (argc == 1) { return _wrap_square__SWIG_0(L);} 
+  "    lfo::pulse(double,double)\n" "    lfo::pulse(double,double,double)\n"); lua_error(L);return 0; }
+static int _wrap_square__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double result;
+  SWIG_check_num_args("lfo::square",2,2) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::square",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::square",2,"double"); arg1 = (double)lua_tonumber(L, 1);
+  arg2 = (double)lua_tonumber(L, 2); result = (double)lfo::square(arg1,arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_square(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = lua_gettop(L); if (argc == 1) {
+    return _wrap_square__SWIG_0(L);}  if (argc == 2) { return _wrap_square__SWIG_1(L);} 
   SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'square'\n" "  Possible C/C++ prototypes are:\n"
-  "    lfo::square(size_t)\n" "    lfo::square()\n"); lua_error(L);return 0; }
-static int _wrap_noise__SWIG_0(lua_State* L) { int SWIG_arg = 0; size_t arg1 ; double result;
-  SWIG_check_num_args("lfo::noise",1,1) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::noise",1,"size_t");
-  SWIG_contract_assert((lua_tonumber(L,1)>=0),"number must not be negative") arg1 = (size_t)lua_tonumber(L, 1);
-  result = (double)lfo::noise(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_noise__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; size_t arg2 ; double result;
+  "    lfo::square(double)\n" "    lfo::square(double,double)\n"); lua_error(L);return 0; }
+static int _wrap_noise__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double result;
+  SWIG_check_num_args("lfo::noise",1,1) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::noise",1,"double");
+  arg1 = (double)lua_tonumber(L, 1); result = (double)lfo::noise(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_noise__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double result;
   SWIG_check_num_args("lfo::noise",2,2) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::noise",1,"double");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::noise",2,"size_t"); arg1 = (double)lua_tonumber(L, 1);
-  SWIG_contract_assert((lua_tonumber(L,2)>=0),"number must not be negative") arg2 = (size_t)lua_tonumber(L, 2);
-  result = (double)lfo::noise(arg1,arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail;
-  fail: lua_error(L); return SWIG_arg; }
-static int _wrap_noise__SWIG_2(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; size_t arg3 ; double result;
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::noise",2,"double"); arg1 = (double)lua_tonumber(L, 1);
+  arg2 = (double)lua_tonumber(L, 2); result = (double)lfo::noise(arg1,arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_noise__SWIG_2(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double result;
   SWIG_check_num_args("lfo::noise",3,3) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::noise",1,"double");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::noise",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("lfo::noise",3,"size_t");
-  arg1 = (double)lua_tonumber(L, 1); arg2 = (double)lua_tonumber(L, 2);
-  SWIG_contract_assert((lua_tonumber(L,3)>=0),"number must not be negative") arg3 = (size_t)lua_tonumber(L, 3);
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::noise",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("lfo::noise",3,"double");
+  arg1 = (double)lua_tonumber(L, 1); arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3);
   result = (double)lfo::noise(arg1,arg2,arg3); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_noise__SWIG_3(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; size_t arg4 ;
+static int _wrap_noise__SWIG_3(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double arg4 ;
   double result; SWIG_check_num_args("lfo::noise",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::noise",1,"double");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::noise",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("lfo::noise",3,"double");
-  if(!lua_isnumber(L,4)) SWIG_fail_arg("lfo::noise",4,"size_t"); arg1 = (double)lua_tonumber(L, 1);
-  arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3);
-  SWIG_contract_assert((lua_tonumber(L,4)>=0),"number must not be negative") arg4 = (size_t)lua_tonumber(L, 4);
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("lfo::noise",4,"double"); arg1 = (double)lua_tonumber(L, 1);
+  arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3); arg4 = (double)lua_tonumber(L, 4);
   result = (double)lfo::noise(arg1,arg2,arg3,arg4); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_noise(lua_State* L) { int argc; int argv[5]={ 1,2,3,4,5} ; argc = lua_gettop(L); if (argc == 1) {
     return _wrap_noise__SWIG_0(L);}  if (argc == 2) { return _wrap_noise__SWIG_1(L);}  if (argc == 3) {
     return _wrap_noise__SWIG_2(L);}  if (argc == 4) { return _wrap_noise__SWIG_3(L);} 
   SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'noise'\n" "  Possible C/C++ prototypes are:\n"
-  "    lfo::noise(size_t)\n" "    lfo::noise(double,size_t)\n" "    lfo::noise(double,double,size_t)\n"
-  "    lfo::noise(double,double,double,size_t)\n"); lua_error(L);return 0; }
+  "    lfo::noise(double)\n" "    lfo::noise(double,double)\n" "    lfo::noise(double,double,double)\n"
+  "    lfo::noise(double,double,double,double)\n"); lua_error(L);return 0; }
 static swig_lua_attribute swig_SwigModule_attributes[] = {
     {0,0,0}
 };
@@ -2991,13 +2820,8 @@ static swig_lua_const_info swig_SwigModule_constants[]= {
     {0,0,0,0,0,0}
 };
 static swig_lua_method swig_SwigModule_methods[]= {
-    { "init", _wrap_init},
-    { "resources", _wrap_resources},
-    { "resize", _wrap_resize},
-    { "speed", _wrap_speed},
-    { "retrigger", _wrap_retrigger},
-    { "oneshot", _wrap_oneshot},
-    { "shift", _wrap_shift},
+    { "setPlayHead", _wrap_setPlayHead},
+    { "phasor", _wrap_phasor},
     { "triangle", _wrap_triangle},
     { "ramp", _wrap_ramp},
     { "saw", _wrap_saw},
@@ -3008,7 +2832,6 @@ static swig_lua_method swig_SwigModule_methods[]= {
     {0,0}
 };
 static swig_lua_class* swig_SwigModule_classes[]= {
-&_wrap_class_Phasor,
     0
 };
 static swig_lua_namespace* swig_SwigModule_namespaces[] = {
@@ -3029,20 +2852,14 @@ static swig_lua_namespace swig_SwigModule = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p_lfo__Phasor = {"_p_lfo__Phasor", "lfo::Phasor *", 0, 0, (void*)&_wrap_class_Phasor, 0};
-static swig_type_info _swigt__p_std__vectorT_lfo__Phasor_t = {"_p_std__vectorT_lfo__Phasor_t", "std::vector< lfo::Phasor > *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_lfo__Phasor,
-  &_swigt__p_std__vectorT_lfo__Phasor_t,
+  NULL
 };
 
-static swig_cast_info _swigc__p_lfo__Phasor[] = {  {&_swigt__p_lfo__Phasor, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_lfo__Phasor_t[] = {  {&_swigt__p_std__vectorT_lfo__Phasor_t, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_lfo__Phasor,
-  _swigc__p_std__vectorT_lfo__Phasor_t,
+  NULL
 };
 
 

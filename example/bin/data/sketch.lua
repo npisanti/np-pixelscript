@@ -13,8 +13,7 @@ end
 ----------------------------------------------------
 function draw()
 
-    lfo.speed( 0.01 )
-    local animate = lfo.sine()
+    local animate = lfo.sine( 1.1 )
     
     px.clear()
     px.fill( false )
@@ -48,7 +47,7 @@ function draw()
     px.finish( true )
     
     sprite.bind( "test" ) -- name of the file without .png
-        sprite.pct( lfo.triangle() )
+        sprite.pct( lfo.triangle(0.5) )
         sprite.draw( 5, 15 )
     sprite.unbind()
 end
