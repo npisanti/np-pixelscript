@@ -18,6 +18,7 @@ public:
     
     void render( ofFbo & fbo );
     void draw( int x, int y, int w, int h );
+    void setTime( float value );
     
     void variable( std::string name, double value ){ script.setNumber( name, (lua_Number) value ); }
    

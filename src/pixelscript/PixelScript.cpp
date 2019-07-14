@@ -72,9 +72,6 @@ void np::PixelScript::render( ofFbo & fbo ){
 
 void np::PixelScript::draw( int x, int y, int w, int h ){
 
-    float now = ofGetElapsedTimef();
-    clock += (now-before) * (speed*speed*speed);
-    before = now;
     lfo::setPlayHead( clock );
 
     font::resources( font );
@@ -90,8 +87,16 @@ void np::PixelScript::draw( int x, int y, int w, int h ){
         px::endFrame();
         sprite::clean();
     ofPopMatrix();
+    
+    float now = ofGetElapsedTimef();
+    clock += (now-before) * (speed*speed*speed);
+    before = now;
 }
 
 void np::PixelScript::errorReceived(std::string& msg) {
 	ofLogNotice() << "[ "<<filename<<" ] got a script error: " << msg;
+}
+
+void  np::PixelScript::setTime( float value ){
+    clock = value;
 }
