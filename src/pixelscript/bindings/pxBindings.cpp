@@ -2876,6 +2876,23 @@ static int _wrap_arc(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int
   arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); arg3 = (int)lua_tonumber(L, 3);
   arg4 = (double)lua_tonumber(L, 4); arg5 = (double)lua_tonumber(L, 5); px::arc(arg1,arg2,arg3,arg4,arg5); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_polypath__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int arg3 ; int arg4 ; double arg5 ;
+  SWIG_check_num_args("px::polypath",5,5) if(!lua_isnumber(L,1)) SWIG_fail_arg("px::polypath",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("px::polypath",2,"int"); if(!lua_isnumber(L,3)) SWIG_fail_arg("px::polypath",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("px::polypath",4,"int"); if(!lua_isnumber(L,5)) SWIG_fail_arg("px::polypath",5,"double");
+  arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4); arg5 = (double)lua_tonumber(L, 5); px::polypath(arg1,arg2,arg3,arg4,arg5); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_polypath__SWIG_1(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int arg3 ; int arg4 ;
+  SWIG_check_num_args("px::polypath",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("px::polypath",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("px::polypath",2,"int"); if(!lua_isnumber(L,3)) SWIG_fail_arg("px::polypath",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("px::polypath",4,"int"); arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3); arg4 = (int)lua_tonumber(L, 4); px::polypath(arg1,arg2,arg3,arg4); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_polypath(lua_State* L) { int argc; int argv[6]={ 1,2,3,4,5,6} ; argc = lua_gettop(L); if (argc == 4) {
+    return _wrap_polypath__SWIG_1(L);}  if (argc == 5) { return _wrap_polypath__SWIG_0(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'polypath'\n" "  Possible C/C++ prototypes are:\n"
+  "    px::polypath(int,int,int,int,double)\n" "    px::polypath(int,int,int,int)\n"); lua_error(L);return 0; }
 static int _wrap_map(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double arg4 ; double arg5 ;
   double result; SWIG_check_num_args("px::map",5,5) if(!lua_isnumber(L,1)) SWIG_fail_arg("px::map",1,"double");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("px::map",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("px::map",3,"double");
@@ -2958,6 +2975,7 @@ static swig_lua_method swig_SwigModule_methods[]= {
     { "curve", _wrap_curve},
     { "bezier", _wrap_bezier},
     { "arc", _wrap_arc},
+    { "polypath", _wrap_polypath},
     { "map", _wrap_map},
     { "random", _wrap_random},
     { "chance", _wrap_chance},

@@ -121,6 +121,18 @@ namespace px {
     void poly( int cx, int cy, int radius, int N, double
      theta ){
         float step = M_TWO_PI / float(N);
+        
+        ofBeginShape();
+        for(int i=0; i<N; ++i ){
+            ofVertex( cx + cos(theta)*radius, cy + sin(theta)*radius );
+            theta += step;
+        }
+        ofEndShape( true );
+    }
+     
+    void polypath( int cx, int cy, int radius, int N, double
+     theta ){
+        float step = M_TWO_PI / float(N);
 
         for(int i=0; i<N; ++i ){
             ofVertex( cx + cos(theta)*radius, cy + sin(theta)*radius );

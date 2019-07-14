@@ -45,6 +45,8 @@ namespace px {
 	void curve( int x, int y );
 	void bezier( int c1x, int c1y, int c2x, int c2y, int x, int y );
     void arc( int cx, int cy, int radius, double angle_begin, double angle_end );
+    void polypath( int cx, int cy, int radius, int N, double
+     theta=-M_PI_2 );
     
     double map( double input, double inmin, double inmax, double outmin, double outmax );
     

@@ -41,9 +41,9 @@ function draw()
     px.color( 0, 255, 0 )
     
     px.begin()
-        px.poly( 180, 100, 20, 4, - math.pi*0.5 )
+        px.polypath( 180, 100, 20, 4, - math.pi*0.5 )
         px.next()
-        px.poly( 180, 100, 10, 4, - math.pi*0.5 )
+        px.polypath( 180, 100, 10, 4, - math.pi*0.5 )
     px.finish( true )
     
     sprite.bind( "test" ) -- name of the file without .png
