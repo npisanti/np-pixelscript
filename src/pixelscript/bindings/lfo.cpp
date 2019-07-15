@@ -17,7 +17,7 @@ namespace lfo{
     double triangle( double speed ){
         double phase = playhead*speed;
         phase = phase - (long) phase;
-        return abs( phase * 2.0) - 1.0;
+        return abs( phase * 2.0 - 1.0 );
     }
     
     double ramp( double speed ){
