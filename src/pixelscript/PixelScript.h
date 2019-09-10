@@ -5,8 +5,7 @@
 
 #include "ofxLua/src/ofxLua.h"
 #include "FileWatcher.h"
-
-#include "bindings/sprite.h"
+#include "bindings/png.h"
 
 namespace np{ 
     
@@ -32,7 +31,7 @@ private:
     
     ofTrueTypeFont font;
 
-    std::vector<sprite::SpriteSheet> sprites;
+    std::vector<png::Pair> images;
 
     bool loaded;
 

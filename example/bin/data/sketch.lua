@@ -6,7 +6,7 @@ function setup()
     
     font.load( "/usr/share/fonts/truetype/TerminusTTF-4.46.0.ttf", 9)
     
-    sprite.load( "test.png", 8, 8 )
+    png.load( "/home/nicola/resources/motore/trio" )
     
 end
 
@@ -22,8 +22,6 @@ function draw()
     
     px.point( 200, 10 )
 
-    px.color( 255, 0, 0 )
-
     px.line( animate * 20, 20, 70, 50 )
     
     px.rect( 80, 80, 100, 20 )
@@ -38,23 +36,20 @@ function draw()
     
     px.blendmode(1)
     
-    px.color( 0, 255, 0 )
-    
     px.begin()
         px.polypath( 180, 100, 20, 4, - math.pi*0.5 )
         px.next()
         px.polypath( 180, 100, 10, 4, - math.pi*0.5 )
     px.finish( true )
     
-    sprite.bind( "test" ) -- name of the file without .png
-        sprite.pct( lfo.triangle(0.5) )
-        sprite.draw( 5, 15 )
-    sprite.unbind()
+    png.mode( 0 )
+    png.select("trio")
+    png.pct( lfo.triangle(0.25) )
+    png.draw( 300, 0 )
+    
 end
 
 ----------------------------------------------------
 function exit()
 
 end
-
-

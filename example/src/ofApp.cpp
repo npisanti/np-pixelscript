@@ -18,7 +18,7 @@ void setup(){
     
     script.load( "data/sketch.lua" );
 
-    downsample = 2;
+    downsample = 1;
     ofFboSettings settings;
     settings.width = ofGetWidth()/downsample;
     settings.height = ofGetHeight()/downsample;

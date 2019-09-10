@@ -5,11 +5,12 @@
 #include "bindings/font.h"
 #include "bindings/lfo.h"
 
+
 extern "C" {
 	int luaopen_px(lua_State* L);
     int luaopen_lfo(lua_State* L);
     int luaopen_font(lua_State* L);
-    int luaopen_sprite(lua_State* L);
+    int luaopen_png(lua_State* L);
 }
 
 np::PixelScript::PixelScript(){
@@ -21,8 +22,10 @@ np::PixelScript::PixelScript(){
     clock = 0.0f;
     parameters.add( speed.set("speed", 1.0f, 0.0f, 2.0f) );
     
-    sprites.reserve( 16 );
-    sprites.emplace_back();
+    images.reserve(12);
+    images.emplace_back();
+    images.back().folder.resize(1);
+    
 }
 
 np::PixelScript::~PixelScript(){
@@ -41,9 +44,9 @@ void np::PixelScript::reload(){
     luaopen_px(script); 
     luaopen_lfo(script); 
     luaopen_font(script); 
-    luaopen_sprite(script); 
+    luaopen_png(script); 
     font::resources( font );
-    sprite::resources( sprites );
+    png::resources( images );
     script.doScript( filepath, true );
     script.scriptSetup();
     loaded = true;
@@ -57,7 +60,7 @@ void np::PixelScript::render( ofFbo & fbo ){
     lfo::setPlayHead( clock );
 
     font::resources( font );
-    sprite::resources( sprites );
+    png::resources( images );
     
     fbo.begin();
         ofSetColor(255);
@@ -65,7 +68,6 @@ void np::PixelScript::render( ofFbo & fbo ){
         script.scriptUpdate();
         script.scriptDraw();
         px::endFrame();
-        sprite::clean();
     fbo.end();
     
 }
@@ -75,7 +77,7 @@ void np::PixelScript::draw( int x, int y, int w, int h ){
     lfo::setPlayHead( clock );
 
     font::resources( font );
-    sprite::resources( sprites );
+    png::resources( images );
     
     ofPushMatrix();
     ofTranslate( x, y );
@@ -85,7 +87,6 @@ void np::PixelScript::draw( int x, int y, int w, int h ){
         script.scriptUpdate();
         script.scriptDraw();
         px::endFrame();
-        sprite::clean();
     ofPopMatrix();
     
     float now = ofGetElapsedTimef();

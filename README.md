@@ -2,13 +2,13 @@ np-pixelscript
 =====================================
 cute graphics scripting with oF and luaJIT
 
-sandbox for scripting low res graphics using lua binded to some oF function, very opinionated workflow. 
+minimal sandbox for scripting 2d graphics using lua binded to some oF function, very opinionated workflow. 
 
 Includes different lua namespaces:
 
 - `px` for drawing shapes and lines and general control 
 - `lfo` for cyclic animations 
-- `sprite` for loading and displaying .png spritesheets
+- `png` for loading and displaying folders of .png images 
 - `font` for drawing text
 
 For Lua scripting i'm using [ofxLua](https://github.com/danomatika/ofxLua), that i just tweaked a bit.    
