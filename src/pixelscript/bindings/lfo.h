@@ -9,6 +9,10 @@ namespace lfo{
     void setPlayHead( double value );
 
     double phasor( double speed );
+    
+    bool clock( int division );
+    
+    double tick( double speed );
      
     double triangle( double speed );
     double ramp( double speed );

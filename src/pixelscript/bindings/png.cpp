@@ -58,7 +58,7 @@ namespace png{
         }
         
         images->emplace_back();
-        images->folder.resize(1);
+        images->back().folder.resize(1);
     }
  
     void select( const char * name ){

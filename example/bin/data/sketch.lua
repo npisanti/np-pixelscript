@@ -7,7 +7,9 @@ function setup()
     font.load( "/usr/share/fonts/truetype/TerminusTTF-4.46.0.ttf", 9)
     
     png.load( "/home/nicola/resources/motore/trio" )
-    
+
+    memo = 0    
+
 end
 
 ----------------------------------------------------
@@ -42,10 +44,25 @@ function draw()
         px.polypath( 180, 100, 10, 4, - math.pi*0.5 )
     px.finish( true )
     
+
     png.mode( 0 )
     png.select("trio")
     png.pct( lfo.triangle(0.25) )
     png.draw( 300, 0 )
+
+
+    local sync = 0.3 
+    
+    px.color( lfo.sine( sync ) * 255 )
+
+    local now = lfo.tick( sync )
+    if now ~= memo then 
+        memo = now;
+        print( "trigger "..now )
+    end
+    
+    textcount = "now is "..now
+    font.draw( textcount, 50 , 250 )
     
 end
 

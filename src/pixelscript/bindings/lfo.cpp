@@ -7,95 +7,104 @@ namespace lfo{
     void setPlayHead( double value ){
         playhead = value;
     }
-
+    
+    bool clock( int division ){
+        if( ofGetFrameNum()%division == 0 ){
+            return true;
+        }
+        return false;
+    }
+    
+    double tick( double speed ){
+        return floor( playhead*speed );
+    }
+    
     double phasor( double speed ){
-        double phase = playhead*speed;
-        phase = phase - (long) phase;
-        return phase;
+        double ph = playhead*speed;
+        ph = ph - (long) ph;
+        return ph;
     }
      
     double triangle( double speed ){
-        double phase = playhead*speed;
-        phase = phase - (long) phase;
-        return abs( phase * 2.0 - 1.0 );
+        double ph = playhead*speed;
+        ph = ph - (long) ph;
+        return 1.0 - (abs( ph - 0.5 ) * 2.0 );
     }
     
     double ramp( double speed ){
-        double phase = playhead*speed;
-        phase = phase - (long) phase;
-        return phase;
+        double ph = playhead*speed;
+        ph = ph - (long) ph;
+        return ph;
     }
     
     double saw( double speed ){
-        double phase = playhead*speed;
-        phase = phase - (long) phase;
-        return 1.0f - phase;
+        double ph = playhead*speed;
+        ph = ph - (long) ph;
+        return 1.0f - ph;
     }
     
     double sine( double speed ){
-        return (sin(playhead*speed*TWO_PI)*0.5 + 0.5);
+        double ph = playhead*speed;
+        ph = ph - (long) ph;
+        return 1.0 - (cos(ph*TWO_PI)*0.5 + 0.5);
     }
     
     double pulse( double speed, double width ){
-        double phase = playhead*speed;
-        phase = phase - (long) phase;
-        double value = ( phase<width ) ? 1.0 : 0.0;
+        double ph = playhead*speed;
+        ph = ph - (long) ph;
+        double value = ( ph>width ) ? 1.0 : 0.0;
         return value;
     }
     
     double square( double speed ){
-        double phase = playhead*speed;
-        phase = phase - (long) phase;
-        double value = ( phase<0.5 ) ? 1.0 : 0.0;
+        double ph = playhead*speed;
+        ph = ph - (long) ph;
+        double value = ( ph>0.5 ) ? 1.0 : 0.0;
         return value;
     }
     
 
     double triangle( double speed, double phase ){
-        double value = triangle( speed );
-        value += phase;
-        double rebound = value - 1.0;
-        if( value >= 1.0 ){ value = rebound; }
-        return value;
+        double ph = playhead*speed;
+        ph += phase;
+        ph = ph - (long) ph;
+        return 1.0 - (abs( ph - 0.5 ) * 2.0 );
     }
     
     double ramp( double speed, double phase ){
-        double value = triangle( speed );
-        value += phase;
-        double rebound = value - 1.0;
-        if( value >= 1.0 ){ value = rebound; }
-        return value;
+        double ph = playhead*speed;
+        ph += phase;
+        ph = ph - (long) ph;
+        return ph;
     }
     
     double saw( double speed, double phase ){
-        double value = saw( speed );
-        value += phase;
-        double rebound = value - 1.0;
-        if( value >= 1.0 ){ value = rebound; }
-        return value;
+        double ph = playhead*speed;
+        ph += phase;
+        ph = ph - (long) ph;
+        return 1.0f - ph;
     }
     
     double sine( double speed, double phase ){
-        double value = sine( speed );
-        value += phase;
-        double rebound = value - 1.0;
-        if( value >= 1.0 ){ value = rebound; }
-        return value;
+        double ph = playhead*speed;
+        ph += phase;
+        ph = ph - (long) ph;
+        return 1.0 - (cos(ph*TWO_PI)*0.5 + 0.5);
     }
     
     double pulse( double speed, double width, double phase ){
-        double value = pulse( speed, width );
-        value += phase;
-        double rebound = value - 1.0;
-        if( value >= 1.0 ){ value = rebound; }
+        double ph = playhead*speed;
+        ph += phase;
+        ph = ph - (long) ph;
+        double value = ( ph>width ) ? 1.0 : 0.0;
         return value;
     }
     
     double square( double speed, double phase ){
-        double value = square( speed );
-        value += phase;
-        double rebound = value - 1.0;
-        if( value >= 1.0 ){ value = rebound; }
+        double ph = playhead*speed;
+        ph += phase;
+        ph = ph - (long) ph;
+        double value = ( ph>0.5 ) ? 1.0 : 0.0;
         return value;
     }
     
