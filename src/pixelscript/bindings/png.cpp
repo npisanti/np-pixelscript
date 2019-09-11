@@ -101,7 +101,44 @@ namespace png{
             break;
         }
     }
-
+    
+    void next(){
+        current->index++;
+        int max = current->folder.size();
+        if( current->index>= max ) {
+            current->index = 0;
+        }
+    }
+    
+    void prev(){
+        current->index--;
+        if( current->index < 0 ){
+            current->index = current->folder.size()-1;
+        }
+    }
+    
+    void step( int step ){
+        int index = current->index + step;
+        int max = current->folder.size();
+        index = (index%max + max )%max;
+        current->index = index;
+    }
+    
+    void random(){
+        int max = current->folder.size();
+        int index = current->index;
+        int r = index;
+        while( r == index && max!=1 ){
+            r = rand()%max;
+        }
+        current->index = r;
+    }
+    
+    void randjump( int stepmax ){
+        int s = 1 + rand()%stepmax;
+        step( s );
+    }
+    
     int width(){
         return current->folder[current->index].getWidth();
     }

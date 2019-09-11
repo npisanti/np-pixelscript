@@ -23,11 +23,17 @@ namespace png{
     
     void select( const char * name );
     
-    int width();
-    int height();
-
     void frame( int index );
     void pct( double value );
+    
+    void next();
+    void prev();
+    void step( int step );
+    void random(); // don't repeat the same frame two time 
+    void randjump( int stepmax ); // jumps a number of step between 1 and stepmax included
+    
     void draw( int x, int y );
-
+    
+    int width();
+    int height();
 }

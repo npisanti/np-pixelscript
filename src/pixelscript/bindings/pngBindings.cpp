@@ -2824,21 +2824,33 @@ static int _wrap_mode(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_nu
 static int _wrap_select(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; SWIG_check_num_args("png::select",1,1)
   if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("png::select",1,"char const *"); arg1 = (char *)lua_tostring(L, 1);
   png::select((char const *)arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_width(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("png::width",0,0)
-  result = (int)png::width(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_height(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("png::height",0,0)
-  result = (int)png::height(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
 static int _wrap_frame(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("png::frame",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("png::frame",1,"int"); arg1 = (int)lua_tonumber(L, 1); png::frame(arg1); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_pct(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("png::pct",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("png::pct",1,"double"); arg1 = (double)lua_tonumber(L, 1); png::pct(arg1);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_next(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("png::next",0,0) png::next(); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_prev(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("png::prev",0,0) png::prev(); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_step(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("png::step",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("png::step",1,"int"); arg1 = (int)lua_tonumber(L, 1); png::step(arg1); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_random(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("png::random",0,0) png::random(); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_randjump(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("png::randjump",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("png::randjump",1,"int"); arg1 = (int)lua_tonumber(L, 1); png::randjump(arg1);
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_draw(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; SWIG_check_num_args("png::draw",2,2)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("png::draw",1,"int"); if(!lua_isnumber(L,2)) SWIG_fail_arg("png::draw",2,"int");
   arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); png::draw(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_width(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("png::width",0,0)
+  result = (int)png::width(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_height(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("png::height",0,0)
+  result = (int)png::height(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
 static swig_lua_attribute swig_SwigModule_attributes[] = {
     {0,0,0}
@@ -2852,11 +2864,16 @@ static swig_lua_method swig_SwigModule_methods[]= {
     { "load", _wrap_load},
     { "mode", _wrap_mode},
     { "select", _wrap_select},
-    { "width", _wrap_width},
-    { "height", _wrap_height},
     { "frame", _wrap_frame},
     { "pct", _wrap_pct},
+    { "next", _wrap_next},
+    { "prev", _wrap_prev},
+    { "step", _wrap_step},
+    { "random", _wrap_random},
+    { "randjump", _wrap_randjump},
     { "draw", _wrap_draw},
+    { "width", _wrap_width},
+    { "height", _wrap_height},
     {0,0}
 };
 static swig_lua_class* swig_SwigModule_classes[]= {
