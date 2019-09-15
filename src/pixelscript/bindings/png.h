@@ -26,11 +26,13 @@ namespace png{
     void frame( int index );
     void pct( double value );
     
-    void next();
-    void prev();
-    void step( int step );
-    void random(); // don't repeat the same frame two time 
-    void randjump( int stepmax ); // jumps a number of step between 1 and stepmax included
+    int next();
+    int prev();
+    int step( int step );
+    int random(); // don't repeat the same frame two time 
+    int randjump( int stepmax ); // jumps a number of step between 1 and stepmax included
+    
+    
     
     void draw( int x, int y );
     

@@ -65,7 +65,6 @@ namespace png{
         for(size_t i=0; i<images->size(); ++i ){
             if( strcmp(images->at(i).name.c_str(), name) == 0 ){
                 current = &(images->at(i));
-                current->index = 0;
                 return;
             }
         }
@@ -102,29 +101,32 @@ namespace png{
         }
     }
     
-    void next(){
+    int next(){
         current->index++;
         int max = current->folder.size();
-        if( current->index>= max ) {
+        if( current->index >= max ) {
             current->index = 0;
         }
+        return current->index;
     }
     
-    void prev(){
+    int prev(){
         current->index--;
         if( current->index < 0 ){
             current->index = current->folder.size()-1;
         }
+        return current->index;
     }
     
-    void step( int step ){
+    int step( int step ){
         int index = current->index + step;
         int max = current->folder.size();
         index = (index%max + max )%max;
         current->index = index;
+        return current->index;
     }
     
-    void random(){
+    int random(){
         int max = current->folder.size();
         int index = current->index;
         int r = index;
@@ -132,11 +134,13 @@ namespace png{
             r = rand()%max;
         }
         current->index = r;
+        return current->index;
     }
     
-    void randjump( int stepmax ){
+    int randjump( int stepmax ){
         int s = 1 + rand()%stepmax;
         step( s );
+        return current->index;
     }
     
     int width(){

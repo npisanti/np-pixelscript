@@ -2830,18 +2830,22 @@ static int _wrap_frame(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_n
 static int _wrap_pct(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("png::pct",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("png::pct",1,"double"); arg1 = (double)lua_tonumber(L, 1); png::pct(arg1);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_next(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("png::next",0,0) png::next(); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_prev(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("png::prev",0,0) png::prev(); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_step(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("png::step",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("png::step",1,"int"); arg1 = (int)lua_tonumber(L, 1); png::step(arg1); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_random(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("png::random",0,0) png::random(); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_randjump(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("png::randjump",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("png::randjump",1,"int"); arg1 = (int)lua_tonumber(L, 1); png::randjump(arg1);
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_next(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("png::next",0,0)
+  result = (int)png::next(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_prev(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("png::prev",0,0)
+  result = (int)png::prev(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_step(lua_State* L) { int SWIG_arg = 0; int arg1 ; int result; SWIG_check_num_args("png::step",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("png::step",1,"int"); arg1 = (int)lua_tonumber(L, 1); result = (int)png::step(arg1);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_random(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("png::random",0,0)
+  result = (int)png::random(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_randjump(lua_State* L) { int SWIG_arg = 0; int arg1 ; int result; SWIG_check_num_args("png::randjump",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("png::randjump",1,"int"); arg1 = (int)lua_tonumber(L, 1);
+  result = (int)png::randjump(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
 static int _wrap_draw(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; SWIG_check_num_args("png::draw",2,2)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("png::draw",1,"int"); if(!lua_isnumber(L,2)) SWIG_fail_arg("png::draw",2,"int");
   arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); png::draw(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
