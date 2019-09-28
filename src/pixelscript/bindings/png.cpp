@@ -15,13 +15,13 @@ namespace png{
     void init(){
         current = nullptr;
         images = nullptr;
-        alignMode = 1;
     }
     
     void resources( std::vector<Pair> & reso ){
         images = &reso;
+        alignMode = 1;
         auto pback = &images->back();
-        current = pback;
+        current = pback;            
     }
     
     void mode( int value ){
@@ -56,6 +56,8 @@ namespace png{
                 images->back().folder[i].load(dir.getPath(i));
             }
         }
+        current = &images->back();
+        current->index = 0;
         
         images->emplace_back();
         images->back().folder.resize(1);

@@ -26,6 +26,7 @@ np::PixelScript::PixelScript(){
     images.emplace_back();
     images.back().folder.resize(1);
     
+    png::init();
 }
 
 np::PixelScript::~PixelScript(){
