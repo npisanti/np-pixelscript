@@ -4,19 +4,21 @@
 #include "bindings/px.h"
 #include "bindings/font.h"
 #include "bindings/lfo.h"
-
+#include "bindings/frag.h"
 
 extern "C" {
 	int luaopen_px(lua_State* L);
     int luaopen_lfo(lua_State* L);
     int luaopen_font(lua_State* L);
     int luaopen_png(lua_State* L);
+    int luaopen_frag(lua_State* L);
 }
 
 np::PixelScript::PixelScript(){
     loaded = false;
 
 	script.addListener(this);
+    shaders.reserve( 6 );
     
     before = 0.0f;
     clock = 0.0f;
@@ -34,7 +36,10 @@ np::PixelScript::~PixelScript(){
         script.scriptExit();
     }    
     script.clear();
+}
 
+void np::PixelScript::allocate( int w, int h ){
+    buffer.allocate( w, h );
 }
 
 void np::PixelScript::reload(){
@@ -46,53 +51,38 @@ void np::PixelScript::reload(){
     luaopen_lfo(script); 
     luaopen_font(script); 
     luaopen_png(script); 
+    luaopen_frag(script); 
+    px::resources( buffer );
     font::resources( font );
     png::resources( images );
+    frag::resources( buffer, shaders, 0.0f );
     script.doScript( filepath, true );
     script.scriptSetup();
     loaded = true;
 }
     
-void np::PixelScript::render( ofFbo & fbo ){
+void np::PixelScript::update(){
 
     float now = ofGetElapsedTimef();
     clock += (now-before) * (speed*speed*speed);
     before = now;
-    lfo::setPlayHead( clock );
 
+    lfo::setPlayHead( clock );
+    px::resources( buffer );
     font::resources( font );
     png::resources( images );
+    frag::resources( buffer, shaders, clock );
     
-    fbo.begin();
-        ofSetColor(255);
-        px::beginFrame( fbo.getWidth(), fbo.getHeight() );
-        script.scriptUpdate();
-        script.scriptDraw();
-        px::endFrame();
-    fbo.end();
-    
+    script.scriptUpdate();
+    script.scriptDraw();
 }
 
 void np::PixelScript::draw( int x, int y, int w, int h ){
+    buffer.draw( x, y, w, h ); 
+}
 
-    lfo::setPlayHead( clock );
-
-    font::resources( font );
-    png::resources( images );
-    
-    ofPushMatrix();
-    ofTranslate( x, y );
-        ofSetColor(255);
-        font::resources( font );
-        px::beginFrame( w, h );
-        script.scriptUpdate();
-        script.scriptDraw();
-        px::endFrame();
-    ofPopMatrix();
-    
-    float now = ofGetElapsedTimef();
-    clock += (now-before) * (speed*speed*speed);
-    before = now;
+void np::PixelScript::draw( int x, int y ){
+    buffer.draw( x, y );
 }
 
 void np::PixelScript::errorReceived(std::string& msg) {

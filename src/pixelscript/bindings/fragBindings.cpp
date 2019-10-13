@@ -2675,29 +2675,27 @@ SWIG_Lua_dostring(lua_State *L, const char *str) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_png__Pair swig_types[0]
-#define SWIGTYPE_p_std__string swig_types[1]
-#define SWIGTYPE_p_std__vectorT_ofImage_t swig_types[2]
-#define SWIGTYPE_p_std__vectorT_png__Pair_t swig_types[3]
-static swig_type_info *swig_types[5];
-static swig_module_info swig_module = {swig_types, 4, 0, 0, 0, 0};
+#define SWIGTYPE_p_np__pixelscript__Buffer swig_types[0]
+#define SWIGTYPE_p_std__vectorT_np__pixelscript__Shader_t swig_types[1]
+static swig_type_info *swig_types[3];
+static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
 /* -------- TYPES TABLE (END) -------- */
 
-#define SWIG_name      "png"
-#define SWIG_init      luaopen_png
-#define SWIG_init_user luaopen_png_user
+#define SWIG_name      "frag"
+#define SWIG_init      luaopen_frag
+#define SWIG_init_user luaopen_frag_user
 
-#define SWIG_LUACODE   luaopen_png_luacode
+#define SWIG_LUACODE   luaopen_frag_luacode
 
 namespace swig {
 typedef struct{} LANGUAGE_OBJ;
 }
 
 
-#include "png.h"
+#include "frag.h"
 
 
 SWIGINTERN int SWIG_lua_isnilstring(lua_State *L, int idx) {
@@ -2710,171 +2708,24 @@ SWIGINTERN int SWIG_lua_isnilstring(lua_State *L, int idx) {
 #ifdef __cplusplus
 extern "C" {
 #endif
-static int _wrap_new_Pair(lua_State* L) { int SWIG_arg = 0; png::Pair *result = 0 ; SWIG_check_num_args("png::Pair::Pair",0,0)
-  result = (png::Pair *)new png::Pair(); SWIG_NewPointerObj(L,result,SWIGTYPE_p_png__Pair,1); SWIG_arg++;  return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Pair_name_set(lua_State* L) { int SWIG_arg = 0; png::Pair *arg1 = (png::Pair *) 0 ; std::string arg2 ;
-  std::string *argp2 ; SWIG_check_num_args("png::Pair::name",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("png::Pair::name",1,"png::Pair *");
-  if(!lua_isuserdata(L,2)) SWIG_fail_arg("png::Pair::name",2,"std::string");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_png__Pair,0))){
-    SWIG_fail_ptr("Pair_name_set",1,SWIGTYPE_p_png__Pair); } 
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_std__string,0))){
-    SWIG_fail_ptr("Pair_name_set",2,SWIGTYPE_p_std__string); }  arg2 = *argp2; if (arg1) (arg1)->name = arg2; return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Pair_name_get(lua_State* L) { int SWIG_arg = 0; png::Pair *arg1 = (png::Pair *) 0 ; std::string result;
-  SWIG_check_num_args("png::Pair::name",1,1) if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("png::Pair::name",1,"png::Pair *");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_png__Pair,0))){
-    SWIG_fail_ptr("Pair_name_get",1,SWIGTYPE_p_png__Pair); }  result =  ((arg1)->name); {
-    std::string * resultptr = new std::string((const std::string &) result);
-    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_std__string,1); SWIG_arg++; }  return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_Pair_path_set(lua_State* L) { int SWIG_arg = 0; png::Pair *arg1 = (png::Pair *) 0 ; std::string arg2 ;
-  std::string *argp2 ; SWIG_check_num_args("png::Pair::path",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("png::Pair::path",1,"png::Pair *");
-  if(!lua_isuserdata(L,2)) SWIG_fail_arg("png::Pair::path",2,"std::string");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_png__Pair,0))){
-    SWIG_fail_ptr("Pair_path_set",1,SWIGTYPE_p_png__Pair); } 
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_std__string,0))){
-    SWIG_fail_ptr("Pair_path_set",2,SWIGTYPE_p_std__string); }  arg2 = *argp2; if (arg1) (arg1)->path = arg2; return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Pair_path_get(lua_State* L) { int SWIG_arg = 0; png::Pair *arg1 = (png::Pair *) 0 ; std::string result;
-  SWIG_check_num_args("png::Pair::path",1,1) if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("png::Pair::path",1,"png::Pair *");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_png__Pair,0))){
-    SWIG_fail_ptr("Pair_path_get",1,SWIGTYPE_p_png__Pair); }  result =  ((arg1)->path); {
-    std::string * resultptr = new std::string((const std::string &) result);
-    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_std__string,1); SWIG_arg++; }  return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_Pair_folder_set(lua_State* L) { int SWIG_arg = 0; png::Pair *arg1 = (png::Pair *) 0 ;
-  std::vector< ofImage > arg2 ; std::vector< ofImage > *argp2 ; SWIG_check_num_args("png::Pair::folder",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("png::Pair::folder",1,"png::Pair *");
-  if(!lua_isuserdata(L,2)) SWIG_fail_arg("png::Pair::folder",2,"std::vector< ofImage >");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_png__Pair,0))){
-    SWIG_fail_ptr("Pair_folder_set",1,SWIGTYPE_p_png__Pair); } 
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_std__vectorT_ofImage_t,0))){
-    SWIG_fail_ptr("Pair_folder_set",2,SWIGTYPE_p_std__vectorT_ofImage_t); }  arg2 = *argp2; if (arg1) (arg1)->folder = arg2;
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Pair_folder_get(lua_State* L) { int SWIG_arg = 0; png::Pair *arg1 = (png::Pair *) 0 ;
-  std::vector< ofImage > result; SWIG_check_num_args("png::Pair::folder",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("png::Pair::folder",1,"png::Pair *");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_png__Pair,0))){
-    SWIG_fail_ptr("Pair_folder_get",1,SWIGTYPE_p_png__Pair); }  result =  ((arg1)->folder); {
-    std::vector< ofImage > * resultptr = new std::vector< ofImage >((const std::vector< ofImage > &) result);
-    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_std__vectorT_ofImage_t,1); SWIG_arg++; }  return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Pair_index_set(lua_State* L) { int SWIG_arg = 0; png::Pair *arg1 = (png::Pair *) 0 ; int arg2 ;
-  SWIG_check_num_args("png::Pair::index",2,2) if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("png::Pair::index",1,"png::Pair *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("png::Pair::index",2,"int");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_png__Pair,0))){
-    SWIG_fail_ptr("Pair_index_set",1,SWIGTYPE_p_png__Pair); }  arg2 = (int)lua_tonumber(L, 2); if (arg1) (arg1)->index = arg2;
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Pair_index_get(lua_State* L) { int SWIG_arg = 0; png::Pair *arg1 = (png::Pair *) 0 ; int result;
-  SWIG_check_num_args("png::Pair::index",1,1) if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("png::Pair::index",1,"png::Pair *");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_png__Pair,0))){
-    SWIG_fail_ptr("Pair_index_get",1,SWIGTYPE_p_png__Pair); }  result = (int) ((arg1)->index);
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static void swig_delete_Pair(void *obj) {
-png::Pair *arg1 = (png::Pair *) obj;
-delete arg1;
-}
-static int _proxy__wrap_new_Pair(lua_State *L) {
-    assert(lua_istable(L,1));
-    lua_pushcfunction(L,_wrap_new_Pair);
-    assert(!lua_isnil(L,-1));
-    lua_replace(L,1); /* replace our table with real constructor */
-    lua_call(L,lua_gettop(L)-1,1);
-    return 1;
-}
-static swig_lua_attribute swig_Pair_attributes[] = {
-    { "name", _wrap_Pair_name_get, _wrap_Pair_name_set },
-    { "path", _wrap_Pair_path_get, _wrap_Pair_path_set },
-    { "folder", _wrap_Pair_folder_get, _wrap_Pair_folder_set },
-    { "index", _wrap_Pair_index_get, _wrap_Pair_index_set },
-    {0,0,0}
-};
-static swig_lua_method swig_Pair_methods[]= {
-    {0,0}
-};
-static swig_lua_method swig_Pair_meta[] = {
-    {0,0}
-};
-
-static swig_lua_attribute swig_Pair_Sf_SwigStatic_attributes[] = {
-    {0,0,0}
-};
-static swig_lua_const_info swig_Pair_Sf_SwigStatic_constants[]= {
-    {0,0,0,0,0,0}
-};
-static swig_lua_method swig_Pair_Sf_SwigStatic_methods[]= {
-    {0,0}
-};
-static swig_lua_class* swig_Pair_Sf_SwigStatic_classes[]= {
-    0
-};
-
-static swig_lua_namespace swig_Pair_Sf_SwigStatic = {
-    "Pair",
-    swig_Pair_Sf_SwigStatic_methods,
-    swig_Pair_Sf_SwigStatic_attributes,
-    swig_Pair_Sf_SwigStatic_constants,
-    swig_Pair_Sf_SwigStatic_classes,
-    0
-};
-static swig_lua_class *swig_Pair_bases[] = {0};
-static const char *swig_Pair_base_names[] = {0};
-static swig_lua_class _wrap_class_Pair = { "Pair", "Pair", &SWIGTYPE_p_png__Pair,_proxy__wrap_new_Pair, swig_delete_Pair, swig_Pair_methods, swig_Pair_attributes, &swig_Pair_Sf_SwigStatic, swig_Pair_meta, swig_Pair_bases, swig_Pair_base_names };
-
-static int _wrap_init(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("png::init",0,0) png::init(); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_resources(lua_State* L) { int SWIG_arg = 0; std::vector< png::Pair > *arg1 = 0 ;
-  SWIG_check_num_args("png::resources",1,1)
-  if(!lua_isuserdata(L,1)) SWIG_fail_arg("png::resources",1,"std::vector< png::Pair > &");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_std__vectorT_png__Pair_t,0))){
-    SWIG_fail_ptr("resources",1,SWIGTYPE_p_std__vectorT_png__Pair_t); }  png::resources(*arg1); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_resources(lua_State* L) { int SWIG_arg = 0; np::pixelscript::Buffer *arg1 = 0 ;
+  std::vector< np::pixelscript::Shader > *arg2 = 0 ; float arg3 ; SWIG_check_num_args("frag::resources",3,3)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("frag::resources",1,"np::pixelscript::Buffer &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("frag::resources",2,"std::vector< np::pixelscript::Shader > &");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("frag::resources",3,"float");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_np__pixelscript__Buffer,0))){
+    SWIG_fail_ptr("resources",1,SWIGTYPE_p_np__pixelscript__Buffer); } 
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__vectorT_np__pixelscript__Shader_t,0))){
+    SWIG_fail_ptr("resources",2,SWIGTYPE_p_std__vectorT_np__pixelscript__Shader_t); }  arg3 = (float)lua_tonumber(L, 3);
+  frag::resources(*arg1,*arg2,arg3); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_load(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; char *arg2 = (char *) 0 ;
-  SWIG_check_num_args("png::load",2,2) if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("png::load",1,"char const *");
-  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("png::load",2,"char const *"); arg1 = (char *)lua_tostring(L, 1);
-  arg2 = (char *)lua_tostring(L, 2); png::load((char const *)arg1,(char const *)arg2); return SWIG_arg; if(0) SWIG_fail; fail:
+  SWIG_check_num_args("frag::load",2,2) if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("frag::load",1,"char const *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("frag::load",2,"char const *"); arg1 = (char *)lua_tostring(L, 1);
+  arg2 = (char *)lua_tostring(L, 2); frag::load((char const *)arg1,(char const *)arg2); return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
-static int _wrap_mode(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("png::mode",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("png::mode",1,"int"); arg1 = (int)lua_tonumber(L, 1); png::mode(arg1); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_select(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; SWIG_check_num_args("png::select",1,1)
-  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("png::select",1,"char const *"); arg1 = (char *)lua_tostring(L, 1);
-  png::select((char const *)arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_frame(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("png::frame",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("png::frame",1,"int"); arg1 = (int)lua_tonumber(L, 1); png::frame(arg1); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_pct(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("png::pct",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("png::pct",1,"double"); arg1 = (double)lua_tonumber(L, 1); png::pct(arg1);
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_next(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("png::next",0,0)
-  result = (int)png::next(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_prev(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("png::prev",0,0)
-  result = (int)png::prev(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_step(lua_State* L) { int SWIG_arg = 0; int arg1 ; int result; SWIG_check_num_args("png::step",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("png::step",1,"int"); arg1 = (int)lua_tonumber(L, 1); result = (int)png::step(arg1);
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_random(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("png::random",0,0)
-  result = (int)png::random(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_randjump(lua_State* L) { int SWIG_arg = 0; int arg1 ; int result; SWIG_check_num_args("png::randjump",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("png::randjump",1,"int"); arg1 = (int)lua_tonumber(L, 1);
-  result = (int)png::randjump(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_draw(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; SWIG_check_num_args("png::draw",2,2)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("png::draw",1,"int"); if(!lua_isnumber(L,2)) SWIG_fail_arg("png::draw",2,"int");
-  arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); png::draw(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_width(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("png::width",0,0)
-  result = (int)png::width(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_height(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("png::height",0,0)
-  result = (int)png::height(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
+static int _wrap_apply(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; SWIG_check_num_args("frag::apply",1,1)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("frag::apply",1,"char const *"); arg1 = (char *)lua_tostring(L, 1);
+  frag::apply((char const *)arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static swig_lua_attribute swig_SwigModule_attributes[] = {
     {0,0,0}
 };
@@ -2882,25 +2733,12 @@ static swig_lua_const_info swig_SwigModule_constants[]= {
     {0,0,0,0,0,0}
 };
 static swig_lua_method swig_SwigModule_methods[]= {
-    { "init", _wrap_init},
     { "resources", _wrap_resources},
     { "load", _wrap_load},
-    { "mode", _wrap_mode},
-    { "select", _wrap_select},
-    { "frame", _wrap_frame},
-    { "pct", _wrap_pct},
-    { "next", _wrap_next},
-    { "prev", _wrap_prev},
-    { "step", _wrap_step},
-    { "random", _wrap_random},
-    { "randjump", _wrap_randjump},
-    { "draw", _wrap_draw},
-    { "width", _wrap_width},
-    { "height", _wrap_height},
+    { "apply", _wrap_apply},
     {0,0}
 };
 static swig_lua_class* swig_SwigModule_classes[]= {
-&_wrap_class_Pair,
     0
 };
 static swig_lua_namespace* swig_SwigModule_namespaces[] = {
@@ -2908,7 +2746,7 @@ static swig_lua_namespace* swig_SwigModule_namespaces[] = {
 };
 
 static swig_lua_namespace swig_SwigModule = {
-    "png",
+    "frag",
     swig_SwigModule_methods,
     swig_SwigModule_attributes,
     swig_SwigModule_constants,
@@ -2921,28 +2759,20 @@ static swig_lua_namespace swig_SwigModule = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p_png__Pair = {"_p_png__Pair", "png::Pair *", 0, 0, (void*)&_wrap_class_Pair, 0};
-static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__vectorT_ofImage_t = {"_p_std__vectorT_ofImage_t", "std::vector< ofImage > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__vectorT_png__Pair_t = {"_p_std__vectorT_png__Pair_t", "std::vector< png::Pair > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_np__pixelscript__Buffer = {"_p_np__pixelscript__Buffer", "np::pixelscript::Buffer *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_np__pixelscript__Shader_t = {"_p_std__vectorT_np__pixelscript__Shader_t", "std::vector< np::pixelscript::Shader > *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_png__Pair,
-  &_swigt__p_std__string,
-  &_swigt__p_std__vectorT_ofImage_t,
-  &_swigt__p_std__vectorT_png__Pair_t,
+  &_swigt__p_np__pixelscript__Buffer,
+  &_swigt__p_std__vectorT_np__pixelscript__Shader_t,
 };
 
-static swig_cast_info _swigc__p_png__Pair[] = {  {&_swigt__p_png__Pair, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_ofImage_t[] = {  {&_swigt__p_std__vectorT_ofImage_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_png__Pair_t[] = {  {&_swigt__p_std__vectorT_png__Pair_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_np__pixelscript__Buffer[] = {  {&_swigt__p_np__pixelscript__Buffer, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_np__pixelscript__Shader_t[] = {  {&_swigt__p_std__vectorT_np__pixelscript__Shader_t, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_png__Pair,
-  _swigc__p_std__string,
-  _swigc__p_std__vectorT_ofImage_t,
-  _swigc__p_std__vectorT_png__Pair_t,
+  _swigc__p_np__pixelscript__Buffer,
+  _swigc__p_std__vectorT_np__pixelscript__Shader_t,
 };
 
 

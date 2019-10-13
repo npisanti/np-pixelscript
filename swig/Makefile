@@ -31,9 +31,9 @@ ifeq ($(ATTRIBUTES), true)
 	CFLAGS += -DATTRIBUTES
 endif
 
-.PHONY: all bindings symbols clean px-prepare px lfo font png
+.PHONY: all bindings symbols clean px-prepare px lfo font png frag
 
-all: px lfo font png
+all: px lfo font png frag
 
 # generates bindings
 bindings:
@@ -78,3 +78,10 @@ png-prepare:
 	$(eval NAME := pngBindings)
 
 png: png-prepare bindings
+
+# frag bindings
+frag-prepare:
+	$(eval TARGET := frag)
+	$(eval NAME := fragBindings)
+
+frag: frag-prepare bindings

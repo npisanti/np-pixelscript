@@ -3,15 +3,18 @@
 
 #include <iostream>
 #include "ofMain.h"
+#include "../Buffer.h"
 
 namespace px {
 
-    void beginFrame( int width, int height );
-    void endFrame();
+    void resources( np::pixelscript::Buffer & resource );
     
     void size( int w, int h );
     void framerate( int value );
     void blendmode( int value );
+    
+    void begin();
+    void finish();
     
     void clear();
     void background( int r, int g, int b, int a );
@@ -38,9 +41,9 @@ namespace px {
      theta=-M_PI_2 );
     void triangle( int x0, int y0, int x1, int y1, int x2, int y2 );
      
-    void begin();
+    void begin_shape();
     void next( bool close = false );
-    void finish( bool close = false );
+    void end_shape( bool close = false );
 	void vertex( int x, int y );
 	void curve( int x, int y );
 	void bezier( int c1x, int c1y, int c2x, int c2y, int x, int y );

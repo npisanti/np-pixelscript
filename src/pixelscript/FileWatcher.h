@@ -12,6 +12,7 @@ public:
     FileWatcher();
     
     void load( std::string path, bool watch=true );
+    std::string getPath() const { return filepath; };
 
     float interval;
 

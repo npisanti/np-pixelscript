@@ -14,30 +14,20 @@ int downsample;
 void setup(){
     ofBackground( 0 );
     
-    ;
-    
     script.load( "data/sketch.lua" );
-
-    downsample = 1;
-    ofFboSettings settings;
-    settings.width = ofGetWidth()/downsample;
-    settings.height = ofGetHeight()/downsample;
-    settings.minFilter = GL_NEAREST;
-    settings.maxFilter = GL_NEAREST;
-    fbo.allocate( settings );
-    fbo.begin();
-        ofClear( 0, 0, 0, 0 );
-    fbo.end();
+    script.allocate( ofGetWidth(), ofGetHeight() );
 }
 
 //--------------------------------------------------------------
 void update(){
-    script.render( fbo );
+    
+    
+    script.update();
 }
 
 //--------------------------------------------------------------
 void draw(){
-    fbo.draw( 0, 0, fbo.getWidth()*downsample, fbo.getHeight()*downsample );
+    script.draw( 0, 0 );
 }
 
 //--------------------------------------------------------------

@@ -9,6 +9,7 @@ namespace png{
     struct Pair {
         Pair();
         std::string name;
+        std::string path;
         std::vector<ofImage> folder;
         int index;
     };
@@ -16,7 +17,7 @@ namespace png{
     void init();
     void resources( std::vector<Pair> & reso );
     
-    void load( const char * path );
+    void load( const char * name, const char * path );
     
     // modes: 0/def = top left corner, 1 = center, 2 = bottom left corner  
     void mode( int value );

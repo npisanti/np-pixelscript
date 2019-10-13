@@ -2,12 +2,15 @@
 ----------------------------------------------------
 function setup()
     
-    px.size( 480, 280 )
+    px.size( 480, 480 )
     
     font.load( "/usr/share/fonts/truetype/TerminusTTF-4.46.0.ttf", 9)
     
-    png.load( "/home/nicola/resources/motore/trio" )
+    png.load( "triangles", "/home/nicola/resources/ink/triangles" )
 
+    -- paths are relative to the lua script path 
+    frag.load( "invert", "invert.frag" ) 
+    
     memo = 0    
 
 end
@@ -15,6 +18,8 @@ end
 ----------------------------------------------------
 function draw()
 
+    px.begin()
+    
     local animate = lfo.sine( 1.1 )
     
     px.clear()
@@ -38,18 +43,16 @@ function draw()
     
     px.blendmode(1)
     
-    px.begin()
+    px.begin_shape()
         px.polypath( 180, 100, 20, 4, - math.pi*0.5 )
         px.next()
         px.polypath( 180, 100, 10, 4, - math.pi*0.5 )
-    px.finish( true )
+    px.end_shape( true )
     
-
     png.mode( 0 )
-    png.select("trio")
+    png.select("triangles")
     png.pct( lfo.triangle(0.25) )
     png.draw( 300, 0 )
-
 
     local sync = 0.3 
     
@@ -63,6 +66,10 @@ function draw()
     
     textcount = "now is "..now
     font.draw( textcount, 50 , 250 )
+    
+    px.finish()
+
+    frag.apply( "invert" )
     
 end
 

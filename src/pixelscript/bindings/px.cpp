@@ -6,28 +6,27 @@
 
 namespace px {
     
-    int w; 
-    int h;
+    np::pixelscript::Buffer * buffer;
     
-    void beginFrame( int width, int height ){
-        w = width;
-        h = height;
-        ofPushMatrix();
-        ofSetCircleResolution( 60 );
-        ofSetLineWidth( 1.0f );
-        ofDisableAntiAliasing();
-    }
-    
-    void endFrame(){
-        ofPopMatrix();
+    void resources( np::pixelscript::Buffer & resource ){
+        buffer = &resource;
     }
     
     void size( int w, int h ){
+        buffer->allocate( w, h );
         ofSetWindowShape( w, h );
     }
     
     void framerate( int value ){
         ofSetFrameRate( value );
+    }
+    
+    void begin(){
+        buffer->begin();
+    }
+    
+    void finish(){
+        buffer->end();
     }
     
     void blendmode( int value ){
@@ -52,7 +51,7 @@ namespace px {
         ofPushStyle();
             ofSetColor( 0, 0, 0, speed );
             ofFill();
-            ofDrawRectangle( -1, -1, w+1, h+1 );
+            ofDrawRectangle( -1, -1, buffer->getWidth()+1, buffer->getHeight()+1 );
         ofPopStyle();
     }
 
@@ -140,7 +139,7 @@ namespace px {
         }
     }
      
-    void begin(){
+    void begin_shape(){
         ofBeginShape();
     }
     
@@ -148,7 +147,7 @@ namespace px {
         ofNextContour( close );
     }
     
-    void finish( bool close ){
+    void end_shape( bool close ){
         ofEndShape( close );
     }
     
@@ -210,10 +209,10 @@ namespace px {
     }
     
     int width(){
-        return w;
+        return buffer->getWidth();
     }
 
     int height(){
-        return h;
+        return buffer->getHeight();
     }
 }

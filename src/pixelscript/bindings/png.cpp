@@ -6,6 +6,7 @@ namespace png{
     Pair::Pair(){
         index = 0;
         name = "";
+        path = "";
     }
     
     std::vector<Pair> * images;
@@ -28,17 +29,19 @@ namespace png{
         alignMode = value;
     }
  
-    void load( const char * path ){
-
-        std::string name = ofFilePath::getBaseName( ofFilePath::getFileName( std::string( path ) ) );
+    void load( const char * name, const char * path ){
 
         for(size_t i=0; i<images->size(); ++i ){
             if( images->at(i).name == name ){
+                if( images->at(i).path != path ){
+                    std::cout<<"[pixelscript] "<<name<<" name already taken by another folder!\n";
+                }
                 return; // already loaded for that name
             }
         }        
         
         images->back().name = name;
+        images->back().path = path;
 
         if( ofFilePath::getFileExt( ofFilePath::getFileName( std::string( path ) )) == "png" ){
             images->back().folder[0].load( path );
