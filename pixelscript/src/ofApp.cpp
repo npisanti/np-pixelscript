@@ -168,7 +168,7 @@ int main( int argc, char *argv[] ){
             
             for( int i=1; i<argc; ++i ){
                 std::string cmd = std::string( argv[i] );
-    #ifdef __ARM_ARCH
+    #ifndef __ARM_ARCH
                 if( cmd == "--no-decoration" || cmd == "-nd" ){
                     settings.decorated = false;   
                 }
