@@ -7,14 +7,23 @@
 namespace px {
     
     np::pixelscript::Buffer * buffer;
+    bool _rotated = false;
     
     void resources( np::pixelscript::Buffer & resource ){
         buffer = &resource;
     }
     
+    void setRotated( bool rotate ){
+        _rotated = rotate;
+    }
+    
     void size( int w, int h ){
         buffer->allocate( w, h );
-        ofSetWindowShape( w, h );
+        if( _rotated ){
+             ofSetWindowShape( h, w );
+        }else{
+             ofSetWindowShape( w, h );
+        }
     }
     
     void framerate( int value ){
@@ -41,6 +50,17 @@ namespace px {
     
     void background( int r, int g, int b, int a ){
         ofClear( r, g, b, a );
+    }
+
+    void background( int r, int g, int b ){
+        ofClear( r, g, b, 255 );
+    }
+    void background( int gray, int a ){
+        ofClear( gray, gray, gray, a );
+    }
+    
+    void background( int gray ){
+        ofClear( gray, gray, gray, 255 );
     }
 
     void clear(){

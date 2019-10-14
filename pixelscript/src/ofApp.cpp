@@ -12,12 +12,14 @@
 	#define CHDIR chdir
 #endif
 #include <errno.h>
+#include "pixelscript/bindings/px.h"
 
 class ofApp : public ofBaseApp{
 public:
     
 // ---------- variables ----------------------------------------
 bool bShowFrameRate;
+bool bRotate;
 np::PixelScript script;
 std::string path;
 ofxOscReceiver receiver;
@@ -27,10 +29,15 @@ void setup(){
     
     ofSetWindowTitle( ":x:" );
     
+    ofHideCursor();
+    
     ofBackground( 0 );
     bShowFrameRate = false;
     
+    px::setRotated( bRotate );
+    
     script.load( path );    
+    
 }
 
 //--------------------------------------------------------------
@@ -42,11 +49,23 @@ void update(){
 //--------------------------------------------------------------
 void draw(){
     
-    int x = (ofGetWidth() - script.getWidth())/2;
-    int y = (ofGetHeight() - script.getHeight())/2;
-    if( x<0 ) x=0;
-    if( y<0) y=0;
-    
+    int x=0;
+    int y=0;
+
+    if( !bRotate ){
+        x = (ofGetWidth() - script.getWidth())/2;
+        y = (ofGetHeight() - script.getHeight())/2;
+        if( x<0 ) x=0;
+        if( y<0) y=0;        
+    }else{
+        x = (ofGetHeight() - script.getWidth())/2;
+        y = (ofGetWidth() - script.getHeight())/2;
+        if( x<0 ) x=0;
+        if( y<0) y=0;        
+        ofTranslate( ofGetWidth(), 0 );
+        ofRotateDeg( 90 );
+    }
+
     script.draw( x, y );
     
     if(bShowFrameRate){
@@ -94,13 +113,27 @@ int main( int argc, char *argv[] ){
     if( argc>1 ){		
 
         std::string path = std::string( argv[1] );
+        
+        if( ! ofFilePath::isAbsolute( path )){
+            path = ofFilePath::getCurrentWorkingDirectory() + "/" + path;
+        }
+        
         std::string ext = ofFilePath::getFileExt( path );
         
-        if( ext == "lua" ){
-
-            if( ! ofFilePath::isAbsolute( path )){
-                path = ofFilePath::getCurrentWorkingDirectory() + "/" + path;
+        bool found_main = false;
+        
+        if( ext!="lua" ){
+            path = ofFilePath::removeTrailingSlash( path );
+            path += "/main.lua";
+            ofFile file( path );
+            if( file.exists() ){
+                found_main = true;
+                std::cout<<"[ pixelscript ] found main.lua in given folder\n";
             }
+        }
+        
+        if( ext == "lua" || found_main ){
+
             std::string folder = ofFilePath::getEnclosingDirectory(path);
             
             // it's needed for relative shaders 
@@ -129,16 +162,17 @@ int main( int argc, char *argv[] ){
             settings.resizable = true;
     #endif
             
-            int width = 800;
+            int width = 480;
             int height = 480;
+            mainApp->bRotate = false;
             
             for( int i=1; i<argc; ++i ){
                 std::string cmd = std::string( argv[i] );
-                
+    #ifdef __ARM_ARCH
                 if( cmd == "--no-decoration" || cmd == "-nd" ){
                     settings.decorated = false;   
                 }
-                
+    #endif
                 if( cmd == "--width" || cmd == "-w" ){
                     if( argc < i+1 ){
                         width = std::stoi( argv[i+1] );
@@ -149,6 +183,16 @@ int main( int argc, char *argv[] ){
                     if( argc < i+1 ){
                         height = std::stoi( argv[i+1] );
                     }
+                }
+                
+                if( cmd == "--height" || cmd == "-h" ){
+                    if( argc < i+1 ){
+                        height = std::stoi( argv[i+1] );
+                    }
+                }
+                
+                if( cmd == "--rotate" || cmd == "-r" ){
+                    mainApp->bRotate = true;
                 }
             }
                 

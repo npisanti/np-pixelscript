@@ -8,8 +8,10 @@
 namespace px {
 
     void resources( np::pixelscript::Buffer & resource );
+    void setRotated( bool rotate );
     
     void size( int w, int h );
+    
     void framerate( int value );
     void blendmode( int value );
     
@@ -18,6 +20,10 @@ namespace px {
     
     void clear();
     void background( int r, int g, int b, int a );
+    void background( int r, int g, int b );
+    void background( int gray, int a );
+    void background( int gray );
+    
     void fade( int speed );
 
     void color( int r, int g, int b, int a );

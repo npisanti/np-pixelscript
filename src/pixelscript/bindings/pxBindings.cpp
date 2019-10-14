@@ -2705,6 +2705,9 @@ static int _wrap_resources(lua_State* L) { int SWIG_arg = 0; np::pixelscript::Bu
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_np__pixelscript__Buffer,0))){
     SWIG_fail_ptr("resources",1,SWIGTYPE_p_np__pixelscript__Buffer); }  px::resources(*arg1); return SWIG_arg; if(0) SWIG_fail;
   fail: lua_error(L); return SWIG_arg; }
+static int _wrap_setRotated(lua_State* L) { int SWIG_arg = 0; bool arg1 ; SWIG_check_num_args("px::setRotated",1,1)
+  if(!lua_isboolean(L,1)) SWIG_fail_arg("px::setRotated",1,"bool"); arg1 = (lua_toboolean(L, 1)!=0); px::setRotated(arg1);
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_size(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; SWIG_check_num_args("px::size",2,2)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("px::size",1,"int"); if(!lua_isnumber(L,2)) SWIG_fail_arg("px::size",2,"int");
   arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); px::size(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
@@ -2721,13 +2724,33 @@ static int _wrap_finish(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("p
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_clear(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("px::clear",0,0) px::clear(); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_background(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int arg3 ; int arg4 ;
+static int _wrap_background__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int arg3 ; int arg4 ;
   SWIG_check_num_args("px::background",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("px::background",1,"int");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("px::background",2,"int");
   if(!lua_isnumber(L,3)) SWIG_fail_arg("px::background",3,"int");
   if(!lua_isnumber(L,4)) SWIG_fail_arg("px::background",4,"int"); arg1 = (int)lua_tonumber(L, 1);
   arg2 = (int)lua_tonumber(L, 2); arg3 = (int)lua_tonumber(L, 3); arg4 = (int)lua_tonumber(L, 4);
   px::background(arg1,arg2,arg3,arg4); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_background__SWIG_1(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int arg3 ;
+  SWIG_check_num_args("px::background",3,3) if(!lua_isnumber(L,1)) SWIG_fail_arg("px::background",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("px::background",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("px::background",3,"int"); arg1 = (int)lua_tonumber(L, 1);
+  arg2 = (int)lua_tonumber(L, 2); arg3 = (int)lua_tonumber(L, 3); px::background(arg1,arg2,arg3); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_background__SWIG_2(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ;
+  SWIG_check_num_args("px::background",2,2) if(!lua_isnumber(L,1)) SWIG_fail_arg("px::background",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("px::background",2,"int"); arg1 = (int)lua_tonumber(L, 1);
+  arg2 = (int)lua_tonumber(L, 2); px::background(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
+  return SWIG_arg; }
+static int _wrap_background__SWIG_3(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("px::background",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("px::background",1,"int"); arg1 = (int)lua_tonumber(L, 1); px::background(arg1);
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_background(lua_State* L) { int argc; int argv[5]={ 1,2,3,4,5} ; argc = lua_gettop(L); if (argc == 1) {
+    return _wrap_background__SWIG_3(L);}  if (argc == 2) { return _wrap_background__SWIG_2(L);}  if (argc == 3) {
+    return _wrap_background__SWIG_1(L);}  if (argc == 4) { return _wrap_background__SWIG_0(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'background'\n" "  Possible C/C++ prototypes are:\n"
+  "    px::background(int,int,int,int)\n" "    px::background(int,int,int)\n" "    px::background(int,int)\n"
+  "    px::background(int)\n"); lua_error(L);return 0; }
 static int _wrap_fade(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("px::fade",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("px::fade",1,"int"); arg1 = (int)lua_tonumber(L, 1); px::fade(arg1); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
@@ -2954,6 +2977,7 @@ static swig_lua_const_info swig_SwigModule_constants[]= {
 };
 static swig_lua_method swig_SwigModule_methods[]= {
     { "resources", _wrap_resources},
+    { "setRotated", _wrap_setRotated},
     { "size", _wrap_size},
     { "framerate", _wrap_framerate},
     { "blendmode", _wrap_blendmode},
