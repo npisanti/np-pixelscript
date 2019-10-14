@@ -2675,27 +2675,29 @@ SWIG_Lua_dostring(lua_State *L, const char *str) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_np__pixelscript__Buffer swig_types[0]
-#define SWIGTYPE_p_std__vectorT_np__pixelscript__Shader_t swig_types[1]
-static swig_type_info *swig_types[3];
-static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
+#define SWIGTYPE_p_ofxOscReceiver swig_types[0]
+#define SWIGTYPE_p_ofxOscSender swig_types[1]
+#define SWIGTYPE_p_std__string swig_types[2]
+#define SWIGTYPE_p_std__vectorT_float_t swig_types[3]
+static swig_type_info *swig_types[5];
+static swig_module_info swig_module = {swig_types, 4, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
 /* -------- TYPES TABLE (END) -------- */
 
-#define SWIG_name      "frag"
-#define SWIG_init      luaopen_frag
-#define SWIG_init_user luaopen_frag_user
+#define SWIG_name      "osc"
+#define SWIG_init      luaopen_osc
+#define SWIG_init_user luaopen_osc_user
 
-#define SWIG_LUACODE   luaopen_frag_luacode
+#define SWIG_LUACODE   luaopen_osc_luacode
 
 namespace swig {
 typedef struct{} LANGUAGE_OBJ;
 }
 
 
-#include "frag.h"
+#include "osc.h"
 
 
 SWIGINTERN int SWIG_lua_isnilstring(lua_State *L, int idx) {
@@ -2708,65 +2710,39 @@ SWIGINTERN int SWIG_lua_isnilstring(lua_State *L, int idx) {
 #ifdef __cplusplus
 extern "C" {
 #endif
-static int _wrap_resources(lua_State* L) { int SWIG_arg = 0; np::pixelscript::Buffer *arg1 = 0 ;
-  std::vector< np::pixelscript::Shader > *arg2 = 0 ; float arg3 ; SWIG_check_num_args("frag::resources",3,3)
-  if(!lua_isuserdata(L,1)) SWIG_fail_arg("frag::resources",1,"np::pixelscript::Buffer &");
-  if(!lua_isuserdata(L,2)) SWIG_fail_arg("frag::resources",2,"std::vector< np::pixelscript::Shader > &");
-  if(!lua_isnumber(L,3)) SWIG_fail_arg("frag::resources",3,"float");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_np__pixelscript__Buffer,0))){
-    SWIG_fail_ptr("resources",1,SWIGTYPE_p_np__pixelscript__Buffer); } 
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__vectorT_np__pixelscript__Shader_t,0))){
-    SWIG_fail_ptr("resources",2,SWIGTYPE_p_std__vectorT_np__pixelscript__Shader_t); }  arg3 = (float)lua_tonumber(L, 3);
-  frag::resources(*arg1,*arg2,arg3); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_load(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; char *arg2 = (char *) 0 ;
-  SWIG_check_num_args("frag::load",2,2) if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("frag::load",1,"char const *");
-  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("frag::load",2,"char const *"); arg1 = (char *)lua_tostring(L, 1);
-  arg2 = (char *)lua_tostring(L, 2); frag::load((char const *)arg1,(char const *)arg2); return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_apply(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; SWIG_check_num_args("frag::apply",1,1)
-  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("frag::apply",1,"char const *"); arg1 = (char *)lua_tostring(L, 1);
-  frag::apply((char const *)arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_begin(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; SWIG_check_num_args("frag::begin",1,1)
-  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("frag::begin",1,"char const *"); arg1 = (char *)lua_tostring(L, 1);
-  frag::begin((char const *)arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_uniform__SWIG_0(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; float arg2 ;
-  SWIG_check_num_args("frag::uniform",2,2) if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("frag::uniform",1,"char const *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("frag::uniform",2,"float"); arg1 = (char *)lua_tostring(L, 1);
-  arg2 = (float)lua_tonumber(L, 2); frag::uniform((char const *)arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_uniform__SWIG_1(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; float arg2 ; float arg3 ;
-  SWIG_check_num_args("frag::uniform",3,3) if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("frag::uniform",1,"char const *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("frag::uniform",2,"float");
-  if(!lua_isnumber(L,3)) SWIG_fail_arg("frag::uniform",3,"float"); arg1 = (char *)lua_tostring(L, 1);
-  arg2 = (float)lua_tonumber(L, 2); arg3 = (float)lua_tonumber(L, 3); frag::uniform((char const *)arg1,arg2,arg3);
+static int _wrap_setMessage(lua_State* L) { int SWIG_arg = 0; std::string arg1 ; std::vector< float > arg2 ;
+  std::string *argp1 ; std::vector< float > *argp2 ; SWIG_check_num_args("osc::setMessage",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("osc::setMessage",1,"std::string");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("osc::setMessage",2,"std::vector< float >");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&argp1,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("setMessage",1,SWIGTYPE_p_std__string); }  arg1 = *argp1;
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_std__vectorT_float_t,0))){
+    SWIG_fail_ptr("setMessage",2,SWIGTYPE_p_std__vectorT_float_t); }  arg2 = *argp2; osc::setMessage(arg1,arg2);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_uniform__SWIG_2(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; float arg2 ; float arg3 ;
-  float arg4 ; SWIG_check_num_args("frag::uniform",4,4)
-  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("frag::uniform",1,"char const *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("frag::uniform",2,"float");
-  if(!lua_isnumber(L,3)) SWIG_fail_arg("frag::uniform",3,"float");
-  if(!lua_isnumber(L,4)) SWIG_fail_arg("frag::uniform",4,"float"); arg1 = (char *)lua_tostring(L, 1);
-  arg2 = (float)lua_tonumber(L, 2); arg3 = (float)lua_tonumber(L, 3); arg4 = (float)lua_tonumber(L, 4);
-  frag::uniform((char const *)arg1,arg2,arg3,arg4); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_uniform__SWIG_3(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; float arg2 ; float arg3 ;
-  float arg4 ; float arg5 ; SWIG_check_num_args("frag::uniform",5,5)
-  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("frag::uniform",1,"char const *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("frag::uniform",2,"float");
-  if(!lua_isnumber(L,3)) SWIG_fail_arg("frag::uniform",3,"float");
-  if(!lua_isnumber(L,4)) SWIG_fail_arg("frag::uniform",4,"float");
-  if(!lua_isnumber(L,5)) SWIG_fail_arg("frag::uniform",5,"float"); arg1 = (char *)lua_tostring(L, 1);
-  arg2 = (float)lua_tonumber(L, 2); arg3 = (float)lua_tonumber(L, 3); arg4 = (float)lua_tonumber(L, 4);
-  arg5 = (float)lua_tonumber(L, 5); frag::uniform((char const *)arg1,arg2,arg3,arg4,arg5); return SWIG_arg; if(0) SWIG_fail;
+static int _wrap_resources(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = 0 ; ofxOscSender *arg2 = 0 ;
+  SWIG_check_num_args("osc::resources",2,2) if(!lua_isuserdata(L,1)) SWIG_fail_arg("osc::resources",1,"ofxOscReceiver &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("osc::resources",2,"ofxOscSender &");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscReceiver,0))){
+    SWIG_fail_ptr("resources",1,SWIGTYPE_p_ofxOscReceiver); } 
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_ofxOscSender,0))){
+    SWIG_fail_ptr("resources",2,SWIGTYPE_p_ofxOscSender); }  osc::resources(*arg1,*arg2); return SWIG_arg; if(0) SWIG_fail;
   fail: lua_error(L); return SWIG_arg; }
-static int _wrap_uniform(lua_State* L) { int argc; int argv[6]={ 1,2,3,4,5,6} ; argc = lua_gettop(L); if (argc == 2) {
-    return _wrap_uniform__SWIG_0(L);}  if (argc == 3) { return _wrap_uniform__SWIG_1(L);}  if (argc == 4) {
-    return _wrap_uniform__SWIG_2(L);}  if (argc == 5) { return _wrap_uniform__SWIG_3(L);} 
-  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'uniform'\n" "  Possible C/C++ prototypes are:\n"
-  "    frag::uniform(char const *,float)\n" "    frag::uniform(char const *,float,float)\n"
-  "    frag::uniform(char const *,float,float,float)\n" "    frag::uniform(char const *,float,float,float,float)\n");
-  lua_error(L);return 0; }
-static int _wrap_finish(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("frag::finish",0,0) frag::finish();
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_setup_receiver(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("osc::setup_receiver",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("osc::setup_receiver",1,"int"); arg1 = (int)lua_tonumber(L, 1);
+  osc::setup_receiver(arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_setup_sender(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; int arg2 ;
+  SWIG_check_num_args("osc::setup_sender",2,2)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("osc::setup_sender",1,"char const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("osc::setup_sender",2,"int"); arg1 = (char *)lua_tostring(L, 1);
+  arg2 = (int)lua_tonumber(L, 2); osc::setup_sender((char const *)arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_address(lua_State* L) { int SWIG_arg = 0; char *result = 0 ; SWIG_check_num_args("osc::address",0,0)
+  result = (char *)osc::address(); lua_pushstring(L,(const char *)result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_number(lua_State* L) { int SWIG_arg = 0; int arg1 ; double result; SWIG_check_num_args("osc::number",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("osc::number",1,"int"); arg1 = (int)lua_tonumber(L, 1);
+  result = (double)osc::number(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail;
+  fail: lua_error(L); return SWIG_arg; }
 static swig_lua_attribute swig_SwigModule_attributes[] = {
     {0,0,0}
 };
@@ -2774,12 +2750,12 @@ static swig_lua_const_info swig_SwigModule_constants[]= {
     {0,0,0,0,0,0}
 };
 static swig_lua_method swig_SwigModule_methods[]= {
+    { "setMessage", _wrap_setMessage},
     { "resources", _wrap_resources},
-    { "load", _wrap_load},
-    { "apply", _wrap_apply},
-    { "begin", _wrap_begin},
-    { "uniform", _wrap_uniform},
-    { "finish", _wrap_finish},
+    { "setup_receiver", _wrap_setup_receiver},
+    { "setup_sender", _wrap_setup_sender},
+    { "address", _wrap_address},
+    { "number", _wrap_number},
     {0,0}
 };
 static swig_lua_class* swig_SwigModule_classes[]= {
@@ -2790,7 +2766,7 @@ static swig_lua_namespace* swig_SwigModule_namespaces[] = {
 };
 
 static swig_lua_namespace swig_SwigModule = {
-    "frag",
+    "osc",
     swig_SwigModule_methods,
     swig_SwigModule_attributes,
     swig_SwigModule_constants,
@@ -2803,20 +2779,28 @@ static swig_lua_namespace swig_SwigModule = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p_np__pixelscript__Buffer = {"_p_np__pixelscript__Buffer", "np::pixelscript::Buffer *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__vectorT_np__pixelscript__Shader_t = {"_p_std__vectorT_np__pixelscript__Shader_t", "std::vector< np::pixelscript::Shader > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_ofxOscReceiver = {"_p_ofxOscReceiver", "ofxOscReceiver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_ofxOscSender = {"_p_ofxOscSender", "ofxOscSender *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_float_t = {"_p_std__vectorT_float_t", "std::vector< float > *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_np__pixelscript__Buffer,
-  &_swigt__p_std__vectorT_np__pixelscript__Shader_t,
+  &_swigt__p_ofxOscReceiver,
+  &_swigt__p_ofxOscSender,
+  &_swigt__p_std__string,
+  &_swigt__p_std__vectorT_float_t,
 };
 
-static swig_cast_info _swigc__p_np__pixelscript__Buffer[] = {  {&_swigt__p_np__pixelscript__Buffer, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_np__pixelscript__Shader_t[] = {  {&_swigt__p_std__vectorT_np__pixelscript__Shader_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ofxOscReceiver[] = {  {&_swigt__p_ofxOscReceiver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ofxOscSender[] = {  {&_swigt__p_ofxOscSender, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_float_t[] = {  {&_swigt__p_std__vectorT_float_t, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_np__pixelscript__Buffer,
-  _swigc__p_std__vectorT_np__pixelscript__Shader_t,
+  _swigc__p_ofxOscReceiver,
+  _swigc__p_ofxOscSender,
+  _swigc__p_std__string,
+  _swigc__p_std__vectorT_float_t,
 };
 
 

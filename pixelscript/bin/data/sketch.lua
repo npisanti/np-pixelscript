@@ -2,17 +2,19 @@
 ----------------------------------------------------
 function setup()
     
-    px.size( 480, 480 )
+    osc.setup_receiver( 1042 )
     
     font.load( "/usr/share/fonts/truetype/TerminusTTF-4.46.0.ttf", 9)
     
     png.load( "triangles", "/home/nicola/resources/ink/triangles" )
 
     -- paths are relative to the lua script path 
+    --frag.load( "invert", "invert.frag" ) 
     frag.load( "invert", "invert.frag" ) 
     
     memo = 0    
 
+    px.size( 480, 480 ) -- this must go last    
 end
 
 ----------------------------------------------------
@@ -61,19 +63,18 @@ function draw()
     local now = lfo.tick( sync )
     if now ~= memo then 
         memo = now;
-        print( "trigger "..now )
+        --print( "trigger "..now )
     end
     
     textcount = "now is "..now
     font.draw( textcount, 50 , 250 )
     
     px.finish()
-
-    frag.apply( "invert" )
     
+    frag.apply( "invert" )
 end
 
 ----------------------------------------------------
-function exit()
-
+function osc_received()
+    print ( "osc received on address"..osc.address()  )
 end

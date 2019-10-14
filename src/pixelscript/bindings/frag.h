@@ -19,5 +19,5 @@ namespace frag{
     void uniform( const char * name, float x, float y );
     void uniform( const char * name, float x, float y, float z );
     void uniform( const char * name, float x, float y, float z, float w );
-    void finish( const char * name );
+    void finish();
 }

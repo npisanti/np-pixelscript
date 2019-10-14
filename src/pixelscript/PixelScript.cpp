@@ -5,6 +5,7 @@
 #include "bindings/font.h"
 #include "bindings/lfo.h"
 #include "bindings/frag.h"
+#include "bindings/osc.h"
 
 extern "C" {
 	int luaopen_px(lua_State* L);
@@ -12,12 +13,13 @@ extern "C" {
     int luaopen_font(lua_State* L);
     int luaopen_png(lua_State* L);
     int luaopen_frag(lua_State* L);
+    int luaopen_osc(lua_State* L);
 }
 
 np::PixelScript::PixelScript(){
     loaded = false;
 
-	script.addListener(this);
+	lua.addListener(this);
     shaders.reserve( 6 );
     
     before = 0.0f;
@@ -28,14 +30,17 @@ np::PixelScript::PixelScript(){
     images.emplace_back();
     images.back().folder.resize(1);
     
+    
+    oscNumbers.reserve( 16 );
+    
     png::init();
 }
 
 np::PixelScript::~PixelScript(){
     if(loaded){
-        script.scriptExit();
+        lua.scriptExit();
     }    
-    script.clear();
+    lua.clear();
 }
 
 void np::PixelScript::allocate( int w, int h ){
@@ -44,20 +49,22 @@ void np::PixelScript::allocate( int w, int h ){
 
 void np::PixelScript::reload(){
     if(loaded){
-        script.scriptExit();
+        lua.scriptExit();
     }
-    script.init(true);
-    luaopen_px(script); 
-    luaopen_lfo(script); 
-    luaopen_font(script); 
-    luaopen_png(script); 
-    luaopen_frag(script); 
-    px::resources( buffer );
+    lua.init(true);
+    luaopen_px(lua); 
+    luaopen_lfo(lua); 
+    luaopen_font(lua); 
+    luaopen_png(lua); 
+    luaopen_frag(lua); 
+    luaopen_osc(lua); 
     font::resources( font );
     png::resources( images );
     frag::resources( buffer, shaders, 0.0f );
-    script.doScript( filepath, true );
-    script.scriptSetup();
+    osc::resources( receiver, sender );
+    px::resources( buffer );
+    lua.doScript( filepath, true );
+    lua.scriptSetup();
     loaded = true;
 }
     
@@ -68,13 +75,22 @@ void np::PixelScript::update(){
     before = now;
 
     lfo::setPlayHead( clock );
-    px::resources( buffer );
+
     font::resources( font );
     png::resources( images );
     frag::resources( buffer, shaders, clock );
-    
-    script.scriptUpdate();
-    script.scriptDraw();
+    osc::resources( receiver, sender );
+    px::resources( buffer );
+
+    while(receiver.hasWaitingMessages()) {
+        ofxOscMessage message;
+        if( receiver.getNextMessage(message) ){
+            oscReceived(message);
+        }
+    }
+
+    lua.scriptUpdate();
+    lua.scriptDraw();
 }
 
 void np::PixelScript::draw( int x, int y, int w, int h ){
@@ -82,6 +98,7 @@ void np::PixelScript::draw( int x, int y, int w, int h ){
 }
 
 void np::PixelScript::draw( int x, int y ){
+    ofSetColor(255);
     buffer.draw( x, y );
 }
 
@@ -91,4 +108,32 @@ void np::PixelScript::errorReceived(std::string& msg) {
 
 void  np::PixelScript::setTime( float value ){
     clock = value;
+}
+
+void np::PixelScript::oscReceived(const ofxOscMessage& message) {
+	if(!lua.isValid() || !lua.isFunction("oscReceived")) {
+		return;
+	}
+    
+    // parse message here
+    oscNumbers.resize( message.getNumArgs() );
+    
+    for( size_t i=0; i<oscNumbers.size(); ++i ){
+        double val = 0.0f;
+        if(message.getArgType(i) == OFXOSC_TYPE_FLOAT){
+            val = message.getArgAsFloat(i);
+        }
+        else if(message.getArgType(i) == OFXOSC_TYPE_INT32){
+            val = message.getArgAsInt32(i);
+        }
+        oscNumbers[i] = val;
+    }
+    
+    osc::setMessage( message.getAddress(), oscNumbers );
+    
+	lua_getglobal(lua, "oscReceived");
+	if(lua_pcall(lua, 1, 0, 0) != 0) {
+		std::string line = "Error running oscReceived(): " + (std::string) lua_tostring(lua, -1);
+		lua.errorOccurred(line);
+	}
 }

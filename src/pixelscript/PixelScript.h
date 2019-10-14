@@ -8,6 +8,7 @@
 #include "bindings/png.h"
 #include "Buffer.h"
 #include "Shader.h"
+#include "ofxOsc.h"
 
 namespace np{ 
     
@@ -26,20 +27,27 @@ public:
     
     void setTime( float value );
     
-    void variable( std::string name, double value ){ script.setNumber( name, (lua_Number) value ); }
+    void variable( std::string name, double value ){ lua.setNumber( name, (lua_Number) value ); }
    
-    void variable( std::string name, bool value ){ script.setBool( name, value ); }
+    void variable( std::string name, bool value ){ lua.setBool( name, value ); }
 
-    ofxLua script;    
+    ofxLua lua;    
 
     ofParameter<float> speed;
     
     int getWidth() const { return buffer.getWidth(); };
     int getHeight() const { return buffer.getHeight(); };
     
+    void oscReceived(const ofxOscMessage& message);
+
 private:
     
     ofTrueTypeFont font;
+    
+    ofxOscSender sender;
+    ofxOscReceiver receiver;
+
+    std::vector<float> oscNumbers;
 
     std::vector<png::Pair> images;
     std::vector<np::pixelscript::Shader> shaders;

@@ -26,16 +26,15 @@ np::pixelscript::Shader::Shader(){
     vertexSrc  << "\tgl_Position = ftransform();\n";
     vertexSrc  << "}\n";
 #endif
-
+    if( bDisableARB ){
+        ofDisableArbTex();
+        ofLogNotice()<<"[pixelscript] disabling ARB textures for shaders";
+        bDisableARB = false;
+    } 
 }
 
 void np::pixelscript::Shader::reload() {
     if( filepath!="" ){
-        if( bDisableARB ){
-            ofDisableArbTex();
-            ofLogNotice()<<"[pixelscript] disabling ARB textures for shaders";
-            bDisableARB = false;
-        } 
         shader.setupShaderFromSource( GL_VERTEX_SHADER, vertexSrc.str() );
         shader.setupShaderFromFile( GL_FRAGMENT_SHADER, filepath );
         shader.bindDefaults();

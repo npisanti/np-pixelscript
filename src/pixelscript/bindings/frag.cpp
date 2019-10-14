@@ -17,7 +17,12 @@ void resources( np::pixelscript::Buffer & buff, std::vector<np::pixelscript::Sha
 void load( const char * name, const char * path ){
     for(size_t i=0; i<shaders->size(); ++i ){            
         if( shaders->at(i).name.compare( name )==0 ){
-            if( shaders->at(i).getPath().compare( path ) != 0 ){
+            std::string filepath = path;
+            if( ! ofFilePath::isAbsolute( filepath )){
+                filepath = ofFilePath::getCurrentWorkingDirectory() + "/" + filepath;
+            }
+            
+            if( shaders->at(i).getPath() != filepath ){
                 std::cout<<"[pixelscript] "<<name<<" name already taken by another shader!\n";
                 std::cout<<"frag path is "<<shaders->at(i).getPath()<<"\n";
                 std::cout<<"load path is "<<path<<"\n";
@@ -39,6 +44,7 @@ void apply( const char * name ){
     for(size_t i=0; i<shaders->size(); ++i ){
 
         if( shaders->at(i).name.compare(name) == 0 ){
+            
             current = &(shaders->at(i));
 
             buffer->swap();
@@ -101,7 +107,7 @@ void begin( const char * name ){
     std::cout<<"[pixelscript] "<<name<<" shader not loaded used in frag.begin(), brace yourself for frag.finish() errors\n";
 }
 
-void finish( const char * name ){
+void finish(){
     ofSetColor(255, 255, 255, 255);
     ofFill();
     ofDrawRectangle(0, 0, buffer->getWidth(), buffer->getHeight() );

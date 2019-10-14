@@ -2,6 +2,7 @@
 #include "ofMain.h"
 
 #include "np-pixelscript.h"
+#include "ofxOsc.h"
 
 // macro for chdir() as Windows uses a protected variant
 #ifdef TARGET_WIN32
@@ -19,20 +20,22 @@ public:
 bool bShowFrameRate;
 np::PixelScript script;
 std::string path;
+ofxOscReceiver receiver;
 
 //--------------------------------------------------------------
 void setup(){
     
-    ofSetWindowTitle( ofFilePath::getFileName(path) );
+    ofSetWindowTitle( ":x:" );
     
     ofBackground( 0 );
     bShowFrameRate = false;
     
-    script.load( path );
+    script.load( path );    
 }
 
 //--------------------------------------------------------------
 void update(){
+    
     script.update();
 }
 
@@ -48,7 +51,7 @@ void draw(){
     
     if(bShowFrameRate){
         std::string info = "fps = ";
-        info += ofGetFrameRate();
+        info += ofToString(ofGetFrameRate());
         ofSetColor(255);
         ofDrawBitmapString( info, 20, 20 );
         ofSetColor(0);
@@ -65,15 +68,8 @@ void exit(){
 void keyPressed(int key){
     switch( key ){    
         case 'f': bShowFrameRate = !bShowFrameRate; break;
-        
-        case '1':  
-        
-        break;
-        
-        case '2':  
-        
-        break;
     }
+    script.lua.scriptKeyPressed( key );
 }
 
 //--------------------------------------------------------------
@@ -132,7 +128,31 @@ int main( int argc, char *argv[] ){
             ofGLFWWindowSettings settings;
             settings.resizable = true;
     #endif
-            settings.setSize( 480, 480 );     
+            
+            int width = 800;
+            int height = 480;
+            
+            for( int i=1; i<argc; ++i ){
+                std::string cmd = std::string( argv[i] );
+                
+                if( cmd == "--no-decoration" || cmd == "-nd" ){
+                    settings.decorated = false;   
+                }
+                
+                if( cmd == "--width" || cmd == "-w" ){
+                    if( argc < i+1 ){
+                        width = std::stoi( argv[i+1] );
+                    }
+                }
+                
+                if( cmd == "--height" || cmd == "-h" ){
+                    if( argc < i+1 ){
+                        height = std::stoi( argv[i+1] );
+                    }
+                }
+            }
+                
+            settings.setSize( width, height );     
             shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
                     
             ofRunApp(mainWindow, mainApp);

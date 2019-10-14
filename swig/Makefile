@@ -21,7 +21,7 @@ SWIG_FLAGS = -O -small
 OF_HEADERS = ../../../../libs/openFrameworks
 
 # path to addons
-ADDON_DIR = ../../../../addons
+ADDON_DIR = ../../../addons
 
 # C & C++ flags
 CFLAGS = -I$(OF_HEADERS) -I$(ADDON_DIR) -I$(DEST_DIR) -DSWIG_NOINCLUDE
@@ -31,9 +31,9 @@ ifeq ($(ATTRIBUTES), true)
 	CFLAGS += -DATTRIBUTES
 endif
 
-.PHONY: all bindings symbols clean px-prepare px lfo font png frag
+.PHONY: all bindings symbols clean px-prepare px lfo font png frag osc
 
-all: px lfo font png frag
+all: px lfo font png frag osc
 
 # generates bindings
 bindings:
@@ -85,3 +85,10 @@ frag-prepare:
 	$(eval NAME := fragBindings)
 
 frag: frag-prepare bindings
+
+# osc bindings
+osc-prepare:
+	$(eval TARGET := osc)
+	$(eval NAME := oscBindings)
+
+osc: osc-prepare bindings
