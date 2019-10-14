@@ -30,6 +30,7 @@ void setup(){
     ofSetWindowTitle( ":x:" );
     
     ofHideCursor();
+    ofSetBackgroundAuto( true );
     
     ofBackground( 0 );
     bShowFrameRate = false;

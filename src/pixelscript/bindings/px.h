@@ -10,15 +10,22 @@ namespace px {
     void resources( np::pixelscript::Buffer & resource );
     void setRotated( bool rotate );
     
-    void size( int w, int h );
+    void canvas( int w, int h, int layers = 1 );
     
     void framerate( int value );
     void blendmode( int value );
+    
+    void layer( int l );
     
     void begin();
     void finish();
     
     void clear();
+    void clear( int r, int g, int b, int a );
+    void clear( int r, int g, int b );
+    void clear( int gray, int a );
+    void clear( int gray );
+    
     void background( int r, int g, int b, int a );
     void background( int r, int g, int b );
     void background( int gray, int a );

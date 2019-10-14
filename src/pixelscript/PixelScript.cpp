@@ -43,10 +43,6 @@ np::PixelScript::~PixelScript(){
     lua.clear();
 }
 
-void np::PixelScript::allocate( int w, int h ){
-    buffer.allocate( w, h );
-}
-
 void np::PixelScript::reload(){
     if(loaded){
         lua.scriptExit();

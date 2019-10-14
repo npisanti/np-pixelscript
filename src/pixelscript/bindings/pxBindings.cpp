@@ -2708,22 +2708,58 @@ static int _wrap_resources(lua_State* L) { int SWIG_arg = 0; np::pixelscript::Bu
 static int _wrap_setRotated(lua_State* L) { int SWIG_arg = 0; bool arg1 ; SWIG_check_num_args("px::setRotated",1,1)
   if(!lua_isboolean(L,1)) SWIG_fail_arg("px::setRotated",1,"bool"); arg1 = (lua_toboolean(L, 1)!=0); px::setRotated(arg1);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_size(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; SWIG_check_num_args("px::size",2,2)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("px::size",1,"int"); if(!lua_isnumber(L,2)) SWIG_fail_arg("px::size",2,"int");
-  arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); px::size(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
+static int _wrap_canvas__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int arg3 ;
+  SWIG_check_num_args("px::canvas",3,3) if(!lua_isnumber(L,1)) SWIG_fail_arg("px::canvas",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("px::canvas",2,"int"); if(!lua_isnumber(L,3)) SWIG_fail_arg("px::canvas",3,"int");
+  arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); arg3 = (int)lua_tonumber(L, 3); px::canvas(arg1,arg2,arg3);
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_canvas__SWIG_1(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; SWIG_check_num_args("px::canvas",2,2)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("px::canvas",1,"int"); if(!lua_isnumber(L,2)) SWIG_fail_arg("px::canvas",2,"int");
+  arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); px::canvas(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
+static int _wrap_canvas(lua_State* L) { int argc; int argv[4]={ 1,2,3,4} ; argc = lua_gettop(L); if (argc == 2) {
+    return _wrap_canvas__SWIG_1(L);}  if (argc == 3) { return _wrap_canvas__SWIG_0(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'canvas'\n" "  Possible C/C++ prototypes are:\n"
+  "    px::canvas(int,int,int)\n" "    px::canvas(int,int)\n"); lua_error(L);return 0; }
 static int _wrap_framerate(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("px::framerate",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("px::framerate",1,"int"); arg1 = (int)lua_tonumber(L, 1); px::framerate(arg1);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_blendmode(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("px::blendmode",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("px::blendmode",1,"int"); arg1 = (int)lua_tonumber(L, 1); px::blendmode(arg1);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_layer(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("px::layer",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("px::layer",1,"int"); arg1 = (int)lua_tonumber(L, 1); px::layer(arg1); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_begin(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("px::begin",0,0) px::begin(); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_finish(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("px::finish",0,0) px::finish(); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_clear(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("px::clear",0,0) px::clear(); return SWIG_arg;
+static int _wrap_clear__SWIG_0(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("px::clear",0,0) px::clear();
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_clear__SWIG_1(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int arg3 ; int arg4 ;
+  SWIG_check_num_args("px::clear",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("px::clear",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("px::clear",2,"int"); if(!lua_isnumber(L,3)) SWIG_fail_arg("px::clear",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("px::clear",4,"int"); arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3); arg4 = (int)lua_tonumber(L, 4); px::clear(arg1,arg2,arg3,arg4); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_clear__SWIG_2(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int arg3 ;
+  SWIG_check_num_args("px::clear",3,3) if(!lua_isnumber(L,1)) SWIG_fail_arg("px::clear",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("px::clear",2,"int"); if(!lua_isnumber(L,3)) SWIG_fail_arg("px::clear",3,"int");
+  arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); arg3 = (int)lua_tonumber(L, 3); px::clear(arg1,arg2,arg3);
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_clear__SWIG_3(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; SWIG_check_num_args("px::clear",2,2)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("px::clear",1,"int"); if(!lua_isnumber(L,2)) SWIG_fail_arg("px::clear",2,"int");
+  arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); px::clear(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_clear__SWIG_4(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("px::clear",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("px::clear",1,"int"); arg1 = (int)lua_tonumber(L, 1); px::clear(arg1); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_clear(lua_State* L) { int argc; int argv[5]={ 1,2,3,4,5} ; argc = lua_gettop(L); if (argc == 0) {
+    return _wrap_clear__SWIG_0(L);}  if (argc == 1) { return _wrap_clear__SWIG_4(L);}  if (argc == 2) {
+    return _wrap_clear__SWIG_3(L);}  if (argc == 3) { return _wrap_clear__SWIG_2(L);}  if (argc == 4) {
+    return _wrap_clear__SWIG_1(L);}  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'clear'\n"
+  "  Possible C/C++ prototypes are:\n" "    px::clear()\n" "    px::clear(int,int,int,int)\n" "    px::clear(int,int,int)\n"
+  "    px::clear(int,int)\n" "    px::clear(int)\n"); lua_error(L);return 0; }
 static int _wrap_background__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int arg3 ; int arg4 ;
   SWIG_check_num_args("px::background",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("px::background",1,"int");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("px::background",2,"int");
@@ -2978,9 +3014,10 @@ static swig_lua_const_info swig_SwigModule_constants[]= {
 static swig_lua_method swig_SwigModule_methods[]= {
     { "resources", _wrap_resources},
     { "setRotated", _wrap_setRotated},
-    { "size", _wrap_size},
+    { "canvas", _wrap_canvas},
     { "framerate", _wrap_framerate},
     { "blendmode", _wrap_blendmode},
+    { "layer", _wrap_layer},
     { "begin", _wrap_begin},
     { "finish", _wrap_finish},
     { "clear", _wrap_clear},

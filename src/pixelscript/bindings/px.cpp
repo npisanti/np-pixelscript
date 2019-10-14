@@ -17,13 +17,17 @@ namespace px {
         _rotated = rotate;
     }
     
-    void size( int w, int h ){
-        buffer->allocate( w, h );
+    void canvas( int w, int h, int layers ){
+        buffer->allocate( w, h, layers );
         if( _rotated ){
              ofSetWindowShape( h, w );
         }else{
              ofSetWindowShape( w, h );
         }
+    }
+        
+    void layer( int l ){
+        buffer->setLayer( l );
     }
     
     void framerate( int value ){
@@ -49,17 +53,32 @@ namespace px {
     }
     
     void background( int r, int g, int b, int a ){
-        ofClear( r, g, b, a );
+        ofBackground( r, g, b, a );
     }
 
     void background( int r, int g, int b ){
-        ofClear( r, g, b, 255 );
+        ofBackground( r, g, b, 255 );
     }
     void background( int gray, int a ){
-        ofClear( gray, gray, gray, a );
+        ofBackground( gray, gray, gray, a );
     }
     
     void background( int gray ){
+        ofBackground( gray, gray, gray, 255 );
+    }
+    
+    void clear( int r, int g, int b, int a ){
+        ofClear( r, g, b, a );
+    }
+
+    void clear( int r, int g, int b ){
+        ofClear( r, g, b, 255 );
+    }
+    void clear( int gray, int a ){
+        ofClear( gray, gray, gray, a );
+    }
+    
+    void clear( int gray ){
         ofClear( gray, gray, gray, 255 );
     }
 

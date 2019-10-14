@@ -17,9 +17,7 @@ class PixelScript : public FileWatcher, public ofxLuaListener {
 public:
     PixelScript();
     ~PixelScript();
-    
-    void allocate( int w, int h );
-    
+
     void update();
     
     void draw( int x, int y );
