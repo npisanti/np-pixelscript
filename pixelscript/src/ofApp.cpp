@@ -60,11 +60,6 @@ void draw(){
 }
 
 //--------------------------------------------------------------
-void exit(){
-
-}
-
-//--------------------------------------------------------------
 void keyPressed(int key){
     switch( key ){    
         case 'f': bShowFrameRate = !bShowFrameRate; break;
@@ -73,12 +68,17 @@ void keyPressed(int key){
 }
 
 //--------------------------------------------------------------
+void keyReleased(int key){
+    script.lua.scriptKeyReleased( key );
+}
+
+//--------------------------------------------------------------
+void exit(){}
+
+//--------------------------------------------------------------
 void mousePressed(int x, int y, int button){}
 void mouseDragged(int x, int y, int button){}
 void mouseReleased(int x, int y, int button){}
-
-//--------------------------------------------------------------
-void keyReleased(int key){}
 void mouseMoved(int x, int y){}
 void mouseEntered(int x, int y){}
 void mouseExited(int x, int y){}

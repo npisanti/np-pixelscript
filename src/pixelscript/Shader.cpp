@@ -28,7 +28,7 @@ np::pixelscript::Shader::Shader(){
 #endif
     if( bDisableARB ){
         ofDisableArbTex();
-        ofLogNotice()<<"[pixelscript] disabling ARB textures for shaders";
+        ofLogVerbose()<<"[pixelscript] disabling ARB textures for shaders";
         bDisableARB = false;
     } 
 }
