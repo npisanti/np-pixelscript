@@ -50,7 +50,8 @@ namespace png{
             ofDirectory dir;
             dir.listDir( path );
             dir.allowExt("png");
-
+            dir.sort();
+            
             if( dir.size() ){
                 images->back().folder.resize( dir.size() );
             }
