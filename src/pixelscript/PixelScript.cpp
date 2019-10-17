@@ -78,15 +78,15 @@ void np::PixelScript::update(){
     osc::resources( receiver, sender );
     px::resources( buffer );
 
+    lua.scriptUpdate();
+    lua.scriptDraw();
+    
     while(receiver.hasWaitingMessages()) {
         ofxOscMessage message;
         if( receiver.getNextMessage(message) ){
             oscReceived(message);
         }
     }
-
-    lua.scriptUpdate();
-    lua.scriptDraw();
 }
 
 void np::PixelScript::draw( int x, int y, int w, int h ){
@@ -107,7 +107,8 @@ void  np::PixelScript::setTime( float value ){
 }
 
 void np::PixelScript::oscReceived(const ofxOscMessage& message) {
-	if(!lua.isValid() || !lua.isFunction("oscReceived")) {
+
+	if(!lua.isValid() || !lua.isFunction("osc_received")) {
 		return;
 	}
     
@@ -127,9 +128,10 @@ void np::PixelScript::oscReceived(const ofxOscMessage& message) {
     
     osc::setMessage( message.getAddress(), oscNumbers );
     
-	lua_getglobal(lua, "oscReceived");
-	if(lua_pcall(lua, 1, 0, 0) != 0) {
-		std::string line = "Error running oscReceived(): " + (std::string) lua_tostring(lua, -1);
+	lua_getglobal(lua, "osc_received");
+	if(lua_pcall(lua, 0, 0, 0) != 0) {
+		std::string line = "Error running osc_received(): " + (std::string) lua_tostring(lua, -1);
 		lua.errorOccurred(line);
 	}
+
 }

@@ -175,19 +175,19 @@ int main( int argc, char *argv[] ){
                 }
     #endif
                 if( cmd == "--width" || cmd == "-w" ){
-                    if( argc < i+1 ){
+                    if( i+1 < argc ){
                         width = std::stoi( argv[i+1] );
                     }
                 }
                 
                 if( cmd == "--height" || cmd == "-h" ){
-                    if( argc < i+1 ){
+                    if( i+1 < argc ){
                         height = std::stoi( argv[i+1] );
                     }
                 }
                 
                 if( cmd == "--height" || cmd == "-h" ){
-                    if( argc < i+1 ){
+                    if( i+1 < argc ){
                         height = std::stoi( argv[i+1] );
                     }
                 }
