@@ -1,3 +1,16 @@
+/*====================================================================
+
+	np-pixelscript - little 2d graphics scripting playground
+  
+	Copyright (c) 2019 Nicola Pisanti <nicola@npisanti.com>
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+    
+====================================================================*/
 
 #include "PixelScript.h"
 
@@ -5,7 +18,6 @@
 #include "bindings/font.h"
 #include "bindings/lfo.h"
 #include "bindings/frag.h"
-#include "bindings/osc.h"
 
 extern "C" {
 	int luaopen_px(lua_State* L);
@@ -22,6 +34,8 @@ np::PixelScript::PixelScript(){
 	lua.addListener(this);
     shaders.reserve( 6 );
     
+    bHeadless = false;
+    usec = 100;
     before = 0.0f;
     clock = 0.0f;
     parameters.add( speed.set("speed", 1.0f, 0.0f, 2.0f) );
@@ -29,10 +43,7 @@ np::PixelScript::PixelScript(){
     images.reserve(12);
     images.emplace_back();
     images.back().folder.resize(1);
-    
-    
-    oscNumbers.reserve( 16 );
-    
+
     png::init();
 }
 
@@ -57,7 +68,7 @@ void np::PixelScript::reload(){
     font::resources( font );
     png::resources( images );
     frag::resources( buffer, shaders, 0.0f );
-    osc::resources( receiver, sender );
+    osc::resources( receiver, senders );
     px::resources( buffer );
     lua.doScript( filepath, true );
     lua.scriptSetup();
@@ -66,26 +77,35 @@ void np::PixelScript::reload(){
     
 void np::PixelScript::update(){
 
-    float now = ofGetElapsedTimef();
-    clock += (now-before) * (speed*speed*speed);
-    before = now;
+    osc::resources( receiver, senders );
 
-    lfo::setPlayHead( clock );
+    if( !bHeadless ){
+        float now = ofGetElapsedTimef();
+        clock += (now-before) * (speed*speed*speed);
+        before = now;
+        lfo::setPlayHead( clock );
 
-    font::resources( font );
-    png::resources( images );
-    frag::resources( buffer, shaders, clock );
-    osc::resources( receiver, sender );
-    px::resources( buffer );
-
+        font::resources( font );
+        png::resources( images );
+        frag::resources( buffer, shaders, clock );
+        px::resources( buffer );
+    }
+    
     lua.scriptUpdate();
-    lua.scriptDraw();
+    
+    if( !bHeadless ){
+        lua.scriptDraw();   
+    }
     
     while(receiver.hasWaitingMessages()) {
         ofxOscMessage message;
         if( receiver.getNextMessage(message) ){
             oscReceived(message);
         }
+    }
+    
+    if( bHeadless ){
+        usleep( usec );
     }
 }
 
@@ -112,21 +132,7 @@ void np::PixelScript::oscReceived(const ofxOscMessage& message) {
 		return;
 	}
     
-    // parse message here
-    oscNumbers.resize( message.getNumArgs() );
-    
-    for( size_t i=0; i<oscNumbers.size(); ++i ){
-        double val = 0.0f;
-        if(message.getArgType(i) == OFXOSC_TYPE_FLOAT){
-            val = message.getArgAsFloat(i);
-        }
-        else if(message.getArgType(i) == OFXOSC_TYPE_INT32){
-            val = message.getArgAsInt32(i);
-        }
-        oscNumbers[i] = val;
-    }
-    
-    osc::setMessage( message.getAddress(), oscNumbers );
+    osc::setMessage( message );
     
 	lua_getglobal(lua, "osc_received");
 	if(lua_pcall(lua, 0, 0, 0) != 0) {
@@ -134,4 +140,10 @@ void np::PixelScript::oscReceived(const ofxOscMessage& message) {
 		lua.errorOccurred(line);
 	}
 
+}
+
+
+void np::PixelScript::headless( bool active, int usecs ){
+    bHeadless = true;
+    usec = 100;
 }

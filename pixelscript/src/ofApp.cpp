@@ -1,7 +1,21 @@
+/*====================================================================
+
+	pixelscript - little 2d graphics scripting playground
+  
+	Copyright (c) 2019 Nicola Pisanti <nicola@npisanti.com>
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+====================================================================*/
 
 #include "ofMain.h"
 
-#include "np-pixelscript.h"
+#include "ofAppNoWindow.h"  
+
 #include "ofxOsc.h"
 
 // macro for chdir() as Windows uses a protected variant
@@ -12,17 +26,29 @@
 	#define CHDIR chdir
 #endif
 #include <errno.h>
-#include "pixelscript/bindings/px.h"
+#include "bindings/px.h"
+
+#include "PixelScript.h"
 
 class ofApp : public ofBaseApp{
 public:
+struct KeyEvent {
+    int key;
+    bool pressed;
+};
     
 // ---------- variables ----------------------------------------
 bool bShowFrameRate;
 bool bRotate;
+bool bMirror;
 np::PixelScript script;
 std::string path;
 ofxOscReceiver receiver;
+int usecs;
+int mwidth;
+int mheight;
+std::vector<KeyEvent> keyEvents;
+
 
 //--------------------------------------------------------------
 void setup(){
@@ -37,14 +63,36 @@ void setup(){
     
     px::setRotated( bRotate );
     
+    if( usecs > 0 ){
+        script.headless( true, usecs );
+        ofSetVerticalSync( false );
+    }
+    
     script.load( path );    
     
+    keyEvents.reserve(128);
+    
+    if( bRotate ){
+        ofSetWindowShape( px::height(), px::width() );
+    }else{
+        ofSetWindowShape( px::width(), px::height() );
+    }
 }
 
 //--------------------------------------------------------------
 void update(){
     
     script.update();
+    
+    // key event are executed after update so you can draw with them
+    for ( size_t i=0; i<keyEvents.size(); ++i ){
+        if( keyEvents[i].pressed){
+            script.lua.scriptKeyPressed( keyEvents[i].key );
+        }else{
+            script.lua.scriptKeyReleased( keyEvents[i].key );            
+        }
+    }
+    keyEvents.clear();
 }
 
 //--------------------------------------------------------------
@@ -80,16 +128,31 @@ void draw(){
 }
 
 //--------------------------------------------------------------
+void drawSecondWindow(ofEventArgs& args){
+    
+    int x = (mwidth - script.getWidth())/2;
+    int y = (mheight - script.getHeight())/2;
+    if( x<0 ) x=0;
+    if( y<0) y=0;        
+
+    script.draw( x, y );
+}
+//--------------------------------------------------------------
 void keyPressed(int key){
     switch( key ){    
         case 'f': bShowFrameRate = !bShowFrameRate; break;
     }
-    script.lua.scriptKeyPressed( key );
+    
+    keyEvents.emplace_back();
+    keyEvents.back().key = key;
+    keyEvents.back().pressed = true;
 }
 
 //--------------------------------------------------------------
 void keyReleased(int key){
-    script.lua.scriptKeyReleased( key );
+    keyEvents.emplace_back();
+    keyEvents.back().key = key;
+    keyEvents.back().pressed = false;
 }
 
 //--------------------------------------------------------------
@@ -152,56 +215,94 @@ int main( int argc, char *argv[] ){
                 }
             }
             
-            shared_ptr<ofApp> mainApp(new ofApp);
-            mainApp->path = path;
-    
-    #ifdef __ARM_ARCH
-            ofGLESWindowSettings settings;
-            settings.glesVersion = 2;
-    #else
-            ofGLFWWindowSettings settings;
-            settings.resizable = true;
-    #endif
-            
+            shared_ptr<ofApp> app(new ofApp);
             int width = 480;
             int height = 480;
-            mainApp->bRotate = false;
+            app->path = path;
+            app->bRotate = false;
+            app->usecs = -1;
+            app->bMirror = false;
+            bool decorated = true;
             
             for( int i=1; i<argc; ++i ){
                 std::string cmd = std::string( argv[i] );
-    #ifndef __ARM_ARCH
+
                 if( cmd == "--no-decoration" || cmd == "-nd" ){
-                    settings.decorated = false;   
+                    decorated = false;   
                 }
-    #endif
-                if( cmd == "--width" || cmd == "-w" ){
+
+                if( cmd == "--size" || cmd == "-s" ){
                     if( i+1 < argc ){
-                        width = std::stoi( argv[i+1] );
+                        // split by 'x'
+                        auto splits = ofSplitString( std::string(argv[i+1]), "x");
+                        if( splits.size()>1 ){
+                            width = std::stoi( splits[0] );
+                            height = std::stoi( splits[1] );
+                        }else{
+                            std::cout<<"[ pixelscript ] wrong argument for --size or -s, it should be a resolution delimited by x, for example 1280x720\n";
+                            return 0;
+                        }
                     }
                 }
-                
-                if( cmd == "--height" || cmd == "-h" ){
+            
+                if( cmd == "--mirror" || cmd == "-m" ){
                     if( i+1 < argc ){
-                        height = std::stoi( argv[i+1] );
+                        // split by 'x'
+                        auto splits = ofSplitString( std::string(argv[i+1]), "x");
+                        if( splits.size()>1 ){
+                            app->mwidth = std::stoi( splits[0] );
+                            app->mheight = std::stoi( splits[1] );
+                            app->bMirror = true;
+                        }else{
+                            std::cout<<"[ pixelscript ] wrong argument for --mirror or -m, it should be a resolution delimited by x, for example 1280x720\n";
+                            return 0;
+                        }
                     }
                 }
-                
-                if( cmd == "--height" || cmd == "-h" ){
-                    if( i+1 < argc ){
-                        height = std::stoi( argv[i+1] );
-                    }
-                }
-                
+            
                 if( cmd == "--rotate" || cmd == "-r" ){
-                    mainApp->bRotate = true;
+                    app->bRotate = true;
+                }
+                
+                if( cmd == "--headless" || cmd == "-x" ){
+                    if( i+1 < argc ){
+                        app->usecs = std::stoi( argv[i+1] );
+                    }
                 }
             }
-                
-            settings.setSize( width, height );     
-            shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
+                            
+            if( app->usecs > 0 ){
+                ofAppNoWindow window; 
+                ofSetupOpenGL( &window, 240, 240, OF_WINDOW);	
+                ofRunApp( app );
+            }else{
+                #ifdef __ARM_ARCH
+                ofGLESWindowSettings settings;
+                settings.glesVersion = 2;
+                #else
+                ofGLFWWindowSettings settings;
+                settings.resizable = true;
+                settings.decorated = decorated;
+                #endif
                     
-            ofRunApp(mainWindow, mainApp);
-            ofRunMainLoop();
+                settings.setSize( width, height );     
+                shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
+                         
+                if( app->bMirror ){
+                    settings.setSize( app->mwidth, app->mheight );
+                    settings.setPosition(ofVec2f(ofGetScreenWidth(), 0));
+                    settings.resizable = false;
+                    settings.decorated = false;
+                    settings.shareContextWith = mainWindow;
+                    shared_ptr<ofAppBaseWindow> secondWindow = ofCreateWindow(settings);
+                    secondWindow->setVerticalSync(false);
+                    ofAddListener(secondWindow->events().draw, app.get(), &ofApp::drawSecondWindow);
+                }
+                    
+                ofRunApp(mainWindow, app);
+                ofRunMainLoop();
+            }
+
         }else{
             ofLogError() << "[ pixelscript ] not a .lua script file, quitting\n";
         }

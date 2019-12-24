@@ -2,8 +2,6 @@
 ----------------------------------------------------
 function setup()
     
-    px.size( 480, 480 )
-    
     font.load( "/usr/share/fonts/truetype/TerminusTTF-4.46.0.ttf", 9)
     
     png.load( "triangles", "/home/nicola/resources/ink/triangles" )
@@ -12,6 +10,8 @@ function setup()
     
     memo = 0    
 
+    px.canvas( 480, 480 )
+    
 end
 
 ----------------------------------------------------

@@ -14,8 +14,7 @@ int downsample;
 void setup(){
     ofBackground( 0 );
     
-    script.load( "data/sketch.lua" );
-    script.allocate( ofGetWidth(), ofGetHeight() );
+    script.load( "bin/data/sketch.lua" );
 }
 
 //--------------------------------------------------------------
