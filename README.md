@@ -8,6 +8,7 @@ Includes different lua namespaces:
 
 - `px` for drawing shapes and lines and general control 
 - `lfo` for cyclic animations 
+- `osc` for osc input / output
 - `png` for loading and displaying folders of .png images 
 - `font` for drawing text
 - `frag` for loading and rendering fragment shaders
