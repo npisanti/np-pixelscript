@@ -35,8 +35,7 @@ public:
     void update();
     
     void draw( int x, int y );
-    void draw( int x, int y, int w, int h );
-    
+
     void setTime( float value );
     
     void variable( std::string name, double value ){ lua.setNumber( name, (lua_Number) value ); }

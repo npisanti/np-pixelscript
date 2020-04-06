@@ -109,10 +109,6 @@ void np::PixelScript::update(){
     }
 }
 
-void np::PixelScript::draw( int x, int y, int w, int h ){
-    buffer.draw( x, y, w, h ); 
-}
-
 void np::PixelScript::draw( int x, int y ){
     ofSetColor(255);
     buffer.draw( x, y );

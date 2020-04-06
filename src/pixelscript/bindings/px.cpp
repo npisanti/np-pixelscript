@@ -24,18 +24,48 @@ namespace px {
     
     void resources( np::pixelscript::Buffer & resource ){
         buffer = &resource;
+        buffer->unpipe();
     }
     
-    void setRotated( bool rotate ){
-        _rotated = rotate;
+    bool isRotated(){
+        return _rotated;
+    }
+        
+    void rotate( bool bRotate ){
+        _rotated = bRotate;
     }
     
-    void canvas( int w, int h, int layers ){
-        buffer->allocate( w, h, layers );
+    void window( int w, int h ){            
+        if( _rotated ){
+            ofSetWindowShape( h, w );
+        }else{
+            ofSetWindowShape( w, h );
+        }
+    }
+    
+    void move_window( int x, int y ){
+        ofSetWindowPosition( x, y );
+    }
+    
+    void make_layer( const char * name, int w, int h, int pixelMult ){
+        buffer->addLayer( name, w, h, pixelMult );
+    }
+    
+    void move_layer( int x, int y ){
+        buffer->moveLayer( x, y );
+    }
+
+    void canvas( int w, int h ){
+        buffer->addLayer( "default", w, h, 0 );
+        window( w, h );
     }
         
     void layer( int l ){
         buffer->setLayer( l );
+    }
+    
+    void layer( const char * name ){
+        buffer->setLayer( name );
     }
     
     void framerate( int value ){

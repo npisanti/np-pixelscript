@@ -16,35 +16,69 @@
 
 np::pixelscript::Buffer::Buffer(){
     layer = 0;
+    layers.reserve(12);
+    w = 400;
+    h = 400;
 }
 
 np::pixelscript::Buffer::Layer::Layer(){
     now = 0;
     then = 1;
+    bRender = true;
+    x = y = w = h = mw = mh = 0;
 }
     
-void np::pixelscript::Buffer::allocate( int w, int h, int numLayers ){
-    this->w = w;
-    this->h = h;
 
+void np::pixelscript::Buffer::addLayer( std::string name, int w, int h, int mult ){
+    
+    int found = -1;
+    for( size_t i=0; i<layers.size(); ++ i) {
+        if( layers[i].name == name ){
+            found = i;
+        }
+    }    
+    
+    Layer * lay = nullptr;
+    
+    if( found >= 0){
+        lay = &layers[found];
+    }else{
+        layers.emplace_back();
+        lay = &layers.back();
+    }
+    
     ofFboSettings settings;
     settings.width = w; 
     settings.height = h;
-    settings.minFilter = GL_NEAREST;
-    settings.maxFilter = GL_NEAREST;
 
-    layers.resize( numLayers );
-    
-    for ( auto & lay : layers ){
-        lay.fbos.resize(2);
-        
-        for( int i=0; i<2; ++i ){
-            lay.fbos[i].allocate( w, h );
-            lay.fbos[i].begin();
-                ofClear( 0, 0, 0, 0 );
-            lay.fbos[i].end();
-        }        
+    if( mult>=1 ){
+        lay->mult = mult;
+        settings.minFilter = GL_NEAREST;
+        settings.maxFilter = GL_NEAREST;
+    }else{
+        lay->mult = 1;
+        settings.minFilter = GL_LINEAR;
+        settings.maxFilter = GL_LINEAR;
     }
+
+    lay->name = name;
+    lay->w = w;
+    lay->h = h;
+    lay->mw = w * lay->mult;
+    lay->mh = h * lay->mult;
+    
+    lay->fbos.resize(2);
+    for( int i=0; i<2; ++i ){
+        lay->fbos[i].allocate( settings );
+        lay->fbos[i].begin();
+            ofClear( 0, 0, 0, 0 );
+        lay->fbos[i].end();
+    }   
+}
+
+void np::pixelscript::Buffer::moveLayer( int x, int y ){
+    layers[layer].x = x;
+    layers[layer].y = y;
 }
 
 void np::pixelscript::Buffer::setLayer( int  i ){
@@ -59,12 +93,27 @@ void np::pixelscript::Buffer::setLayer( int  i ){
     layer = i;
 }
 
+void np::pixelscript::Buffer::setLayer( const char * name ){
+    for( size_t i=0; i<layers.size(); ++ i) {
+        if( strcmp( layers[i].name.c_str(), name ) == 0 ){
+            layer = i;
+            return;
+        }
+    }
+    std::cout<<"[pixelscript] layer name not found, wrong name?\n";
+    return;
+}
+
 void np::pixelscript::Buffer::begin(){
     layers[layer].begin();
+    w = layers[layer].w;
+    h = layers[layer].h;
 }
 
 void np::pixelscript::Buffer::end(){
     layers[layer].end();
+    w = ofGetWidth();
+    h = ofGetHeight();
 }
 
 void np::pixelscript::Buffer::Layer::swap(){
@@ -77,16 +126,23 @@ void np::pixelscript::Buffer::swap(){
 }
 
 void np::pixelscript::Buffer::draw( int x, int y ){
+    ofPushMatrix();
+    ofTranslate( x, y );        
+        for( size_t i=0; i<layers.size(); ++i ){
+            auto & le = layers[i];
+            //if( le.bRender ){
+                le.draw();
+            //}
+        }
+    ofPopMatrix();
+}
+
+void np::pixelscript::Buffer::unpipe(){
     for( size_t i=0; i<layers.size(); ++i ){
-        layers[i].draw( x, y );
+        layers[i].bRender = true;
     }
 }
-    
-void np::pixelscript::Buffer::draw( int x, int y, int w, int h ){
-    for( size_t i=0; i<layers.size(); ++i ){
-        layers[i].draw( x, y, w, h );
-    }
-}
+
     
 const ofTexture & np::pixelscript::Buffer::getTexture() const{
     auto & la = layers[layer];

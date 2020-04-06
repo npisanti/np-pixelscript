@@ -39,7 +39,6 @@ struct KeyEvent {
     
 // ---------- variables ----------------------------------------
 bool bShowFrameRate;
-bool bRotate;
 bool bMirror;
 np::PixelScript script;
 std::string path;
@@ -61,8 +60,6 @@ void setup(){
     ofBackground( 0 );
     bShowFrameRate = false;
     
-    px::setRotated( bRotate );
-    
     if( usecs > 0 ){
         script.headless( true, usecs );
         ofSetVerticalSync( false );
@@ -71,12 +68,7 @@ void setup(){
     script.load( path );    
     
     keyEvents.reserve(128);
-    
-    if( bRotate ){
-        ofSetWindowShape( px::height(), px::width() );
-    }else{
-        ofSetWindowShape( px::width(), px::height() );
-    }
+
 }
 
 //--------------------------------------------------------------
@@ -98,24 +90,12 @@ void update(){
 //--------------------------------------------------------------
 void draw(){
     
-    int x=0;
-    int y=0;
-
-    if( !bRotate ){
-        x = (ofGetWidth() - script.getWidth())/2;
-        y = (ofGetHeight() - script.getHeight())/2;
-        if( x<0 ) x=0;
-        if( y<0) y=0;        
-    }else{
-        x = (ofGetHeight() - script.getWidth())/2;
-        y = (ofGetWidth() - script.getHeight())/2;
-        if( x<0 ) x=0;
-        if( y<0) y=0;        
+    if( px::isRotated() ){     
         ofTranslate( ofGetWidth(), 0 );
         ofRotateDeg( 90 );
     }
 
-    script.draw( x, y );
+    script.draw( 0, 0 );
     
     if(bShowFrameRate){
         std::string info = "fps = ";
@@ -129,13 +109,7 @@ void draw(){
 
 //--------------------------------------------------------------
 void drawSecondWindow(ofEventArgs& args){
-    
-    int x = (mwidth - script.getWidth())/2;
-    int y = (mheight - script.getHeight())/2;
-    if( x<0 ) x=0;
-    if( y<0) y=0;        
-
-    script.draw( x, y );
+    script.draw( 0, 0 );
 }
 //--------------------------------------------------------------
 void keyPressed(int key){
@@ -218,8 +192,9 @@ int main( int argc, char *argv[] ){
             shared_ptr<ofApp> app(new ofApp);
             int width = 480;
             int height = 480;
+            int px = -1;
+            int py = -1;
             app->path = path;
-            app->bRotate = false;
             app->usecs = -1;
             app->bMirror = false;
             bool decorated = true;
@@ -245,6 +220,20 @@ int main( int argc, char *argv[] ){
                     }
                 }
             
+                if( cmd == "--position" || cmd == "-p" ){
+                    if( i+1 < argc ){
+                        // split by 'x'
+                        auto splits = ofSplitString( std::string(argv[i+1]), ",");
+                        if( splits.size()>1 ){
+                            px = std::stoi( splits[0] );
+                            py = std::stoi( splits[1] );
+                        }else{
+                            std::cout<<"[ pixelscript ] wrong argument for --position or -p, it should be two coordinates delimited by comma, for example 300,200 \n";
+                            return 0;
+                        }
+                    }
+                }
+            
                 if( cmd == "--mirror" || cmd == "-m" ){
                     if( i+1 < argc ){
                         // split by 'x'
@@ -259,16 +248,13 @@ int main( int argc, char *argv[] ){
                         }
                     }
                 }
-            
-                if( cmd == "--rotate" || cmd == "-r" ){
-                    app->bRotate = true;
-                }
                 
                 if( cmd == "--headless" || cmd == "-x" ){
                     if( i+1 < argc ){
                         app->usecs = std::stoi( argv[i+1] );
                     }
                 }
+
             }
                             
             if( app->usecs > 0 ){
@@ -284,6 +270,10 @@ int main( int argc, char *argv[] ){
                 settings.resizable = true;
                 settings.decorated = decorated;
                 #endif
+                    
+                if( px>=0 ){
+                    settings.setPosition( ofVec2f( px, py ) );    
+                }
                     
                 settings.setSize( width, height );     
                 shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);

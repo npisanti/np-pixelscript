@@ -28,25 +28,38 @@ class Buffer{
         void end(){ fbos[now].end(); }
         void draw( int x, int y ){ fbos[now].draw( x, y ); }
         void draw( int x, int y, int w, int h ){ fbos[now].draw( x, y, w, h ); }
+        void draw(){ fbos[now].draw( x, y, mw, mh ); }
         
         std::vector<ofFbo> fbos;
         int now;
         int then;
+        int x; 
+        int y;
+        int mw;
+        int mh;
+        int w;
+        int h;
+        int mult;
+        bool bRender;
+        std::string name;
     };
 
 public:
-
     Buffer();
     
-    void allocate( int w, int h, int numLayers );
+    void addLayer( std::string name, int w, int h, int mult );
+    void moveLayer( int x, int y );
+    
+    void unpipe();
+    
     void begin();
     void end();
     void swap();
     
     void setLayer( int i );
+    void setLayer( const char * name );
     
     void draw( int x, int y );
-    void draw( int x, int y, int w, int h );
     
     const ofTexture & getTexture() const;
     
@@ -58,7 +71,6 @@ private:
     int w; 
     int h;
     std::vector<Layer> layers;
-    
 };
     
 }}
