@@ -18,6 +18,7 @@
 #include "bindings/font.h"
 #include "bindings/lfo.h"
 #include "bindings/frag.h"
+#include "bindings/cam.h"
 
 extern "C" {
 	int luaopen_px(lua_State* L);
@@ -26,6 +27,7 @@ extern "C" {
     int luaopen_png(lua_State* L);
     int luaopen_frag(lua_State* L);
     int luaopen_osc(lua_State* L);
+    int luaopen_cam(lua_State* L);
 }
 
 np::PixelScript::PixelScript(){
@@ -65,6 +67,7 @@ void np::PixelScript::reload(){
     luaopen_png(lua); 
     luaopen_frag(lua); 
     luaopen_osc(lua); 
+    luaopen_cam(lua); 
     font::resources( font );
     png::resources( images );
     frag::resources( buffer, shaders, 0.0f );
@@ -89,6 +92,7 @@ void np::PixelScript::update(){
         png::resources( images );
         frag::resources( buffer, shaders, clock );
         px::resources( buffer );
+        cam::_update();
     }
     
     lua.scriptUpdate();

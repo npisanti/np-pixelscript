@@ -27,6 +27,7 @@
 #endif
 #include <errno.h>
 #include "bindings/px.h"
+#include "bindings/cam.h"
 
 #include "PixelScript.h"
 
@@ -126,7 +127,9 @@ void keyReleased(int key){
 }
 
 //--------------------------------------------------------------
-void exit(){}
+void exit(){
+    cam::_close();
+}
 
 //--------------------------------------------------------------
 void mousePressed(int x, int y, int button){}

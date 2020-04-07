@@ -31,9 +31,9 @@ ifeq ($(ATTRIBUTES), true)
 	CFLAGS += -DATTRIBUTES
 endif
 
-.PHONY: all bindings symbols clean px-prepare px lfo font png frag osc
+.PHONY: all bindings symbols clean px-prepare px lfo font png frag osc cam
 
-all: px lfo font png frag osc
+all: px lfo font png frag osc cam
 
 # generates bindings
 bindings:
@@ -92,3 +92,10 @@ osc-prepare:
 	$(eval NAME := oscBindings)
 
 osc: osc-prepare bindings
+
+# osc bindings
+cam-prepare:
+	$(eval TARGET := cam)
+	$(eval NAME := camBindings)
+
+cam: cam-prepare bindings
