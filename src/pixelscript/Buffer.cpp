@@ -81,6 +81,33 @@ void np::pixelscript::Buffer::moveLayer( int x, int y ){
     layers[layer].y = y;
 }
 
+ofFbo & np::pixelscript::Buffer::getFbo( int i ){
+    if( i<0 ){ 
+        std::cout<<"[pixelscript] layer less than zero!\n";
+        i=0;
+    }
+    if( i>=int(layers.size()) ){
+        std::cout<<"[pixelscript] layer "<<i<<" outside allocated number!\n";
+        i=0;
+    }
+    return layers[i].fbos[layers[i].now];
+}
+
+ofFbo & np::pixelscript::Buffer::getFbo( const char * name ){
+    int found = -1;
+    for( size_t i=0; i<layers.size(); ++ i) {
+        if( strcmp( layers[i].name.c_str(), name ) == 0 ){
+            found = i;
+        }
+    }
+    if( found == -1 ){
+        std::cout<<"[pixelscript] layer name not found, wrong name?\n";
+        found = 0;
+    }
+    
+    return layers[found].fbos[layers[found].now];
+}
+
 void np::pixelscript::Buffer::setLayer( int  i ){
     if( i<0 ){ 
         std::cout<<"[pixelscript] layer less than zero!\n";
@@ -97,6 +124,54 @@ void np::pixelscript::Buffer::setLayer( const char * name ){
     for( size_t i=0; i<layers.size(); ++ i) {
         if( strcmp( layers[i].name.c_str(), name ) == 0 ){
             layer = i;
+            return;
+        }
+    }
+    std::cout<<"[pixelscript] layer name not found, wrong name?\n";
+    return;
+}
+
+void np::pixelscript::Buffer::drawLayer( int i ){
+    if( i<0 ){ 
+        std::cout<<"[pixelscript] layer less than zero!\n";
+        return;
+    }
+    if( i>=int(layers.size()) ){
+        std::cout<<"[pixelscript] layer "<<i<<" outside allocated number!\n";
+        return;
+    }
+    layers[i].draw( 0, 0 );
+}
+
+void np::pixelscript::Buffer::drawLayer( const char * name ){
+    for( size_t i=0; i<layers.size(); ++ i) {
+        if( strcmp( layers[i].name.c_str(), name ) == 0 ){
+            layers[i].draw( 0, 0 );
+            return;
+        }
+    }
+    std::cout<<"[pixelscript] layer name not found, wrong name?\n";
+    return;
+}
+
+void np::pixelscript::Buffer::pipeLayer( int i ){
+    if( i<0 ){ 
+        std::cout<<"[pixelscript] layer less than zero!\n";
+        return;
+    }
+    if( i>=int(layers.size()) ){
+        std::cout<<"[pixelscript] layer "<<i<<" outside allocated number!\n";
+        return;
+    }
+    layers[i].bRender = false;
+    layers[i].draw( 0, 0 );
+}
+
+void np::pixelscript::Buffer::pipeLayer( const char * name ){
+    for( size_t i=0; i<layers.size(); ++ i) {
+        if( strcmp( layers[i].name.c_str(), name ) == 0 ){
+            layers[i].bRender = false;
+            layers[i].draw( 0, 0 );
             return;
         }
     }
@@ -130,9 +205,9 @@ void np::pixelscript::Buffer::draw( int x, int y ){
     ofTranslate( x, y );        
         for( size_t i=0; i<layers.size(); ++i ){
             auto & le = layers[i];
-            //if( le.bRender ){
+            if( le.bRender ){
                 le.draw();
-            //}
+            }
         }
     ofPopMatrix();
 }

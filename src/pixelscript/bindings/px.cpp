@@ -22,10 +22,18 @@ namespace px {
     np::pixelscript::Buffer * buffer;
     bool _rotated = false;
     
+    ofImage _saver;
+    
+    
     void resources( np::pixelscript::Buffer & resource ){
         buffer = &resource;
         buffer->unpipe();
     }
+    
+    void title( const char * name ){
+        ofSetWindowTitle( name );
+    }
+    
     
     bool isRotated(){
         return _rotated;
@@ -68,6 +76,21 @@ namespace px {
         buffer->setLayer( name );
     }
     
+    void pipe( int l ){
+        buffer->pipeLayer( l );
+    }
+    void pipe( const char * name ){
+        buffer->pipeLayer( name );
+    }
+    
+    void overlay( int l ){
+        buffer->drawLayer( l );
+    }
+    
+    void overlay( const char * name ){
+        buffer->drawLayer( name );
+    }
+
     void framerate( int value ){
         ofSetFrameRate( value );
     }
@@ -291,5 +314,22 @@ namespace px {
 
     int height(){
         return buffer->getHeight();
+    }
+    
+    void save( const char * path ){
+        _saver.grabScreen( 0, 0, ofGetWidth(), ofGetHeight() );
+        _saver.save( path );
+    }
+    
+    void save( const char * path, int l ){
+        buffer->getFbo( l ).readToPixels( _saver.getPixels() );
+        _saver.update();
+        _saver.save( path );
+    }
+    
+    void save( const char * path, const char * name ){
+        buffer->getFbo( name ).readToPixels( _saver.getPixels() );
+        _saver.update();
+        _saver.save( path );
     }
 }

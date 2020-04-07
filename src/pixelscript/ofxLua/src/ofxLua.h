@@ -135,10 +135,10 @@ class ofxLua {
 		void scriptWindowResized(int w, int h);
 
 		/// call Lua script keyPressed() function
-		void scriptKeyPressed(int key);
+		void scriptKeyPressed(int key, int pressed );
 
 		/// call Lua script keyReleased() function
-		void scriptKeyReleased(int key);
+		//void scriptKeyReleased(int key);
 
 		/// call Lua script mosueMoved() function
 		void scriptMouseMoved(int x, int y );

@@ -59,6 +59,15 @@ public:
     void setLayer( int i );
     void setLayer( const char * name );
     
+    ofFbo & getFbo( int i );
+    ofFbo & getFbo( const char * name );
+    
+    // remember to test out the best blending mode for piping layers
+    void drawLayer( int i );
+    void drawLayer( const char * name );
+    void pipeLayer( int i );
+    void pipeLayer( const char * name );
+    
     void draw( int x, int y );
     
     const ofTexture & getTexture() const;

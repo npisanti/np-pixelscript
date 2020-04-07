@@ -30,6 +30,7 @@ namespace png{
     void init();
     void resources( std::vector<Pair> & reso );
     
+    // you can call this again on event or loop to update folder
     void load( const char * name, const char * path );
     
     // modes: 0/def = top left corner, 1 = center, 2 = bottom left corner  
@@ -45,8 +46,6 @@ namespace png{
     int step( int step );
     int random(); // don't repeat the same frame two time 
     int randjump( int stepmax ); // jumps a number of step between 1 and stepmax included
-    
-    
     
     void draw( int x, int y );
     

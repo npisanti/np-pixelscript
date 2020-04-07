@@ -23,6 +23,7 @@ namespace px {
     void resources( np::pixelscript::Buffer & resource );
     bool isRotated();
     
+    void title( const char * name );
     
     void rotate( bool bRotate );
     void canvas( int w, int h );
@@ -31,12 +32,17 @@ namespace px {
     void move_layer( int x, int y );
     void move_window( int x, int y );
     
-    
     void framerate( int value );
     void blendmode( int value );
     
     void layer( int l );
     void layer( const char * name );
+    
+    void pipe( int l );
+    void pipe( const char * name );
+    
+    void overlay( int l );
+    void overlay( const char * name );
     
     void begin();
     void finish();
@@ -100,5 +106,9 @@ namespace px {
     void translate( int x, int y );
     void rotate( double rad );
     void scale( double x, double y );
+    
+    void save( const char * path );
+    void save( const char * path, int l );
+    void save( const char * path, const char * name );
     
 }

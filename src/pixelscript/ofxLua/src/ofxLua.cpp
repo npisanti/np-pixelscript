@@ -240,10 +240,10 @@ void ofxLua::setErrorCallback(std::function<void(std::string& message)> const &c
 
 //--------------------------------------------------------------------
 void ofxLua::scriptSetup() {
-	if(L == NULL || !isFunction("setup")) {
+	if(L == NULL || !isFunction("reload")) {
 		return;
 	}
-	lua_getglobal(L, "setup");
+	lua_getglobal(L, "reload");
 	if(lua_pcall(L, 0, 0, 0) != 0) {
 		std::string msg = "Error running setup(): "
 		                  + (std::string) lua_tostring(L, LUA_STACK_TOP);
@@ -252,10 +252,10 @@ void ofxLua::scriptSetup() {
 }
 
 void ofxLua::scriptUpdate() {
-	if(L == NULL || !isFunction("update")) {
+	if(L == NULL || !isFunction("loop")) {
 		return;
 	}
-	lua_getglobal(L, "update");
+	lua_getglobal(L, "loop");
 	if(lua_pcall(L, 0, 0, 0) != 0) {
 		std::string msg = "Error running update(): "
 		                  + (std::string) lua_tostring(L, LUA_STACK_TOP);
@@ -302,27 +302,15 @@ void ofxLua::scriptWindowResized(int w, int h) {
 	}
 }
 
-void ofxLua::scriptKeyPressed(int key) {
+void ofxLua::scriptKeyPressed( int key, int pressed ) {
 	if(L == NULL || !isFunction("key_pressed")) {
 		return;
 	}
 	lua_getglobal(L, "key_pressed");
 	lua_pushinteger(L, key);
-	if(lua_pcall(L, 1, 0, 0) != 0) {
+    lua_pushboolean(L, pressed);
+	if(lua_pcall(L, 2, 0, 0) != 0) {
 		std::string msg = "Error running key_pressed(): "
-		                  + (std::string) lua_tostring(L, LUA_STACK_TOP);
-		errorOccurred(msg);
-	}
-}
-
-void ofxLua::scriptKeyReleased(int key) {
-	if(L == NULL || !isFunction("key_released")) {
-		return;
-	}
-	lua_getglobal(L, "key_released");
-	lua_pushinteger(L, key);
-	if(lua_pcall(L, 1, 0, 0) != 0) {
-		std::string msg = "Error running key_released(): "
 		                  + (std::string) lua_tostring(L, LUA_STACK_TOP);
 		errorOccurred(msg);
 	}

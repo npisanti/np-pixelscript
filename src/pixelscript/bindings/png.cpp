@@ -45,9 +45,29 @@ namespace png{
     void load( const char * name, const char * path ){
 
         for(size_t i=0; i<images->size(); ++i ){
-            if( images->at(i).name == name ){
+            if( strcmp(images->at(i).name.c_str(), name) == 0 ){
                 if( images->at(i).path != path ){
                     std::cout<<"[pixelscript] "<<name<<" name already taken by another folder!\n";
+                }else{
+                    // check directory reload  
+                    ofDirectory dir;
+                    dir.openFromCWD( path );
+                    dir.listDir();
+                    dir.allowExt("png");
+                    dir.sort();
+                    
+                    size_t sz = dir.size();
+                    if( sz && images->at(i).folder.size() != sz ){
+                        images->at(i).folder.resize( dir.size() );
+
+                        for(int i = 0; i < (int)dir.size(); i++){
+                            std::string ap = dir.getPath(i);
+                            if( ! ofFilePath::isAbsolute(ap)  ){
+                                ap = ofFilePath::getCurrentWorkingDirectory() + "/"+ ap;
+                            }
+                            images->at(i).folder[i].load(ap);
+                        }
+                    }
                 }
                 return; // already loaded for that name
             }

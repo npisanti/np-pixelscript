@@ -78,11 +78,7 @@ void update(){
     
     // key event are executed after update so you can draw with them
     for ( size_t i=0; i<keyEvents.size(); ++i ){
-        if( keyEvents[i].pressed){
-            script.lua.scriptKeyPressed( keyEvents[i].key );
-        }else{
-            script.lua.scriptKeyReleased( keyEvents[i].key );            
-        }
+        script.lua.scriptKeyPressed( keyEvents[i].key, keyEvents[i].pressed );
     }
     keyEvents.clear();
 }
