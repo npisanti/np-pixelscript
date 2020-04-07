@@ -31,7 +31,8 @@ namespace png{
     void resources( std::vector<Pair> & reso );
     
     // you can call this again on event or loop to update folder
-    void load( const char * name, const char * path );
+    void load( const char * path, const char * name );
+    void load( const char * path );
     
     // modes: 0/def = top left corner, 1 = center, 2 = bottom left corner  
     void mode( int value );

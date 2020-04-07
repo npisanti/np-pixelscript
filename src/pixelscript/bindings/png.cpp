@@ -42,7 +42,7 @@ namespace png{
         alignMode = value;
     }
  
-    void load( const char * name, const char * path ){
+    void load( const char * path, const char * name ){
 
         for(size_t i=0; i<images->size(); ++i ){
             if( strcmp(images->at(i).name.c_str(), name) == 0 ){
@@ -119,6 +119,12 @@ namespace png{
         current = &images->back();
         current->index = 0;
         std::cout<<"[pixelscript] "<<name<<" folder not loaded\n";
+    }
+    
+    
+    void load( const char * path ){
+        const char * name = ofFilePath::getBaseName( path ).c_str();
+        load( path, name );
     }
     
     void frame( int index ){

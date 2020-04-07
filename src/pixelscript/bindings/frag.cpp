@@ -27,7 +27,7 @@ void resources( np::pixelscript::Buffer & buff, std::vector<np::pixelscript::Sha
     clock = playhead;
 }
  
-void load( const char * name, const char * path ){
+void load( const char * path, const char * name ){
     for(size_t i=0; i<shaders->size(); ++i ){            
         if( shaders->at(i).name.compare( name )==0 ){
             std::string filepath = path;
@@ -50,6 +50,12 @@ void load( const char * name, const char * path ){
     }else{
         std::cout<<"[pixelscript] wrong extention loaded for name: "<<name<<"\n";
     }
+}
+
+
+void load( const char * path ){
+    const char * name = ofFilePath::getBaseName( path ).c_str();
+    load( path, name );
 }
 
 void apply( const char * name ){

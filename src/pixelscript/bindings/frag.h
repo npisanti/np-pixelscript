@@ -23,7 +23,8 @@ namespace frag{
 
     void resources( np::pixelscript::Buffer & buff, std::vector<np::pixelscript::Shader> & reso, float playhead );
     
-    void load( const char * name, const char * path );
+    void load( const char * path, const char * name );
+    void load( const char * path );
         
     void apply( const char * name );
     

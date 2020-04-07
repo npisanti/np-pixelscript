@@ -2832,11 +2832,18 @@ static int _wrap_resources(lua_State* L) { int SWIG_arg = 0; std::vector< png::P
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_std__vectorT_png__Pair_t,0))){
     SWIG_fail_ptr("resources",1,SWIGTYPE_p_std__vectorT_png__Pair_t); }  png::resources(*arg1); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_load(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; char *arg2 = (char *) 0 ;
+static int _wrap_load__SWIG_0(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; char *arg2 = (char *) 0 ;
   SWIG_check_num_args("png::load",2,2) if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("png::load",1,"char const *");
   if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("png::load",2,"char const *"); arg1 = (char *)lua_tostring(L, 1);
   arg2 = (char *)lua_tostring(L, 2); png::load((char const *)arg1,(char const *)arg2); return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
+static int _wrap_load__SWIG_1(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; SWIG_check_num_args("png::load",1,1)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("png::load",1,"char const *"); arg1 = (char *)lua_tostring(L, 1);
+  png::load((char const *)arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_load(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = lua_gettop(L); if (argc == 1) {
+    return _wrap_load__SWIG_1(L);}  if (argc == 2) { return _wrap_load__SWIG_0(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'load'\n" "  Possible C/C++ prototypes are:\n"
+  "    png::load(char const *,char const *)\n" "    png::load(char const *)\n"); lua_error(L);return 0; }
 static int _wrap_mode(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("png::mode",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("png::mode",1,"int"); arg1 = (int)lua_tonumber(L, 1); png::mode(arg1); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
