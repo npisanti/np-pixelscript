@@ -108,7 +108,8 @@ namespace px {
     void scale( double x, double y );
     
     void save( const char * path );
+    
+    // layers can save with transparency 
     void save( const char * path, int l );
     void save( const char * path, const char * name );
-    
 }

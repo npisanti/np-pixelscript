@@ -318,18 +318,30 @@ namespace px {
     
     void save( const char * path ){
         _saver.grabScreen( 0, 0, ofGetWidth(), ofGetHeight() );
-        _saver.save( path );
+        std::string ap( path );
+        if( ! ofFilePath::isAbsolute(ap)  ){
+        ap = ofFilePath::getCurrentWorkingDirectory() + "/"+ ap;
+        }
+        _saver.save( ap );
     }
     
     void save( const char * path, int l ){
         buffer->getFbo( l ).readToPixels( _saver.getPixels() );
         _saver.update();
-        _saver.save( path );
+        std::string ap( path );
+        if( ! ofFilePath::isAbsolute(ap)  ){
+        ap = ofFilePath::getCurrentWorkingDirectory() + "/"+ ap;
+        }
+        _saver.save( ap );
     }
     
     void save( const char * path, const char * name ){
         buffer->getFbo( name ).readToPixels( _saver.getPixels() );
         _saver.update();
-        _saver.save( path );
+        std::string ap( path );
+        if( ! ofFilePath::isAbsolute(ap)  ){
+        ap = ofFilePath::getCurrentWorkingDirectory() + "/"+ ap;
+        }
+        _saver.save( ap );
     }
 }
