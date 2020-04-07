@@ -139,9 +139,7 @@ void np::PixelScript::oscReceived(const ofxOscMessage& message) {
 		std::string line = "Error running osc_received(): " + (std::string) lua_tostring(lua, -1);
 		lua.errorOccurred(line);
 	}
-
 }
-
 
 void np::PixelScript::headless( bool active, int usecs ){
     bHeadless = true;

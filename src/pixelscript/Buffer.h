@@ -50,8 +50,6 @@ public:
     void addLayer( std::string name, int w, int h, int mult );
     void moveLayer( int x, int y );
     
-    void unpipe();
-    
     void begin();
     void end();
     void swap();
@@ -65,8 +63,9 @@ public:
     // remember to test out the best blending mode for piping layers
     void drawLayer( int i );
     void drawLayer( const char * name );
-    void pipeLayer( int i );
-    void pipeLayer( const char * name );
+    
+    void setActive( int i, bool active );
+    void setActive( const char * name, bool active );
     
     void draw( int x, int y );
     

@@ -33,7 +33,13 @@ namespace px {
     void move_window( int x, int y );
     
     void framerate( int value );
+    
     void blendmode( int value );
+    void blendmode_add();
+    void blendmode_multiply();
+    void blendmode_subtract();
+    void blendmode_screen();
+    void blendmode_alpha();
     
     void layer( int l );
     void layer( const char * name );
@@ -41,8 +47,11 @@ namespace px {
     void pipe( int l );
     void pipe( const char * name );
     
-    void overlay( int l );
-    void overlay( const char * name );
+    void enable_layer( int l );
+    void enable_layer( const char * name );
+    
+    void disable_layer( int l );
+    void disable_layer( const char * name );
     
     void begin();
     void finish();

@@ -27,13 +27,11 @@ namespace px {
     
     void resources( np::pixelscript::Buffer & resource ){
         buffer = &resource;
-        buffer->unpipe();
     }
     
     void title( const char * name ){
         ofSetWindowTitle( name );
     }
-    
     
     bool isRotated(){
         return _rotated;
@@ -77,10 +75,27 @@ namespace px {
     }
     
     void pipe( int l ){
-        buffer->pipeLayer( l );
+        buffer->drawLayer( l );
     }
+    
     void pipe( const char * name ){
-        buffer->pipeLayer( name );
+        buffer->drawLayer( name );
+    }
+    
+    void enable_layer( int l ){
+        buffer->setActive( l, true );
+    }
+    
+    void enable_layer( const char * name ){
+        buffer->setActive( name, true );
+    }
+    
+    void disable_layer( int l ){
+        buffer->setActive( l, false );
+    }
+    
+    void disable_layer( const char * name ){
+        buffer->setActive( name, false );
     }
     
     void overlay( int l ){
@@ -111,6 +126,22 @@ namespace px {
             case 4: ofEnableBlendMode( OF_BLENDMODE_SCREEN ); break;
             default: ofEnableBlendMode( OF_BLENDMODE_ALPHA ); break;
         }
+    }
+    
+    void blendmode_add(){
+        ofEnableBlendMode( OF_BLENDMODE_ADD );
+    }
+    void blendmode_multiply(){
+        ofEnableBlendMode( OF_BLENDMODE_MULTIPLY );
+    }
+    void blendmode_subtract(){
+        ofEnableBlendMode( OF_BLENDMODE_SUBTRACT );
+    }
+    void blendmode_screen(){
+        ofEnableBlendMode( OF_BLENDMODE_SCREEN );
+    }
+    void blendmode_alpha(){
+        ofEnableBlendMode( OF_BLENDMODE_ALPHA );
     }
     
     void background( int r, int g, int b, int a ){

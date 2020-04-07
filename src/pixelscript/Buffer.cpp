@@ -154,7 +154,7 @@ void np::pixelscript::Buffer::drawLayer( const char * name ){
     return;
 }
 
-void np::pixelscript::Buffer::pipeLayer( int i ){
+void np::pixelscript::Buffer::setActive( int i, bool active ){
     if( i<0 ){ 
         std::cout<<"[pixelscript] layer less than zero!\n";
         return;
@@ -163,15 +163,13 @@ void np::pixelscript::Buffer::pipeLayer( int i ){
         std::cout<<"[pixelscript] layer "<<i<<" outside allocated number!\n";
         return;
     }
-    layers[i].bRender = false;
-    layers[i].draw( 0, 0 );
+    layers[i].bRender = active;
 }
 
-void np::pixelscript::Buffer::pipeLayer( const char * name ){
+void np::pixelscript::Buffer::setActive( const char * name, bool active ){
     for( size_t i=0; i<layers.size(); ++ i) {
         if( strcmp( layers[i].name.c_str(), name ) == 0 ){
-            layers[i].bRender = false;
-            layers[i].draw( 0, 0 );
+            layers[i].bRender = active;
             return;
         }
     }
@@ -211,13 +209,6 @@ void np::pixelscript::Buffer::draw( int x, int y ){
         }
     ofPopMatrix();
 }
-
-void np::pixelscript::Buffer::unpipe(){
-    for( size_t i=0; i<layers.size(); ++i ){
-        layers[i].bRender = true;
-    }
-}
-
     
 const ofTexture & np::pixelscript::Buffer::getTexture() const{
     auto & la = layers[layer];
