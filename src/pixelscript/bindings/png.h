@@ -36,7 +36,11 @@ namespace png{
     
     // modes: 0/def = top left corner, 1 = center, 2 = bottom left corner  
     void mode( int value );
-    
+  
+	void mode_corner();
+	void mode_center();
+	void mode_baseline();
+	
     void select( const char * name );
     
     void frame( int index );
@@ -48,7 +52,10 @@ namespace png{
     int random(); // don't repeat the same frame two time 
     int randjump( int stepmax ); // jumps a number of step between 1 and stepmax included
     
+    int size();
+    
     void draw( int x, int y );
+    void draw( int x, int y, int w, int h );
     
     int width();
     int height();

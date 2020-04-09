@@ -197,15 +197,15 @@ int main( int argc, char *argv[] ){
             app->usecs = -1;
             app->bMirror = false;
             bool decorated = true;
-            
-            for( int i=1; i<argc; ++i ){
+
+            int i=2;
+            for(; i<argc; ++i ){
                 std::string cmd = std::string( argv[i] );
 
                 if( cmd == "--no-decoration" || cmd == "-nd" ){
                     decorated = false;   
-                }
 
-                if( cmd == "--size" || cmd == "-s" ){
+                }else if( cmd == "--size" || cmd == "-s" ){
                     if( i+1 < argc ){
                         // split by 'x'
                         auto splits = ofSplitString( std::string(argv[i+1]), "x");
@@ -216,10 +216,9 @@ int main( int argc, char *argv[] ){
                             std::cout<<"[ pixelscript ] wrong argument for --size or -s, it should be a resolution delimited by x, for example 1280x720\n";
                             return 0;
                         }
+                        i++;
                     }
-                }
-            
-                if( cmd == "--position" || cmd == "-p" ){
+                }else if( cmd == "--position" || cmd == "-p" ){
                     if( i+1 < argc ){
                         // split by 'x'
                         auto splits = ofSplitString( std::string(argv[i+1]), ",");
@@ -230,10 +229,9 @@ int main( int argc, char *argv[] ){
                             std::cout<<"[ pixelscript ] wrong argument for --position or -p, it should be two coordinates delimited by comma, for example 300,200 \n";
                             return 0;
                         }
+                        i++;
                     }
-                }
-            
-                if( cmd == "--mirror" || cmd == "-m" ){
+                }else if( cmd == "--mirror" || cmd == "-m" ){
                     if( i+1 < argc ){
                         // split by 'x'
                         auto splits = ofSplitString( std::string(argv[i+1]), "x");
@@ -245,15 +243,16 @@ int main( int argc, char *argv[] ){
                             std::cout<<"[ pixelscript ] wrong argument for --mirror or -m, it should be a resolution delimited by x, for example 1280x720\n";
                             return 0;
                         }
+                        i++;
                     }
-                }
-                
-                if( cmd == "--headless" || cmd == "-x" ){
+                }else if( cmd == "--headless" || cmd == "-x" ){
                     if( i+1 < argc ){
                         app->usecs = std::stoi( argv[i+1] );
+                        i++;
                     }
+                }else{
+					 app->script.pushArg( cmd );
                 }
-
             }
                             
             if( app->usecs > 0 ){

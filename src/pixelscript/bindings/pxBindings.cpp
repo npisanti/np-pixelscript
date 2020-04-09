@@ -2676,8 +2676,9 @@ SWIG_Lua_dostring(lua_State *L, const char *str) {
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_np__pixelscript__Buffer swig_types[0]
-static swig_type_info *swig_types[2];
-static swig_module_info swig_module = {swig_types, 1, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__vectorT_std__string_t swig_types[1]
+static swig_type_info *swig_types[3];
+static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2707,18 +2708,32 @@ SWIGINTERN int SWIG_lua_isnilstring(lua_State *L, int idx) {
 #ifdef __cplusplus
 extern "C" {
 #endif
-static int _wrap_resources(lua_State* L) { int SWIG_arg = 0; np::pixelscript::Buffer *arg1 = 0 ;
-  SWIG_check_num_args("px::resources",1,1)
-  if(!lua_isuserdata(L,1)) SWIG_fail_arg("px::resources",1,"np::pixelscript::Buffer &");
+static int _wrap__init(lua_State* L) { int SWIG_arg = 0; np::pixelscript::Buffer *arg1 = 0 ;
+  SWIG_check_num_args("px::_init",1,1) if(!lua_isuserdata(L,1)) SWIG_fail_arg("px::_init",1,"np::pixelscript::Buffer &");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_np__pixelscript__Buffer,0))){
-    SWIG_fail_ptr("resources",1,SWIGTYPE_p_np__pixelscript__Buffer); }  px::resources(*arg1); return SWIG_arg; if(0) SWIG_fail;
-  fail: lua_error(L); return SWIG_arg; }
+    SWIG_fail_ptr("_init",1,SWIGTYPE_p_np__pixelscript__Buffer); }  px::_init(*arg1); return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_resources(lua_State* L) { int SWIG_arg = 0; np::pixelscript::Buffer *arg1 = 0 ;
+  std::vector< std::string > *arg2 = 0 ; SWIG_check_num_args("px::resources",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("px::resources",1,"np::pixelscript::Buffer &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("px::resources",2,"std::vector< std::string > &");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_np__pixelscript__Buffer,0))){
+    SWIG_fail_ptr("resources",1,SWIGTYPE_p_np__pixelscript__Buffer); } 
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__vectorT_std__string_t,0))){
+    SWIG_fail_ptr("resources",2,SWIGTYPE_p_std__vectorT_std__string_t); }  px::resources(*arg1,*arg2); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_isRotated(lua_State* L) { int SWIG_arg = 0; bool result; SWIG_check_num_args("px::isRotated",0,0)
   result = (bool)px::isRotated(); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
 static int _wrap_title(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; SWIG_check_num_args("px::title",1,1)
   if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("px::title",1,"char const *"); arg1 = (char *)lua_tostring(L, 1);
   px::title((char const *)arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_args(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("px::args",0,0)
+  result = (int)px::args(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_arg(lua_State* L) { int SWIG_arg = 0; int arg1 ; char *result = 0 ; SWIG_check_num_args("px::arg",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("px::arg",1,"int"); arg1 = (int)lua_tonumber(L, 1); result = (char *)px::arg(arg1);
+  lua_pushstring(L,(const char *)result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_rotate__SWIG_0(lua_State* L) { int SWIG_arg = 0; bool arg1 ; SWIG_check_num_args("px::rotate",1,1)
   if(!lua_isboolean(L,1)) SWIG_fail_arg("px::rotate",1,"bool"); arg1 = (lua_toboolean(L, 1)!=0); px::rotate(arg1);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
@@ -2783,6 +2798,17 @@ static int _wrap_layer(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua
         _v = lua_isnumber(L,argv[0]); } }  if (!_v) goto check_1; return _wrap_layer__SWIG_0(L);}  check_1: if (argc == 1) {
     return _wrap_layer__SWIG_1(L);}  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'layer'\n"
   "  Possible C/C++ prototypes are:\n" "    px::layer(int)\n" "    px::layer(char const *)\n"); lua_error(L);return 0; }
+static int _wrap_select__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("px::select",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("px::select",1,"int"); arg1 = (int)lua_tonumber(L, 1); px::select(arg1); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_select__SWIG_1(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ;
+  SWIG_check_num_args("px::select",1,1) if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("px::select",1,"char const *");
+  arg1 = (char *)lua_tostring(L, 1); px::select((char const *)arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
+  return SWIG_arg; }
+static int _wrap_select(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua_gettop(L); if (argc == 1) { int _v = 0; { {
+        _v = lua_isnumber(L,argv[0]); } }  if (!_v) goto check_1; return _wrap_select__SWIG_0(L);}  check_1: if (argc == 1) {
+    return _wrap_select__SWIG_1(L);}  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'select'\n"
+  "  Possible C/C++ prototypes are:\n" "    px::select(int)\n" "    px::select(char const *)\n"); lua_error(L);return 0; }
 static int _wrap_pipe__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("px::pipe",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("px::pipe",1,"int"); arg1 = (int)lua_tonumber(L, 1); px::pipe(arg1); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
@@ -3121,9 +3147,12 @@ static swig_lua_const_info swig_SwigModule_constants[]= {
     {0,0,0,0,0,0}
 };
 static swig_lua_method swig_SwigModule_methods[]= {
+    { "_init", _wrap__init},
     { "resources", _wrap_resources},
     { "isRotated", _wrap_isRotated},
     { "title", _wrap_title},
+    { "args", _wrap_args},
+    { "arg", _wrap_arg},
     { "canvas", _wrap_canvas},
     { "window", _wrap_window},
     { "make_layer", _wrap_make_layer},
@@ -3137,6 +3166,7 @@ static swig_lua_method swig_SwigModule_methods[]= {
     { "blendmode_screen", _wrap_blendmode_screen},
     { "blendmode_alpha", _wrap_blendmode_alpha},
     { "layer", _wrap_layer},
+    { "select", _wrap_select},
     { "pipe", _wrap_pipe},
     { "enable_layer", _wrap_enable_layer},
     { "disable_layer", _wrap_disable_layer},
@@ -3199,15 +3229,19 @@ static swig_lua_namespace swig_SwigModule = {
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
 static swig_type_info _swigt__p_np__pixelscript__Buffer = {"_p_np__pixelscript__Buffer", "np::pixelscript::Buffer *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_std__string_t = {"_p_std__vectorT_std__string_t", "std::vector< std::string > *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_np__pixelscript__Buffer,
+  &_swigt__p_std__vectorT_std__string_t,
 };
 
 static swig_cast_info _swigc__p_np__pixelscript__Buffer[] = {  {&_swigt__p_np__pixelscript__Buffer, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_std__string_t[] = {  {&_swigt__p_std__vectorT_std__string_t, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_np__pixelscript__Buffer,
+  _swigc__p_std__vectorT_std__string_t,
 };
 
 

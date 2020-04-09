@@ -20,10 +20,14 @@
 
 namespace px {
 
-    void resources( np::pixelscript::Buffer & resource );
+    void _init( np::pixelscript::Buffer & resource );
+    void resources( np::pixelscript::Buffer & resource, std::vector<std::string> & arguments  );
     bool isRotated();
     
     void title( const char * name );
+
+    int args();
+    const char * arg( int index );
     
     void rotate( bool bRotate );
     void canvas( int w, int h );
@@ -43,6 +47,8 @@ namespace px {
     
     void layer( int l );
     void layer( const char * name );
+    void select( int l );
+    void select( const char * name );
     
     void pipe( int l );
     void pipe( const char * name );

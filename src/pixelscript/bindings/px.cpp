@@ -20,13 +20,31 @@
 namespace px {
     
     np::pixelscript::Buffer * buffer;
+    std::vector<std::string> * _args;
     bool _rotated = false;
     
     ofImage _saver;
     
     
-    void resources( np::pixelscript::Buffer & resource ){
+    void _init( np::pixelscript::Buffer & resource ){
+        resource.resetLayers();
+    }
+    
+    void resources( np::pixelscript::Buffer & resource, std::vector<std::string> & arguments ){
         buffer = &resource;
+        _args = &arguments;
+    }
+    
+    int args(){
+    	return _args->size();
+   	}
+
+    const char * arg( int index ){
+		if( index>=0 && index < (int) _args->size() ){
+			return _args->at(index).c_str();
+		}else{
+			return "undefined";
+		}
     }
     
     void title( const char * name ){
@@ -71,6 +89,14 @@ namespace px {
     }
     
     void layer( const char * name ){
+        buffer->setLayer( name );
+    }
+            
+    void select( int l ){
+        buffer->setLayer( l );
+    }
+    
+    void select( const char * name ){
         buffer->setLayer( name );
     }
     

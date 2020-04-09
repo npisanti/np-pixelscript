@@ -29,6 +29,17 @@ np::pixelscript::Buffer::Layer::Layer(){
 }
     
 
+void np::pixelscript::Buffer::resetLayers(){
+    for( size_t i=0; i<layers.size(); ++ i) {
+        layers[i].x = 0;
+        layers[i].y = 0;
+        layers[i].bRender = true;
+    }    
+    if( layers.size() ){
+        layer = 0;
+    }
+}
+
 void np::pixelscript::Buffer::addLayer( std::string name, int w, int h, int mult ){
     
     int found = -1;
@@ -42,9 +53,11 @@ void np::pixelscript::Buffer::addLayer( std::string name, int w, int h, int mult
     
     if( found >= 0){
         lay = &layers[found];
+        layer = found;
     }else{
         layers.emplace_back();
         lay = &layers.back();
+        layer = layers.size()-1;
     }
     
     ofFboSettings settings;

@@ -68,11 +68,12 @@ void np::PixelScript::reload(){
     luaopen_frag(lua); 
     luaopen_osc(lua); 
     luaopen_cam(lua); 
+    px::_init( buffer );
     font::resources( font );
     png::resources( images );
     frag::resources( buffer, shaders, 0.0f );
     osc::resources( receiver, senders );
-    px::resources( buffer );
+    px::resources( buffer, args );
     lua.doScript( filepath, true );
     lua.scriptSetup();
     loaded = true;
@@ -91,7 +92,7 @@ void np::PixelScript::update(){
         font::resources( font );
         png::resources( images );
         frag::resources( buffer, shaders, clock );
-        px::resources( buffer );
+        px::resources( buffer, args );
         cam::_update();
     }
     
@@ -144,4 +145,8 @@ void np::PixelScript::oscReceived(const ofxOscMessage& message) {
 void np::PixelScript::headless( bool active, int usecs ){
     bHeadless = true;
     usec = 100;
+}
+
+void np::PixelScript::pushArg( std::string option ){
+	args.push_back( option );
 }

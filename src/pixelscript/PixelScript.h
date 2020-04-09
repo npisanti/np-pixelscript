@@ -53,6 +53,8 @@ public:
     
     void headless( bool active, int usecs=100 );
 
+	void pushArg( std::string option );
+
 private:
     
     ofTrueTypeFont font;
@@ -62,6 +64,7 @@ private:
 
     std::vector<png::Pair> images;
     std::vector<np::pixelscript::Shader> shaders;
+	std::vector<std::string> args;
     
     np::pixelscript::Buffer buffer;
 

@@ -47,6 +47,8 @@ class Buffer{
 public:
     Buffer();
     
+    void resetLayers();
+    
     void addLayer( std::string name, int w, int h, int mult );
     void moveLayer( int x, int y );
     
