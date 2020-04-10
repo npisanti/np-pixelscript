@@ -204,33 +204,6 @@ int main( int argc, char *argv[] ){
 
                 if( cmd == "--no-decoration" || cmd == "-nd" ){
                     decorated = false;   
-
-                }else if( cmd == "--size" || cmd == "-s" ){
-                    if( i+1 < argc ){
-                        // split by 'x'
-                        auto splits = ofSplitString( std::string(argv[i+1]), "x");
-                        if( splits.size()>1 ){
-                            width = std::stoi( splits[0] );
-                            height = std::stoi( splits[1] );
-                        }else{
-                            std::cout<<"[ pixelscript ] wrong argument for --size or -s, it should be a resolution delimited by x, for example 1280x720\n";
-                            return 0;
-                        }
-                        i++;
-                    }
-                }else if( cmd == "--position" || cmd == "-p" ){
-                    if( i+1 < argc ){
-                        // split by 'x'
-                        auto splits = ofSplitString( std::string(argv[i+1]), ",");
-                        if( splits.size()>1 ){
-                            px = std::stoi( splits[0] );
-                            py = std::stoi( splits[1] );
-                        }else{
-                            std::cout<<"[ pixelscript ] wrong argument for --position or -p, it should be two coordinates delimited by comma, for example 300,200 \n";
-                            return 0;
-                        }
-                        i++;
-                    }
                 }else if( cmd == "--mirror" || cmd == "-m" ){
                     if( i+1 < argc ){
                         // split by 'x'
@@ -275,7 +248,8 @@ int main( int argc, char *argv[] ){
                     
                 settings.setSize( width, height );     
                 shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
-                         
+
+                #ifndef __ARM_ARCH                         
                 if( app->bMirror ){
                     settings.setSize( app->mwidth, app->mheight );
                     settings.setPosition(ofVec2f(ofGetScreenWidth(), 0));
@@ -286,7 +260,8 @@ int main( int argc, char *argv[] ){
                     secondWindow->setVerticalSync(false);
                     ofAddListener(secondWindow->events().draw, app.get(), &ofApp::drawSecondWindow);
                 }
-                    
+                #endif 
+                
                 ofRunApp(mainWindow, app);
                 ofRunMainLoop();
             }
