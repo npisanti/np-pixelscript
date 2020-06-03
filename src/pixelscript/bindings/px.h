@@ -44,23 +44,26 @@ namespace px {
     void blendmode_subtract();
     void blendmode_screen();
     void blendmode_alpha();
-    
-    void layer( int l );
-    void layer( const char * name );
+
     void select( int l );
     void select( const char * name );
+    void open();
+    void close();
     
     void pipe( int l );
     void pipe( const char * name );
     
     void enable_layer( int l );
     void enable_layer( const char * name );
-    
     void disable_layer( int l );
     void disable_layer( const char * name );
-    
+
+    // those should be deprecated 
+    void layer( int l );
+    void layer( const char * name );   
     void begin();
-    void finish();
+    void finish();    
+	// --------------------------
     
     void clear();
     void clear( int r, int g, int b, int a );

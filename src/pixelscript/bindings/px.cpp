@@ -143,6 +143,14 @@ namespace px {
     void finish(){
         buffer->end();
     }
+        
+    void open(){
+        buffer->begin();
+    }
+    
+    void close(){
+        buffer->end();
+    }
     
     void blendmode( int value ){
         switch( value ){

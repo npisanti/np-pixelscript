@@ -2788,16 +2788,6 @@ static int _wrap_blendmode_screen(lua_State* L) { int SWIG_arg = 0; SWIG_check_n
   px::blendmode_screen(); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_blendmode_alpha(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("px::blendmode_alpha",0,0)
   px::blendmode_alpha(); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_layer__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("px::layer",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("px::layer",1,"int"); arg1 = (int)lua_tonumber(L, 1); px::layer(arg1); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_layer__SWIG_1(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; SWIG_check_num_args("px::layer",1,1)
-  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("px::layer",1,"char const *"); arg1 = (char *)lua_tostring(L, 1);
-  px::layer((char const *)arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_layer(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua_gettop(L); if (argc == 1) { int _v = 0; { {
-        _v = lua_isnumber(L,argv[0]); } }  if (!_v) goto check_1; return _wrap_layer__SWIG_0(L);}  check_1: if (argc == 1) {
-    return _wrap_layer__SWIG_1(L);}  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'layer'\n"
-  "  Possible C/C++ prototypes are:\n" "    px::layer(int)\n" "    px::layer(char const *)\n"); lua_error(L);return 0; }
 static int _wrap_select__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("px::select",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("px::select",1,"int"); arg1 = (int)lua_tonumber(L, 1); px::select(arg1); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
@@ -2809,6 +2799,10 @@ static int _wrap_select(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lu
         _v = lua_isnumber(L,argv[0]); } }  if (!_v) goto check_1; return _wrap_select__SWIG_0(L);}  check_1: if (argc == 1) {
     return _wrap_select__SWIG_1(L);}  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'select'\n"
   "  Possible C/C++ prototypes are:\n" "    px::select(int)\n" "    px::select(char const *)\n"); lua_error(L);return 0; }
+static int _wrap_open(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("px::open",0,0) px::open(); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_close(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("px::close",0,0) px::close(); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_pipe__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("px::pipe",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("px::pipe",1,"int"); arg1 = (int)lua_tonumber(L, 1); px::pipe(arg1); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
@@ -2843,6 +2837,16 @@ static int _wrap_disable_layer(lua_State* L) { int argc; int argv[2]={ 1,2} ; ar
   if (argc == 1) { return _wrap_disable_layer__SWIG_1(L);} 
   SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'disable_layer'\n" "  Possible C/C++ prototypes are:\n"
   "    px::disable_layer(int)\n" "    px::disable_layer(char const *)\n"); lua_error(L);return 0; }
+static int _wrap_layer__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("px::layer",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("px::layer",1,"int"); arg1 = (int)lua_tonumber(L, 1); px::layer(arg1); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_layer__SWIG_1(lua_State* L) { int SWIG_arg = 0; char *arg1 = (char *) 0 ; SWIG_check_num_args("px::layer",1,1)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("px::layer",1,"char const *"); arg1 = (char *)lua_tostring(L, 1);
+  px::layer((char const *)arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_layer(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua_gettop(L); if (argc == 1) { int _v = 0; { {
+        _v = lua_isnumber(L,argv[0]); } }  if (!_v) goto check_1; return _wrap_layer__SWIG_0(L);}  check_1: if (argc == 1) {
+    return _wrap_layer__SWIG_1(L);}  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'layer'\n"
+  "  Possible C/C++ prototypes are:\n" "    px::layer(int)\n" "    px::layer(char const *)\n"); lua_error(L);return 0; }
 static int _wrap_begin(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("px::begin",0,0) px::begin(); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_finish(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("px::finish",0,0) px::finish(); return SWIG_arg;
@@ -3165,11 +3169,13 @@ static swig_lua_method swig_SwigModule_methods[]= {
     { "blendmode_subtract", _wrap_blendmode_subtract},
     { "blendmode_screen", _wrap_blendmode_screen},
     { "blendmode_alpha", _wrap_blendmode_alpha},
-    { "layer", _wrap_layer},
     { "select", _wrap_select},
+    { "open", _wrap_open},
+    { "close", _wrap_close},
     { "pipe", _wrap_pipe},
     { "enable_layer", _wrap_enable_layer},
     { "disable_layer", _wrap_disable_layer},
+    { "layer", _wrap_layer},
     { "begin", _wrap_begin},
     { "finish", _wrap_finish},
     { "clear", _wrap_clear},
